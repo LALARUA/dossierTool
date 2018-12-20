@@ -17,27 +17,30 @@ import javax.sql.DataSource;
 /**
  * @Author: xiangXX
  * @Description:
- * @Date Created in 17:37 2018/12/20 0020
+ * @Date Created in 20:02 2018/12/20 0020
  */
 @Configuration
-@MapperScan(basePackages = "com.supermap.dossiertool.mapper.fileMapper",sqlSessionTemplateRef = "fileSqlSessionTemplate")
-public class FileDatasourceConfig {
-    @Bean(name = "fileDatasource")
-    @ConfigurationProperties(prefix = "spring.datasource.file")
-    public DataSource fileDatasource(){
+@MapperScan(basePackages = "com.supermap.dossiertool.mapper.dossierMapper",sqlSessionTemplateRef = "dossierSqlSessionTemplate")
+public class DossierDatasourceConfig {
+
+    @Bean(name = "dossierDatasource")
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource.dossier")
+    public DataSource dossierDatasource(){
         return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "fileSqlSessionFactory")
-    public SqlSessionFactory fileSqlSessionFactory(@Qualifier("fileDatasource") DataSource datasource) throws Exception {
+    @Bean(name = "dossierSqlSessionFactory")
+    @Primary
+    public SqlSessionFactory dossierSqlSessionFactory(@Qualifier("dossierDatasource") DataSource datasource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(datasource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/test02/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/test01/*.xml"));
         return bean.getObject();
     }
-    @Bean("fileSqlSessionTemplate")
-    public SqlSessionTemplate fileSqlSessionTemplate(@Qualifier("fileSqlSessionFactory") SqlSessionFactory sessionFactory) {
+    @Bean("dossierSqlSessionTemplate")
+    @Primary
+    public SqlSessionTemplate dossierSqlSessionTemplate(@Qualifier("dossierSqlSessionFactory") SqlSessionFactory sessionFactory) {
         return new SqlSessionTemplate(sessionFactory);
     }
-
 }
