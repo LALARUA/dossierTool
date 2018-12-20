@@ -6,11 +6,15 @@ import com.supermap.dossiertool.mapper.fileMapper.FileTestMapper;
 import com.supermap.dossiertool.pojo.DossierTest;
 import com.supermap.dossiertool.pojo.FileTest;
 import com.supermap.dossiertool.service.serviceImpl.ReadAllFile;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.json.JacksonTester;
+import org.springframework.http.codec.json.Jackson2CodecSupport;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -37,7 +41,9 @@ public class DossiertoolApplicationTests {
 	@Test
 	public void contextLoads() throws Exception {
 		MyFile myFile = readAllFile.readAllFile(new File("C:\\Users\\Administrator\\Desktop\\copyFile"));
-		System.out.println("ff");
+		JSONObject jsonObject = JSONObject.fromObject(myFile);
+		System.out.println(jsonObject);
+
 
 
 //		System.out.println(fileDataSource.getClass());
