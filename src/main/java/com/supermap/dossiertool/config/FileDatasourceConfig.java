@@ -19,25 +19,25 @@ import javax.sql.DataSource;
  * @Description:
  * @Date Created in 17:37 2018/12/20 0020
  */
-@Configuration
-@MapperScan(basePackages = "com.supermap.dossiertool.mapper.fileMapper",sqlSessionTemplateRef = "fileSqlSessionTemplate")
-public class FileDatasourceConfig {
-    @Bean(name = "fileDatasource")
-    @ConfigurationProperties(prefix = "spring.datasource.file")
-    public DataSource fileDatasource(){
-        return DataSourceBuilder.create().build();
-    }
-
-    @Bean(name = "fileSqlSessionFactory")
-    public SqlSessionFactory fileSqlSessionFactory(@Qualifier("fileDatasource") DataSource datasource) throws Exception {
-        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-        bean.setDataSource(datasource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/test02/*.xml"));
-        return bean.getObject();
-    }
-    @Bean("fileSqlSessionTemplate")
-    public SqlSessionTemplate fileSqlSessionTemplate(@Qualifier("fileSqlSessionFactory") SqlSessionFactory sessionFactory) {
-        return new SqlSessionTemplate(sessionFactory);
-    }
-
-}
+//@Configuration
+//@MapperScan(basePackages = "com.supermap.dossiertool.mapper.fileMapper",sqlSessionTemplateRef = "fileSqlSessionTemplate")
+//public class FileDatasourceConfig {
+//    @Bean(name = "fileDatasource")
+//    @ConfigurationProperties(prefix = "spring.datasource.file")
+//    public DataSource fileDatasource(){
+//        return DataSourceBuilder.create().build();
+//    }
+//
+//    @Bean(name = "fileSqlSessionFactory")
+//    public SqlSessionFactory fileSqlSessionFactory(@Qualifier("fileDatasource") DataSource datasource) throws Exception {
+//        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+//        bean.setDataSource(datasource);
+//        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/test02/*.xml"));
+//        return bean.getObject();
+//    }
+//    @Bean("fileSqlSessionTemplate")
+//    public SqlSessionTemplate fileSqlSessionTemplate(@Qualifier("fileSqlSessionFactory") SqlSessionFactory sessionFactory) {
+//        return new SqlSessionTemplate(sessionFactory);
+//    }
+//
+//}

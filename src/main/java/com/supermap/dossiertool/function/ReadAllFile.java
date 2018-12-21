@@ -16,10 +16,10 @@ public class ReadAllFile {
         if (file.isDirectory()){
             File[] files = file.listFiles();
             myFile.setFolder(true);
-            myFile.setSonFile(new ArrayList<MyFile>());
+            myFile.setNodes(new ArrayList<MyFile>());
             for (File f:files
                  ) {
-                myFile.getSonFile().add(readAllFile(f,new MyFile(f.getName())));
+                myFile.getNodes().add(readAllFile(f,new MyFile(f.getName())));
 
                 }
         }

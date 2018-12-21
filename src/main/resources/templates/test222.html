@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="static/dist/bootstrap-treeview.min.css" rel="stylesheet">
+    <!--<link href="static/css/bootstrap-treeview.css" rel="stylesheet">-->
+    <!--<script type="text/javascript" src="static/dist/bootstrap-treeview.min.js"></script>-->
+    <script type="text/javascript" src="static/js/bootstrap-treeview.js"></script>
+<style type="text/css">
+    .file{
+        width:300px;
+        height:300px;
+        overflow-x:hidden;
+        overflow-y:auto;
+    }
+
+    /*兼容IE*/
+    .file{
+        scrollbar-face-color: gainsboro;/*移动滑块颜色*/
+        scrollbar-shadow-color: black;/*移动滑块边框颜色*/
+        scrollbar-track-color: #ccc;/*背景颜色*/
+        scrollbar-arrow-color: #ddd;/*箭头颜色*/
+    }
+    .file::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #ccc;
+    }/* 滚动条的滑轨背景颜色 */
+    .file::-webkit-scrollbar
+    {
+        width: 6px;
+        background-color: #ccc;
+    }
+
+    .file::-webkit-scrollbar-thumb
+    {
+        background-color: gainsboro;
+    }
+</style>
+</head>
+
+<body>
+<div>
+    <div style="width: 600px;height: 100%">
+        <div class="file" style="width: 600px;height: 30%">
+            <img src="static/Booker.png"  class="img-rounded">
+        </div>
+        <div  style="margin-bottom:0px;width: 600px;height: 40%">
+            <div class="file" style="width:300px;float: left">
+                <div  class="div folder" ></div>
+            </div>
+
+            <div class=" div file" style="float: left">
+                <div class="jpg" style="float:left"></div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+window.onload = function (ev) {
+    var init = function(data){
+    return $(".div").treeview({
+    data:data,
+    color:"#428bca",
+    levels:2,
+    showTags:true,
+    onNodeSelected:function(event,node){
+
+    },
+    onNodeUnselected:function(event,node){
+         console.log("取消了");
+    }
+    });
+    }
+    init('[' +
+        '{' +
+        '"text": "Parent 1",' +
+        '"nodes": [' +
+        '{' +
+        '"text": "Child 1",' +
+        '"nodes": [' +
+        '{' +
+        '"text": "Grandchild 1"' +
+        '},' +
+        '{' +
+        '"text": "Grandchild 2"' +
+        '}' +
+        ']' +
+        '},' +
+        '{' +
+        '"text": "Child 2"' +
+        '}' +
+        ']' +
+        '},' +
+        '{' +
+        '"text": "Parent 2"' +
+        '},' +
+        '{' +
+        '"text": "Parent 3"' +
+        '},' +
+        '{' +
+        '"text": "Parent 4"' +
+        '},' +
+        '{' +
+        '"text": "Parent 5"' +
+        '}' +
+        ']')
+}
+
+</script>
+</body>
+</html>

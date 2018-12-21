@@ -19,28 +19,28 @@ import javax.sql.DataSource;
  * @Description:
  * @Date Created in 20:02 2018/12/20 0020
  */
-@Configuration
-@MapperScan(basePackages = "com.supermap.dossiertool.mapper.dossierMapper",sqlSessionTemplateRef = "dossierSqlSessionTemplate")
-public class DossierDatasourceConfig {
-
-    @Bean(name = "dossierDatasource")
-    @Primary
-    @ConfigurationProperties(prefix = "spring.datasource.dossier")
-    public DataSource dossierDatasource(){
-        return DataSourceBuilder.create().build();
-    }
-
-    @Bean(name = "dossierSqlSessionFactory")
-    @Primary
-    public SqlSessionFactory dossierSqlSessionFactory(@Qualifier("dossierDatasource") DataSource datasource) throws Exception {
-        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-        bean.setDataSource(datasource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/test01/*.xml"));
-        return bean.getObject();
-    }
-    @Bean("dossierSqlSessionTemplate")
-    @Primary
-    public SqlSessionTemplate dossierSqlSessionTemplate(@Qualifier("dossierSqlSessionFactory") SqlSessionFactory sessionFactory) {
-        return new SqlSessionTemplate(sessionFactory);
-    }
-}
+//@Configuration
+//@MapperScan(basePackages = "com.supermap.dossiertool.mapper.dossierMapper",sqlSessionTemplateRef = "dossierSqlSessionTemplate")
+//public class DossierDatasourceConfig {
+//
+//    @Bean(name = "dossierDatasource")
+//    @Primary
+//    @ConfigurationProperties(prefix = "spring.datasource.dossier")
+//    public DataSource dossierDatasource(){
+//        return DataSourceBuilder.create().build();
+//    }
+//
+//    @Bean(name = "dossierSqlSessionFactory")
+//    @Primary
+//    public SqlSessionFactory dossierSqlSessionFactory(@Qualifier("dossierDatasource") DataSource datasource) throws Exception {
+//        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+//        bean.setDataSource(datasource);
+//        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/test01/*.xml"));
+//        return bean.getObject();
+//    }
+//    @Bean("dossierSqlSessionTemplate")
+//    @Primary
+//    public SqlSessionTemplate dossierSqlSessionTemplate(@Qualifier("dossierSqlSessionFactory") SqlSessionFactory sessionFactory) {
+//        return new SqlSessionTemplate(sessionFactory);
+//    }
+//}
