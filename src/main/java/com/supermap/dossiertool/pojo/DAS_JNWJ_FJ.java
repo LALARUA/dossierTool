@@ -17,11 +17,6 @@ public class DAS_JNWJ_FJ {
     private String FILETYPE;
     private String JNWJ_FJ_ID;
     private int ISRK;
-    public DAS_JNWJ_FJ(){
-        this.FJLX = 0;
-        this.ISRK = 0;
-    }
-
     public DAS_JNWJ_FJ(String FJID, String WJID, int YH,String FJMC, int FJLX, String PATH, String FILETYPE, String JNWJ_FJ_ID, int ISRK) {
         this.FJID = FJID;
         this.WJID = WJID;

@@ -17,11 +17,6 @@ public class DAS_AJJBXX {
     private int BCQX;
     private Date SCRQ;
     private int YXBZ;
-    public DAS_AJJBXX(){
-        this.BCQX=0;
-        this.YXBZ=0;
-    }
-
     public DAS_AJJBXX(String AJID, int ND, String QZH, String AJH, int WJJS,int WJYS, int BCQX, Date SCRQ, int YXBZ) {
         this.AJID = AJID;
         this.ND = ND;
@@ -32,6 +27,21 @@ public class DAS_AJJBXX {
         this.BCQX = BCQX;
         this.SCRQ = SCRQ;
         this.YXBZ = YXBZ;
+    }
+
+    @Override
+    public String toString() {
+        return "DAS_AJJBXX{" +
+                "AJID='" + AJID + '\'' +
+                ", ND=" + ND +
+                ", QZH='" + QZH + '\'' +
+                ", AJH='" + AJH + '\'' +
+                ", WJJS=" + WJJS +
+                ", WJYS=" + WJYS +
+                ", BCQX=" + BCQX +
+                ", SCRQ=" + SCRQ +
+                ", YXBZ=" + YXBZ +
+                '}';
     }
 
     public String getAJID() {

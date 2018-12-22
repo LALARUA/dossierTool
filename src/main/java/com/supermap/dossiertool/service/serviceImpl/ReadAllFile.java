@@ -1,10 +1,10 @@
 package com.supermap.dossiertool.service.serviceImpl;
 
 import com.supermap.dossiertool.bean.MyFile;
+import com.supermap.dossiertool.function.MyFunction;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.io.FileInputStream;
 
 /**
  * @Author: xiangXX
@@ -16,7 +16,7 @@ public class ReadAllFile {
     public MyFile readAllFile(File file) throws Exception{
 
         MyFile myFile = new MyFile(file.getName());
-        com.supermap.dossiertool.function.ReadAllFile readAllFile = new com.supermap.dossiertool.function.ReadAllFile();
+        MyFunction readAllFile = new MyFunction();
         return readAllFile.readAllFile(file,myFile);
     }
 
