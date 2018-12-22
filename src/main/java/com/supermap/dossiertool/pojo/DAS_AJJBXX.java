@@ -17,6 +17,9 @@ public class DAS_AJJBXX {
     private int BCQX;
     private Date SCRQ;
     private int YXBZ;
+    public DAS_AJJBXX(){
+        this.ND = 5;
+    }
     public DAS_AJJBXX(String AJID, int ND, String QZH, String AJH, int WJJS,int WJYS, int BCQX, Date SCRQ, int YXBZ) {
         this.AJID = AJID;
         this.ND = ND;

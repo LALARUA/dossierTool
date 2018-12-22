@@ -18,15 +18,22 @@ import java.util.ArrayList;
  * @Date Created in 22:23 2018/12/20 0020
  */
 public class MyFunction {
+    /**
+     * @description
+     * @author xiangXX
+     * @date 2018/12/22 0022 20:47
+      * @param file 要读取的文件夹
+     *  @param myFile 自定义的一个类，代表一个文件夹，用于转化为json给前端，展示文件树
+     */
     public static MyFile readAllFile(File file,MyFile myFile){
         if (file.isDirectory()){
             File[] files = file.listFiles();
             myFile.setFolder(true);
-            myFile.setNodes(new ArrayList<MyFile>());
+            if (files.length>0)
+                myFile.setNodes(new ArrayList<MyFile>());
             for (File f:files
                  ) {
                 myFile.getNodes().add(readAllFile(f,new MyFile(f.getName())));
-
                 }
         }
         else myFile.setFolder(false);

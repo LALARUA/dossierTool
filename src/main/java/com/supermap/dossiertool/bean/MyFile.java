@@ -10,14 +10,6 @@ import java.util.List;
 public class MyFile {
     private List<MyFile> nodes;
     private String text;
-    private boolean folder;
-
-
-    public MyFile(String text, boolean folder) {
-        this.text = text;
-        this.folder = folder;
-    }
-
     public MyFile(String text) {
         this.text = text;
     }
@@ -41,11 +33,6 @@ public class MyFile {
         this.text = text;
     }
 
-    public boolean isFolder() {
-        return folder;
-    }
 
-    public void setFolder(boolean folder) {
-        folder = folder;
-    }
+
 }

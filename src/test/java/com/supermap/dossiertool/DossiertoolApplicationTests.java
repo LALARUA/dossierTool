@@ -5,6 +5,7 @@ import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.mapper.*;
 
 import com.supermap.dossiertool.pojo.*;
+import com.supermap.dossiertool.service.serviceImpl.HandleData;
 import com.supermap.dossiertool.service.serviceImpl.ReadAllFile;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -23,6 +24,8 @@ import java.util.*;
 public class DossiertoolApplicationTests {
 
 
+	@Autowired
+	HandleData handleData;
 
 	@Autowired
 	DAS_AJJBXXMapper das_ajjbxxMapper;
@@ -39,8 +42,9 @@ public class DossiertoolApplicationTests {
 
 	@Test
 	public void contextLoads() throws Exception {
-		HashMap<String, Set<String>> stringSetHashMap = new HashMap<>();
-		stringSetHashMap.put("a",)
+
+
+		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
 //		Date date = new Date();
 //		das_jnwj_fjMapper.insert(new DAS_JNWJ_FJ("test","test",1,"test",0,"test","test","test",0));
 //		das_jnwjMapper.insert(new DAS_JNWJ("test","test",1,"test",1));
