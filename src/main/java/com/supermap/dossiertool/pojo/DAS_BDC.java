@@ -10,12 +10,23 @@ import org.springframework.web.util.pattern.PathPattern;
 public class DAS_BDC {
     private String BDCID;
     private String AJID;
-    private String BDCDYH;
+    private String BDCQZH;
     private String ZL;
+    private String SYQR;
     private String YWLX;
     private String QZH;
     public DAS_BDC(){
         this.YWLX = "DAS_CQ";
+    }
+
+    public DAS_BDC(String BDCID, String AJID, String BDCQZH, String ZL, String SYQR,String YWLX, String QZH) {
+        this.BDCID = BDCID;
+        this.AJID = AJID;
+        this.BDCQZH = BDCQZH;
+        this.ZL = ZL;
+        this.SYQR = SYQR;
+        this.YWLX = YWLX;
+        this.QZH = QZH;
     }
 
     public String getBDCID() {
@@ -35,11 +46,11 @@ public class DAS_BDC {
     }
 
     public String getBDCDYH() {
-        return BDCDYH;
+        return BDCQZH;
     }
 
     public void setBDCDYH(String BDCDYH) {
-        this.BDCDYH = BDCDYH;
+        this.BDCQZH = BDCDYH;
     }
 
     public String getZL() {

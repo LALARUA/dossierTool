@@ -12,6 +12,14 @@ public class DAS_JNWJ {
     private String TM;
     private int YS;
 
+    public DAS_JNWJ(String WJID, String AJID, int SXH, String TM, int YS) {
+        this.WJID = WJID;
+        this.AJID = AJID;
+        this.SXH = SXH;
+        this.TM = TM;
+        this.YS = YS;
+    }
+
     public String getWJID() {
         return WJID;
     }

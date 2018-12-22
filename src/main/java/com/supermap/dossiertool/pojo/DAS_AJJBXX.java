@@ -13,12 +13,25 @@ public class DAS_AJJBXX {
     private String QZH;
     private String AJH;
     private int WJJS;
+    private int WJYS;
     private int BCQX;
     private Date SCRQ;
     private int YXBZ;
     public DAS_AJJBXX(){
         this.BCQX=0;
         this.YXBZ=0;
+    }
+
+    public DAS_AJJBXX(String AJID, int ND, String QZH, String AJH, int WJJS,int WJYS, int BCQX, Date SCRQ, int YXBZ) {
+        this.AJID = AJID;
+        this.ND = ND;
+        this.QZH = QZH;
+        this.AJH = AJH;
+        this.WJJS = WJJS;
+        this.WJYS = WJYS;
+        this.BCQX = BCQX;
+        this.SCRQ = SCRQ;
+        this.YXBZ = YXBZ;
     }
 
     public String getAJID() {
