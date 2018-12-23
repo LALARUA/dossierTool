@@ -8,7 +8,7 @@
     <link href="css/bootstrap-treeview.css" rel="stylesheet">
 <style type="text/css">
     .file{
-        width:300px;
+        width:400px;
         height:300px;
         overflow-x:hidden;
         overflow-y:auto;
@@ -43,15 +43,15 @@
 <body>
 <div class="left">
     <div style="width: 600px;height: 100%">
-        <div class="file" style="width: 600px;height: 30%">
-            <img style="display: block" src="Booker.png"  class="img-rounded">
+        <div class="file" style="width: 800px;height: 30%">
+            <img  id="showJpg" style="display: block" src="/C:\Users\Administrator\Desktop\2_161641_2.jpg"  class="img-rounded">
         </div>
-        <div  style="width: 600px;height: 40%">
-            <div class="file" style="width:300px;float: left">
-                <div class="div folder" ></div>
+        <div  style="width: 800px;height: 40%">
+            <div class="file" style="width:350px;float: left">
+                <div id="folder" class="div" ></div>
             </div>
-            <div class="file" style="width: 300px;float: left">
-                <div class="div jpg"></div>
+            <div  class="file" style="width: 350px;float: left">
+                <div id="jpg" class="div"></div>
             </div>
         </div>
     </div>
@@ -62,22 +62,50 @@
 <script src="js/bootstrap-treeview.js"></script>
 <script type="text/javascript" th:inline="javascript">
 window.onload = function (ev) {
-    alert([[${data}]])
-    var init = function(data){
-    return $(".div").treeview({
+
+    var initFolder = function(data){
+    return $("#folder").treeview({
     data:data,
     color:"#428bca",
     levels:1,
     showTags:true,
     onNodeSelected:function(event,node){
-
+        if (node.nodes==null){
+            $.ajax({
+                url: '/getJpgList',
+                type: 'GET', //
+                async: true,    //或false,是否异步
+                data: {
+                    path:node.path
+                },
+                timeout: 5000,    //超时时间
+                dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+                success: function (data) {
+                    initJpgList(data)
+                },
+            })
+        }
     },
     onNodeUnselected:function(event,node){
          console.log("取消了");
     }
     });
     }
-    init([[${data}]])
+    var initJpgList = function(data){
+        return $("#jpg").treeview({
+            data:data,
+            color:"#428bca",
+            levels:1,
+            showTags:true,
+            onNodeSelected:function(event,node){
+                    $("#showJpg").attr("src","file:\\"+node.path);
+            },
+            onNodeUnselected:function(event,node){
+                console.log("取消了");
+            }
+        });
+    }
+    initFolder([[${data}]])
     // init('[' +
     //     '{' +
     //     '"text": "Parent 1",' +

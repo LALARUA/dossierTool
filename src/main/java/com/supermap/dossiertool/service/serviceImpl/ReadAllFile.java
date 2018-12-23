@@ -14,10 +14,7 @@ import java.io.File;
 @Service
 public class ReadAllFile {
     public MyFile readAllFile(File file) throws Exception{
-
-        MyFile myFile = new MyFile(file.getName());
-        MyFunction readAllFile = new MyFunction();
-        return readAllFile.readAllFile(file,myFile);
+        return MyFunction.readAllFile(file);
     }
 
 }

@@ -17,6 +17,7 @@ public class DAS_AJJBXX {
     private int BCQX;
     private Date SCRQ;
     private int YXBZ;
+
     public DAS_AJJBXX(){
         this.ND = 5;
     }

@@ -8,22 +8,27 @@ import java.util.List;
  * @Date Created in 22:13 2018/12/20 0020
  */
 public class MyFile {
-    private List<MyFile> nodes;
+
     private String text;
-    public MyFile(String text) {
+    private String path;
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public MyFile(String text,String path) {
         this.text = text;
+        this.path = path;
     }
 
     public MyFile(){
     }
 
-    public List<MyFile> getNodes() {
-        return nodes;
-    }
 
-    public void setNodes(List<MyFile> nodes) {
-        this.nodes = nodes;
-    }
 
     public String getText() {
         return text;

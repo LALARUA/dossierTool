@@ -43,8 +43,15 @@ public class DossiertoolApplicationTests {
 	@Test
 	public void contextLoads() throws Exception {
 
+		Integer a = 5;
+		Integer B = 5;
+		System.out.println(a==B);
 
-		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
+		Integer c = 199;
+		Integer d = 199;
+		System.out.println(c==d
+		);
+//		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
 //		Date date = new Date();
 //		das_jnwj_fjMapper.insert(new DAS_JNWJ_FJ("test","test",1,"test",0,"test","test","test",0));
 //		das_jnwjMapper.insert(new DAS_JNWJ("test","test",1,"test",1));
