@@ -1,7 +1,9 @@
 package com.supermap.dossiertool.service.serviceImpl;
 
+import com.supermap.dossiertool.bean.MyFile;
 import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.pojo.*;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +16,7 @@ import java.util.*;
  * @Date Created in 10:57 2018/12/22 0022
  */
 @Service
-public class HandleData {
+public class HandleDataService {
 
     /**
      * @description
@@ -99,6 +101,12 @@ public class HandleData {
                 das_jnwj_fjs.add(new DAS_JNWJ_FJ(FJID,WJID,++YH,FJMC,0,PATH,FILETYPE,FJID,0));
             }
         }
+    }
+
+    @Cacheable(cacheNames = "handlingAJH",key = "#AJH")
+    public List<MyFile> getJpgList(String path,String AJH){
+
+        return MyFunction.getJpgList(path);
     }
 
 }

@@ -8,8 +8,8 @@
     <link href="css/bootstrap-treeview.css" rel="stylesheet">
 <style type="text/css">
     .file{
-        width:400px;
-        height:300px;
+        width:50%;
+        height:250px;
         overflow-x:hidden;
         overflow-y:auto;
     }
@@ -37,25 +37,202 @@
         background-color: gainsboro;
     }
 
+    .showJpg{
+        width:100%;
+        height:540px;
+        overflow-x:hidden;
+        overflow-y:auto;
+    }
+    .showJpg{
+        scrollbar-face-color: gainsboro;/*移动滑块颜色*/
+        scrollbar-shadow-color: black;/*移动滑块边框颜色*/
+        scrollbar-track-color: #ccc;/*背景颜色*/
+        scrollbar-arrow-color: #ddd;/*箭头颜色*/
+    }
+    .showJpg::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #ccc;
+    }/* 滚动条的滑轨背景颜色 */
+    .showJpg::-webkit-scrollbar
+    {
+        width: 6px;
+        background-color: #ccc;
+    }
+
+    .showJpg::-webkit-scrollbar-thumb
+    {
+        background-color: gainsboro;
+    }
 </style>
 </head>
 
 <body>
-<div class="left">
-    <div style="width: 600px;height: 100%">
-        <div class="file" style="width: 800px;height: 30%">
-            <img  id="showJpg" style="display: block" src="/C:\Users\Administrator\Desktop\2_161641_2.jpg"  class="img-rounded">
+    <div style="float: left;width: 50%;height: 100%" class="left" >
+        <div class="showJpg">
+            <img width="100%"   id="showJpg" style="display: block" src="/img/C:\Users\Administrator\Desktop\2_161641_2.jpg"  class="img-rounded">
         </div>
-        <div  style="width: 800px;height: 40%">
-            <div class="file" style="width:350px;float: left">
+        <div  style="width: 100%;height: 250px">
+            <div class="file" style="float: left">
                 <div id="folder" class="div" ></div>
             </div>
-            <div  class="file" style="width: 350px;float: left">
+            <div  class="file" style="float: left">
                 <div id="jpg" class="div"></div>
             </div>
         </div>
     </div>
-</div>
+
+    <div style="float: left;height: 100%;width: 50%;border: black 1px solid">
+        <div style="height: 70%">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="qxmc">区县名称</label>
+                        <input type="text" class="form-control" id="qxmc" placeholder="区县名称">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="djqmc">地籍区名称</label>
+                        <input type="text" class="form-control" id="djqmc" placeholder="地籍子区名称">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="djzqmc">地籍子区名称</label>
+                        <input type="text" class="form-control" id="djzqmc" placeholder="地籍子区名称">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="syqlx">所有权类型</label>
+                        <input type="text" class="form-control" id="syqlx" placeholder="所有权类型">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="zdtzm">宗地特征码</label>
+                        <input type="text" class="form-control" id="zdtzm" placeholder="宗地特征码">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="bdcdyh">不动产单元号</label>
+                        <input type="text" class="form-control" id="bdcdyh" placeholder="不动产单元号">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="zddm">宗地代码</label>
+                        <input type="text" class="form-control" id="zddm" placeholder="宗地代码">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="zl">坐落</label>
+                        <input type="text" class="form-control" id="zl" placeholder="坐落">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="qllx">权利类型</label>
+                        <input type="text" class="form-control" id="qllx" placeholder="权利类型">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="djlx">登记类型</label>
+                        <input type="text" class="form-control" id="djlx" placeholder="登记类型">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="qlxz">权利性质</label>
+                        <input type="text" class="form-control" id="qlxz" placeholder="权利性质">
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="qlsdfs">权利设定方式</label>
+                        <input type="text" class="form-control" id="qlsdfs" placeholder="权利设定方式">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="zdsz-d">宗地四至-东</label>
+                        <input type="text" class="form-control" id="zdsz-d" placeholder="宗地四至-东">
+                    </div>
+                </div>
+                <div class="from-row">
+                    <div class="form-group col-md-6">
+                        <label for="zdsz-n">宗地四至-南</label>
+                        <input type="text" class="form-control" id="zdsz-n" placeholder="宗地四至-南">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="zdsz-x">宗地四至-西</label>
+                        <input type="text" class="form-control" id="zdsz-x" placeholder="宗地四至-西">
+                    </div>
+                </div>
+                <div class="from-row">
+                    <div class="form-group col-md-6">
+                        <label for="zdsz-b">宗地四至-北</label>
+                        <input type="text" class="form-control" id="zdsz-b" placeholder="宗地四至-北">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="zdmj">宗地面积</label>
+                        <input type="text" class="form-control" id="zdmj" placeholder="宗地面积">
+                    </div>
+                </div>
+                <div class="from-row">
+                    <div class="form-group col-md-6">
+                        <label for="jzzdmj">建筑占地面积</label>
+                        <input type="text" class="form-control" id="jzzdmj" placeholder="建筑占地面积">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="jzmj">建筑面积</label>
+                        <input type="text" class="form-control" id="jzmj" placeholder="建筑面积">
+                    </div>
+                </div>
+                <div class="from-row">
+                    <div class="form-group col-md-6">
+                        <label for="pzmj">批准面积</label>
+                        <input type="text" class="form-control" id="pzmj" placeholder="批准面积">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="tdyt">土地用途</label>
+                        <input type="text" class="form-control" id="tdyt" placeholder="土地用途">
+                    </div>
+                </div>
+                <div class="from-row">
+                    <div class="form-group col-md-6">
+                        <label for="tdytmc">土地用途名称</label>
+                        <input type="text" class="form-control" id="tdytmc" placeholder="土地用途名称">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="syqqssj">使用权起始时间</label>
+                        <input type="text" class="form-control" id="syqqssj" placeholder="使用权起始时间">
+                    </div>
+                </div>
+                <div class="from-row">
+                    <div class="form-group col-md-6">
+                        <label for="syqzzrq">使用权终止日期</label>
+                        <input type="text" class="form-control" id="syqzzrq" placeholder="使用权终止日期">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="syqx">使用期限</label>
+                        <input type="text" class="form-control" id="syqx" placeholder="使用期限">
+                    </div>
+                </div>
+                <div class="from-row">
+                    <div class="form-group col-md-6">
+                        <label for="dj">等级</label>
+                        <input type="text" class="form-control" id="dj" placeholder="使用权终止日期">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="jg">价格</label>
+                        <input type="text" class="form-control" id="jg" placeholder="使用期限">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+        </div>
+        <div style="height: 30%">
+
+        </div>
+
+
+    </div>
 
 
 <script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
@@ -63,8 +240,10 @@
 <script type="text/javascript" th:inline="javascript">
 window.onload = function (ev) {
 
+
     var initFolder = function(data){
     return $("#folder").treeview({
+
     data:data,
     color:"#428bca",
     levels:1,
@@ -76,19 +255,39 @@ window.onload = function (ev) {
                 type: 'GET', //
                 async: true,    //或false,是否异步
                 data: {
-                    path:node.path
+                    path:node.path,
+                    AJH:node.text
                 },
                 timeout: 5000,    //超时时间
                 dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text
                 success: function (data) {
+                    alert(node.state.checked)
+                    if (data==""){
+                        alert("该案卷号正被操作")
+
+                    }
+                    else
                     initJpgList(data)
                 },
             })
         }
     },
     onNodeUnselected:function(event,node){
-         console.log("取消了");
-    }
+        if (node.nodes==null){
+            $.ajax({
+                url: '/deleteAJHInCache',
+                type: 'POST', //
+                async: true,    //或false,是否异步
+                data: {
+                    AJH:node.text
+                },
+                timeout: 5000,    //超时时间
+                dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+                success: function (data) {
+                },
+            })
+        }
+    },
     });
     }
     var initJpgList = function(data){
@@ -98,13 +297,14 @@ window.onload = function (ev) {
             levels:1,
             showTags:true,
             onNodeSelected:function(event,node){
-                    $("#showJpg").attr("src","file:\\"+node.path);
+                    $("#showJpg").attr("src","/img/"+node.path);
             },
             onNodeUnselected:function(event,node){
                 console.log("取消了");
             }
         });
     }
+
     initFolder([[${data}]])
     // init('[' +
     //     '{' +

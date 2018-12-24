@@ -1,11 +1,10 @@
 package com.supermap.dossiertool;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.mapper.*;
 
 import com.supermap.dossiertool.pojo.*;
-import com.supermap.dossiertool.service.serviceImpl.HandleData;
+import com.supermap.dossiertool.service.serviceImpl.HandleDataService;
 import com.supermap.dossiertool.service.serviceImpl.ReadAllFile;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -25,7 +24,7 @@ public class DossiertoolApplicationTests {
 
 
 	@Autowired
-	HandleData handleData;
+	HandleDataService handleData;
 
 	@Autowired
 	DAS_AJJBXXMapper das_ajjbxxMapper;
