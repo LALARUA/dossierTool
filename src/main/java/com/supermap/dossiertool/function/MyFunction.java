@@ -11,6 +11,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
  * @Date Created in 22:23 2018/12/20 0020
  */
 public class MyFunction {
+    public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     /**
      * @description
      * @author xiangXX
@@ -61,7 +63,6 @@ public class MyFunction {
         for (File f:files
              ) {
                 jpgs.add(new MyFile(f.getName(),f.getPath()));
-
         }
         for (int i = jpgs.size()-1; i >=0 ; i--) {            //去除文件夹中的Thumbs.db文件
             if ("Thumbs.db".equals(jpgs.get(i).getText())){   //一般该文件在最后，所以从最后开始遍历（不排除不在最后的情况，所以不直接删除最后一个文件）
@@ -101,6 +102,5 @@ public class MyFunction {
             }
         }
 		return publicDataFromExcel;
-
     }
 }

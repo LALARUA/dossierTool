@@ -2,20 +2,18 @@ package com.supermap.dossiertool.controller;
 
 import com.supermap.dossiertool.bean.MyFile;
 import com.supermap.dossiertool.function.MyFunction;
-import com.supermap.dossiertool.service.serviceImpl.HandleDataService;
+import com.supermap.dossiertool.pojo.DAS_AJJBXX;
+import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: xiangXX
@@ -28,25 +26,26 @@ public class submitForm {
     CacheManager cacheManager;
 
     @Autowired
-    HandleDataService handleDataService;
+    ZGStockSystemServiceImpl handleDataService;
 
-    @GetMapping("/submit")
-    public String submit(HttpServletRequest httpServletRequest){
-        MyFile myFile = MyFunction.readAllFile(new File("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街"));
+    @GetMapping("/index")
+    public String submit(HttpServletRequest httpServletRequest,@RequestParam(required = false,defaultValue = "E:\\zigongDATA\\自贡数据\\沿滩镇升坪街") String path){
+        MyFile myFile = MyFunction.readAllFile(new File(path));
         httpServletRequest.setAttribute("data", JSONArray.fromObject(myFile).toString());
-        System.out.println(httpServletRequest.getAttribute("data"));
-        return "test222";
+        return "index";
     }
 
     @ResponseBody
     @GetMapping("/getJpgList")
-    public List getJpgList(String path,String AJH){
-
-        Cache handling = cacheManager.getCache("handlingAJH");
-        if (handling.get(AJH)!=null)
-            return new ArrayList();
-
-        return handleDataService.getJpgList(path,AJH);
+    public Map getJpgList(String path,String AJH,@RequestParam(required = false,defaultValue = "E:\\zigongDATA\\自贡数据\\打印台账汇总.xls") String excelPath){
+        Map map = new HashMap<>();
+        try {
+            map.put("excelData",MyFunction.getPublicExcelData(excelPath,AJH));
+            map.put("jpgs",MyFunction.getJpgList(path));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
     }
 
     @ResponseBody
@@ -55,5 +54,12 @@ public class submitForm {
         Cache handlingAJH = cacheManager.getCache("handlingAJH");
         handlingAJH.evict(AJH);
         return "";
+    }
+
+    @ResponseBody
+    @PostMapping("/submitData")
+    public String submitData(DAS_AJJBXX das_ajjbxx){
+
+        return "success";
     }
 }

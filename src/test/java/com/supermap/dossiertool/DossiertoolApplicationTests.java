@@ -4,8 +4,7 @@ import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.mapper.*;
 
 import com.supermap.dossiertool.pojo.*;
-import com.supermap.dossiertool.service.serviceImpl.HandleDataService;
-import com.supermap.dossiertool.service.serviceImpl.ReadAllFile;
+import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.junit.Test;
@@ -24,7 +23,7 @@ public class DossiertoolApplicationTests {
 
 
 	@Autowired
-	HandleDataService handleData;
+	ZGStockSystemServiceImpl handleData;
 
 	@Autowired
 	DAS_AJJBXXMapper das_ajjbxxMapper;
@@ -36,8 +35,7 @@ public class DossiertoolApplicationTests {
 	DAS_JNWJMapper das_jnwjMapper;
 	@Autowired
 	DAS_JNWJ_FJMapper das_jnwj_fjMapper;
-	@Autowired
-	ReadAllFile readAllFile;
+
 
 	@Test
 	public void contextLoads() throws Exception {
@@ -173,6 +171,36 @@ public class DossiertoolApplicationTests {
 				break;
 			}
 		}
+	}
+
+	@Test
+	public void getPublicExcelData() throws Exception{
+		String excelPath = "C:\\Users\\Administrator\\Desktop\\自贡需求12.19\\附件：自贡档案字段采集表12.19.xls";
+		File excel = new File(excelPath);
+		FileInputStream fileInputStream = new FileInputStream(excel);
+		Workbook wb = new HSSFWorkbook(fileInputStream);
+		Sheet sheet = wb.getSheetAt(1);
+		int lastRowNum = sheet.getLastRowNum();
+
+		StringBuilder s = new StringBuilder();
+		for (int row = 4;row <= lastRowNum; row++) {
+
+//			int end = positionContent.indexOf(".");
+//			positionContent = positionContent.substring(0,end);  //去除最后的 .0 字符串
+
+			if (row%2!=0)
+				s.append("<div class=\"from-row daxx\">\n");
+			String zs = sheet.getRow(row).getCell(13).toString();
+			String mc = sheet.getRow(row).getCell(14).toString();
+			s.append("<div class=\"daxx form-group col-md-6\">\n");
+			s.append("<label for=\""+mc+"\">"+zs+"</label>\n");
+			s.append("<input type=\"text\" class=\"form-control\" name=\""+mc+"\" id=\""+mc+"\" placeholder=\""+zs+"\">\n </div>\n");
+			if (row%2==0)
+				s.append(" </div>\n");
+		}
+
+
+		System.out.println(s);
 	}
 
 }

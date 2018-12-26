@@ -1,5 +1,11 @@
 package com.supermap.dossiertool.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.supermap.dossiertool.function.MyFunction;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,7 +21,9 @@ public class DAS_AJJBXX {
     private int WJJS;
     private int WJYS;
     private int BCQX;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date SCRQ;
+
     private int YXBZ;
 
     public DAS_AJJBXX(){
@@ -47,6 +55,18 @@ public class DAS_AJJBXX {
                 ", YXBZ=" + YXBZ +
                 '}';
     }
+
+    public int getWJYS() {
+        return WJYS;
+    }
+
+    public void setWJYS(int WJYS) {
+        this.WJYS = WJYS;
+    }
+
+
+
+
 
     public String getAJID() {
         return AJID;

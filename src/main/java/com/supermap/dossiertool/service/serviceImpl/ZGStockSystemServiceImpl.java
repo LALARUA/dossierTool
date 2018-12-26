@@ -3,6 +3,7 @@ package com.supermap.dossiertool.service.serviceImpl;
 import com.supermap.dossiertool.bean.MyFile;
 import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.pojo.*;
+import com.supermap.dossiertool.service.ZGStockSystemService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import java.util.*;
  * @Date Created in 10:57 2018/12/22 0022
  */
 @Service
-public class HandleDataService {
+public class ZGStockSystemServiceImpl implements ZGStockSystemService{
 
     /**
      * @description
