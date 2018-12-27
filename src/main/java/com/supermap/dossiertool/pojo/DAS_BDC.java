@@ -29,6 +29,15 @@ public class DAS_BDC {
         this.QZH = QZH;
     }
 
+    public void build(String BDCID, String AJID, String BDCQZH, String ZL, String SYQR,String YWLX, String QZH){
+        this.BDCID = BDCID;
+        this.AJID = AJID;
+        this.BDCQZH = BDCQZH;
+        this.ZL = ZL;
+        this.SYQR = SYQR;
+        this.YWLX = YWLX;
+        this.QZH = QZH;
+    }
     public String getBDCID() {
         return BDCID;
     }

@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supermap.dossiertool.mapper.DAS_CQMapper">
+  <resultMap id="BaseResultMap" type="com.supermap.dossiertool.pojo.DasCq">
+    <result column="ID" jdbcType="OTHER" property="id" />
+    <result column="AJID" jdbcType="OTHER" property="ajid" />
+    <result column="SYQR" jdbcType="OTHER" property="syqr" />
+    <result column="ZJH" jdbcType="OTHER" property="zjh" />
+    <result column="CB" jdbcType="OTHER" property="cb" />
+    <result column="QZH" jdbcType="OTHER" property="qzh" />
+    <result column="ZL" jdbcType="OTHER" property="zl" />
+    <result column="FWJG" jdbcType="OTHER" property="fwjg" />
+    <result column="CH" jdbcType="OTHER" property="ch" />
+    <result column="JZMJ" jdbcType="DECIMAL" property="jzmj" />
+    <result column="JCNF" jdbcType="DECIMAL" property="jcnf" />
+    <result column="YT" jdbcType="OTHER" property="yt" />
+    <result column="DJSJ" jdbcType="TIMESTAMP" property="djsj" />
+    <result column="ZXSJ" jdbcType="TIMESTAMP" property="zxsj" />
+    <result column="DJDL" jdbcType="OTHER" property="djdl" />
+    <result column="DJXL" jdbcType="OTHER" property="djxl" />
+    <result column="FJ" jdbcType="OTHER" property="fj" />
+    <result column="BZ" jdbcType="OTHER" property="bz" />
+    <result column="DBR" jdbcType="OTHER" property="dbr" />
+    <result column="ZXDBR" jdbcType="OTHER" property="zxdbr" />
+    <result column="QLLX" jdbcType="OTHER" property="qllx" />
+    <result column="DJLX" jdbcType="OTHER" property="djlx" />
+    <result column="BDCDYID" jdbcType="OTHER" property="bdcdyid" />
+    <result column="BDCDYH" jdbcType="OTHER" property="bdcdyh" />
+    <result column="BDCID" jdbcType="OTHER" property="bdcid" />
+    <result column="QZHZSBH" jdbcType="OTHER" property="qzhzsbh" />
+    <result column="YWDH" jdbcType="OTHER" property="ywdh" />
+    <result column="QLQSSJ" jdbcType="TIMESTAMP" property="qlqssj" />
+    <result column="QLJSSJ" jdbcType="TIMESTAMP" property="qljssj" />
+    <result column="BDCDYLXMC" jdbcType="OTHER" property="bdcdylxmc" />
+    <result column="ZQDW" jdbcType="OTHER" property="zqdw" />
+    <result column="TENANT_ID" jdbcType="OTHER" property="tenantId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, AJID, SYQR, ZJH, CB, QZH, ZL, FWJG, CH, JZMJ, JCNF, YT, DJSJ, ZXSJ, DJDL, DJXL, 
+    FJ, BZ, DBR, ZXDBR, QLLX, DJLX, BDCDYID, BDCDYH, BDCID, QZHZSBH, YWDH, QLQSSJ, QLJSSJ, 
+    BDCDYLXMC, ZQDW, TENANT_ID
+  </sql>
+  <select id="selectByExample" parameterType="com.supermap.dossiertool.pojo.DasCqExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from BDC_DAK.DAS_CQ
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.supermap.dossiertool.pojo.DasCqExample">
+    delete from BDC_DAK.DAS_CQ
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.supermap.dossiertool.pojo.DasCq">
+    insert into BDC_DAK.DAS_CQ (ID, AJID, SYQR, ZJH, 
+      CB, QZH, ZL, FWJG, 
+      CH, JZMJ, JCNF, YT, 
+      DJSJ, ZXSJ, DJDL, 
+      DJXL, FJ, BZ, DBR, 
+      ZXDBR, QLLX, DJLX, BDCDYID, 
+      BDCDYH, BDCID, QZHZSBH, YWDH, 
+      QLQSSJ, QLJSSJ, BDCDYLXMC, 
+      ZQDW, TENANT_ID)
+    values (#{id,jdbcType=OTHER}, #{ajid,jdbcType=OTHER}, #{syqr,jdbcType=OTHER}, #{zjh,jdbcType=OTHER}, 
+      #{cb,jdbcType=OTHER}, #{qzh,jdbcType=OTHER}, #{zl,jdbcType=OTHER}, #{fwjg,jdbcType=OTHER}, 
+      #{ch,jdbcType=OTHER}, #{jzmj,jdbcType=DECIMAL}, #{jcnf,jdbcType=DECIMAL}, #{yt,jdbcType=OTHER}, 
+      #{djsj,jdbcType=TIMESTAMP}, #{zxsj,jdbcType=TIMESTAMP}, #{djdl,jdbcType=OTHER}, 
+      #{djxl,jdbcType=OTHER}, #{fj,jdbcType=OTHER}, #{bz,jdbcType=OTHER}, #{dbr,jdbcType=OTHER}, 
+      #{zxdbr,jdbcType=OTHER}, #{qllx,jdbcType=OTHER}, #{djlx,jdbcType=OTHER}, #{bdcdyid,jdbcType=OTHER}, 
+      #{bdcdyh,jdbcType=OTHER}, #{bdcid,jdbcType=OTHER}, #{qzhzsbh,jdbcType=OTHER}, #{ywdh,jdbcType=OTHER}, 
+      #{qlqssj,jdbcType=TIMESTAMP}, #{qljssj,jdbcType=TIMESTAMP}, #{bdcdylxmc,jdbcType=OTHER}, 
+      #{zqdw,jdbcType=OTHER}, #{tenantId,jdbcType=OTHER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.supermap.dossiertool.pojo.DasCq">
+    insert into BDC_DAK.DAS_CQ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="ajid != null">
+        AJID,
+      </if>
+      <if test="syqr != null">
+        SYQR,
+      </if>
+      <if test="zjh != null">
+        ZJH,
+      </if>
+      <if test="cb != null">
+        CB,
+      </if>
+      <if test="qzh != null">
+        QZH,
+      </if>
+      <if test="zl != null">
+        ZL,
+      </if>
+      <if test="fwjg != null">
+        FWJG,
+      </if>
+      <if test="ch != null">
+        CH,
+      </if>
+      <if test="jzmj != null">
+        JZMJ,
+      </if>
+      <if test="jcnf != null">
+        JCNF,
+      </if>
+      <if test="yt != null">
+        YT,
+      </if>
+      <if test="djsj != null">
+        DJSJ,
+      </if>
+      <if test="zxsj != null">
+        ZXSJ,
+      </if>
+      <if test="djdl != null">
+        DJDL,
+      </if>
+      <if test="djxl != null">
+        DJXL,
+      </if>
+      <if test="fj != null">
+        FJ,
+      </if>
+      <if test="bz != null">
+        BZ,
+      </if>
+      <if test="dbr != null">
+        DBR,
+      </if>
+      <if test="zxdbr != null">
+        ZXDBR,
+      </if>
+      <if test="qllx != null">
+        QLLX,
+      </if>
+      <if test="djlx != null">
+        DJLX,
+      </if>
+      <if test="bdcdyid != null">
+        BDCDYID,
+      </if>
+      <if test="bdcdyh != null">
+        BDCDYH,
+      </if>
+      <if test="bdcid != null">
+        BDCID,
+      </if>
+      <if test="qzhzsbh != null">
+        QZHZSBH,
+      </if>
+      <if test="ywdh != null">
+        YWDH,
+      </if>
+      <if test="qlqssj != null">
+        QLQSSJ,
+      </if>
+      <if test="qljssj != null">
+        QLJSSJ,
+      </if>
+      <if test="bdcdylxmc != null">
+        BDCDYLXMC,
+      </if>
+      <if test="zqdw != null">
+        ZQDW,
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=OTHER},
+      </if>
+      <if test="ajid != null">
+        #{ajid,jdbcType=OTHER},
+      </if>
+      <if test="syqr != null">
+        #{syqr,jdbcType=OTHER},
+      </if>
+      <if test="zjh != null">
+        #{zjh,jdbcType=OTHER},
+      </if>
+      <if test="cb != null">
+        #{cb,jdbcType=OTHER},
+      </if>
+      <if test="qzh != null">
+        #{qzh,jdbcType=OTHER},
+      </if>
+      <if test="zl != null">
+        #{zl,jdbcType=OTHER},
+      </if>
+      <if test="fwjg != null">
+        #{fwjg,jdbcType=OTHER},
+      </if>
+      <if test="ch != null">
+        #{ch,jdbcType=OTHER},
+      </if>
+      <if test="jzmj != null">
+        #{jzmj,jdbcType=DECIMAL},
+      </if>
+      <if test="jcnf != null">
+        #{jcnf,jdbcType=DECIMAL},
+      </if>
+      <if test="yt != null">
+        #{yt,jdbcType=OTHER},
+      </if>
+      <if test="djsj != null">
+        #{djsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zxsj != null">
+        #{zxsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="djdl != null">
+        #{djdl,jdbcType=OTHER},
+      </if>
+      <if test="djxl != null">
+        #{djxl,jdbcType=OTHER},
+      </if>
+      <if test="fj != null">
+        #{fj,jdbcType=OTHER},
+      </if>
+      <if test="bz != null">
+        #{bz,jdbcType=OTHER},
+      </if>
+      <if test="dbr != null">
+        #{dbr,jdbcType=OTHER},
+      </if>
+      <if test="zxdbr != null">
+        #{zxdbr,jdbcType=OTHER},
+      </if>
+      <if test="qllx != null">
+        #{qllx,jdbcType=OTHER},
+      </if>
+      <if test="djlx != null">
+        #{djlx,jdbcType=OTHER},
+      </if>
+      <if test="bdcdyid != null">
+        #{bdcdyid,jdbcType=OTHER},
+      </if>
+      <if test="bdcdyh != null">
+        #{bdcdyh,jdbcType=OTHER},
+      </if>
+      <if test="bdcid != null">
+        #{bdcid,jdbcType=OTHER},
+      </if>
+      <if test="qzhzsbh != null">
+        #{qzhzsbh,jdbcType=OTHER},
+      </if>
+      <if test="ywdh != null">
+        #{ywdh,jdbcType=OTHER},
+      </if>
+      <if test="qlqssj != null">
+        #{qlqssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qljssj != null">
+        #{qljssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bdcdylxmc != null">
+        #{bdcdylxmc,jdbcType=OTHER},
+      </if>
+      <if test="zqdw != null">
+        #{zqdw,jdbcType=OTHER},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=OTHER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.supermap.dossiertool.pojo.DasCqExample" resultType="java.lang.Long">
+    select count(*) from BDC_DAK.DAS_CQ
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update BDC_DAK.DAS_CQ
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=OTHER},
+      </if>
+      <if test="record.ajid != null">
+        AJID = #{record.ajid,jdbcType=OTHER},
+      </if>
+      <if test="record.syqr != null">
+        SYQR = #{record.syqr,jdbcType=OTHER},
+      </if>
+      <if test="record.zjh != null">
+        ZJH = #{record.zjh,jdbcType=OTHER},
+      </if>
+      <if test="record.cb != null">
+        CB = #{record.cb,jdbcType=OTHER},
+      </if>
+      <if test="record.qzh != null">
+        QZH = #{record.qzh,jdbcType=OTHER},
+      </if>
+      <if test="record.zl != null">
+        ZL = #{record.zl,jdbcType=OTHER},
+      </if>
+      <if test="record.fwjg != null">
+        FWJG = #{record.fwjg,jdbcType=OTHER},
+      </if>
+      <if test="record.ch != null">
+        CH = #{record.ch,jdbcType=OTHER},
+      </if>
+      <if test="record.jzmj != null">
+        JZMJ = #{record.jzmj,jdbcType=DECIMAL},
+      </if>
+      <if test="record.jcnf != null">
+        JCNF = #{record.jcnf,jdbcType=DECIMAL},
+      </if>
+      <if test="record.yt != null">
+        YT = #{record.yt,jdbcType=OTHER},
+      </if>
+      <if test="record.djsj != null">
+        DJSJ = #{record.djsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zxsj != null">
+        ZXSJ = #{record.zxsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.djdl != null">
+        DJDL = #{record.djdl,jdbcType=OTHER},
+      </if>
+      <if test="record.djxl != null">
+        DJXL = #{record.djxl,jdbcType=OTHER},
+      </if>
+      <if test="record.fj != null">
+        FJ = #{record.fj,jdbcType=OTHER},
+      </if>
+      <if test="record.bz != null">
+        BZ = #{record.bz,jdbcType=OTHER},
+      </if>
+      <if test="record.dbr != null">
+        DBR = #{record.dbr,jdbcType=OTHER},
+      </if>
+      <if test="record.zxdbr != null">
+        ZXDBR = #{record.zxdbr,jdbcType=OTHER},
+      </if>
+      <if test="record.qllx != null">
+        QLLX = #{record.qllx,jdbcType=OTHER},
+      </if>
+      <if test="record.djlx != null">
+        DJLX = #{record.djlx,jdbcType=OTHER},
+      </if>
+      <if test="record.bdcdyid != null">
+        BDCDYID = #{record.bdcdyid,jdbcType=OTHER},
+      </if>
+      <if test="record.bdcdyh != null">
+        BDCDYH = #{record.bdcdyh,jdbcType=OTHER},
+      </if>
+      <if test="record.bdcid != null">
+        BDCID = #{record.bdcid,jdbcType=OTHER},
+      </if>
+      <if test="record.qzhzsbh != null">
+        QZHZSBH = #{record.qzhzsbh,jdbcType=OTHER},
+      </if>
+      <if test="record.ywdh != null">
+        YWDH = #{record.ywdh,jdbcType=OTHER},
+      </if>
+      <if test="record.qlqssj != null">
+        QLQSSJ = #{record.qlqssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.qljssj != null">
+        QLJSSJ = #{record.qljssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bdcdylxmc != null">
+        BDCDYLXMC = #{record.bdcdylxmc,jdbcType=OTHER},
+      </if>
+      <if test="record.zqdw != null">
+        ZQDW = #{record.zqdw,jdbcType=OTHER},
+      </if>
+      <if test="record.tenantId != null">
+        TENANT_ID = #{record.tenantId,jdbcType=OTHER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update BDC_DAK.DAS_CQ
+    set ID = #{record.id,jdbcType=OTHER},
+      AJID = #{record.ajid,jdbcType=OTHER},
+      SYQR = #{record.syqr,jdbcType=OTHER},
+      ZJH = #{record.zjh,jdbcType=OTHER},
+      CB = #{record.cb,jdbcType=OTHER},
+      QZH = #{record.qzh,jdbcType=OTHER},
+      ZL = #{record.zl,jdbcType=OTHER},
+      FWJG = #{record.fwjg,jdbcType=OTHER},
+      CH = #{record.ch,jdbcType=OTHER},
+      JZMJ = #{record.jzmj,jdbcType=DECIMAL},
+      JCNF = #{record.jcnf,jdbcType=DECIMAL},
+      YT = #{record.yt,jdbcType=OTHER},
+      DJSJ = #{record.djsj,jdbcType=TIMESTAMP},
+      ZXSJ = #{record.zxsj,jdbcType=TIMESTAMP},
+      DJDL = #{record.djdl,jdbcType=OTHER},
+      DJXL = #{record.djxl,jdbcType=OTHER},
+      FJ = #{record.fj,jdbcType=OTHER},
+      BZ = #{record.bz,jdbcType=OTHER},
+      DBR = #{record.dbr,jdbcType=OTHER},
+      ZXDBR = #{record.zxdbr,jdbcType=OTHER},
+      QLLX = #{record.qllx,jdbcType=OTHER},
+      DJLX = #{record.djlx,jdbcType=OTHER},
+      BDCDYID = #{record.bdcdyid,jdbcType=OTHER},
+      BDCDYH = #{record.bdcdyh,jdbcType=OTHER},
+      BDCID = #{record.bdcid,jdbcType=OTHER},
+      QZHZSBH = #{record.qzhzsbh,jdbcType=OTHER},
+      YWDH = #{record.ywdh,jdbcType=OTHER},
+      QLQSSJ = #{record.qlqssj,jdbcType=TIMESTAMP},
+      QLJSSJ = #{record.qljssj,jdbcType=TIMESTAMP},
+      BDCDYLXMC = #{record.bdcdylxmc,jdbcType=OTHER},
+      ZQDW = #{record.zqdw,jdbcType=OTHER},
+      TENANT_ID = #{record.tenantId,jdbcType=OTHER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

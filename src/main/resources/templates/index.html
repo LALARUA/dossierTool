@@ -107,7 +107,7 @@
 <body>
     <div style="float: left;width: 50%;height: 100%" class="left" >
         <div class="showJpg">
-            <img width="100%"   id="showJpg" style="display: block" src="/img/C:\Users\Administrator\Desktop\2_161641_2.jpg"  class="img-rounded">
+            <img width="100%"   id="showJpg" style="display: block" src="supermap.jpg"  class="img-rounded">
         </div>
         <div  style="width: 100%;height: 250px">
             <div class="file" style="float: left">
@@ -822,6 +822,7 @@
                 <input type="date" class="form-control" name="zxrq" id="zxrq" placeholder="注销日期">
             </div>
         </div>
+                <input type="hidden" name="path" id="path">
             </form>
 
         </div>
@@ -872,7 +873,6 @@ window.onload = function (ev) {
     $(".zdxx").show();
     $(document).on('click', '#submitForm', function () {
         var data = $("#allData").serialize();
-        alert(data)
         $.ajax({
             url: '/submitData',
             type: 'post', //
@@ -883,6 +883,9 @@ window.onload = function (ev) {
             success: function (data) {
                 alert(data)
             },
+            error: function (data) {
+                alert("操作失败")
+            }
         })
 
     });
@@ -901,6 +904,8 @@ window.onload = function (ev) {
     levels:1,
     showTags:true,
     onNodeSelected:function(event,node){
+        alert(7)
+        return false
         if (node.nodes==null){
             $.ajax({
                 url: '/getJpgList',
@@ -913,10 +918,14 @@ window.onload = function (ev) {
                 timeout: 5000,    //超时时间
                 dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text
                 success: function (data) {
-
+                    if (data['error']!=null){
+                        alert(data['error'])
+                        return
+                    }
                     $(".form-control").val("");
-
+                    $("#ZL").val(data['excelData'].fwzl)
                     initJpgList(data['jpgs'])
+                    $("#path").val(node.path)
                 },
             })
         }
@@ -939,6 +948,11 @@ window.onload = function (ev) {
     },
     });
     }
+    $(document).on('click', '.node-folder', function () {
+
+        return false
+    })
+
     var initJpgList = function(data){
         return $("#jpg").treeview({
             data:data,

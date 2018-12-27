@@ -40,6 +40,17 @@ public class DAS_AJJBXX {
         this.SCRQ = SCRQ;
         this.YXBZ = YXBZ;
     }
+    public void build(String AJID, int ND, String QZH, String AJH, int WJJS,int WJYS, int BCQX, Date SCRQ, int YXBZ){
+        this.AJID = AJID;
+        this.ND = ND;
+        this.QZH = QZH;
+        this.AJH = AJH;
+        this.WJJS = WJJS;
+        this.WJYS = WJYS;
+        this.BCQX = BCQX;
+        this.SCRQ = SCRQ;
+        this.YXBZ = YXBZ;
+    }
 
     @Override
     public String toString() {

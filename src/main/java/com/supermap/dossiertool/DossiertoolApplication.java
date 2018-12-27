@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
-@MapperScan(basePackages = "com.supermap.dossiertool.mapper")
+@MapperScan(basePackages = "com.supermap.dossiertool.myMapper")
 @EnableCaching
 @SpringBootApplication
 public class DossiertoolApplication {

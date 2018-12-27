@@ -7,8 +7,8 @@ package com.supermap.dossiertool.pojo;
  */
 public class PublicExcelData {
     private String QLR;  //权利人
-    private String TDZH;
-    private String FWZL;
+    private String TDZH; //土地证号
+    private String FWZL; //房屋坐落
 
     public String getQLR() {
         return QLR;

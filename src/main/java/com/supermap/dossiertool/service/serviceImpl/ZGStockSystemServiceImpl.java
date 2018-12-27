@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -27,7 +28,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
      *
      */
     @Transactional
-    public void insertData(String folderPath) throws Exception{
+    public void insertData(DasAjjbxx das_ajjbxx, DasBdc das_bdc,DasCq das_cq,String folderPath) throws Exception{
         String AJH = folderPath.substring(folderPath.lastIndexOf("\\")+1);  //档案号
         PublicExcelData publicExcelData = MyFunction.getPublicExcelData("E:\\zigongDATA\\自贡数据\\打印台账汇总.xls", AJH);
         String QLR = publicExcelData.getQLR();    //权利人
@@ -44,7 +45,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
 
         Map<String,List<File>> map = new LinkedHashMap<>();   //key为图片种类名称  value为该种类下的图片
         int WJYS = files.size();
-        int WJJS = 0;  //图片种类数
+        long WJJS = 0;  //图片种类数
         for (File jpg:files                         //遍历files放进map中
                 ) {
             String fileName = jpg.getName();
@@ -64,23 +65,50 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         //DAS_AJJBXX数据
         int leftBracketIndex = TDZH.indexOf("(");
         int rightBracketIndex = TDZH.indexOf(")");
-        int ND = Integer.valueOf(TDZH.substring(leftBracketIndex+1,rightBracketIndex));
+        Long ND = Long.valueOf(TDZH.substring(leftBracketIndex+1,rightBracketIndex));
         String AJID = UUID.randomUUID().toString();
-        DAS_AJJBXX das_ajjbxx = new DAS_AJJBXX(AJID, ND, TDZH, AJH, WJJS, WJYS, 0, new Date(), 0);
+
+//        das_ajjbxx.build(AJID, ND, TDZH, AJH, WJJS, WJYS, 0, new Date(), 0);
+        das_ajjbxx.setAjid(AJID);
+        das_ajjbxx.setNd(ND);
+        das_ajjbxx.setQzh(TDZH);
+        das_ajjbxx.setAjh(AJH);
+        das_ajjbxx.setWjjs(WJJS);
+        das_ajjbxx.setWjjs(WJJS);
+        das_ajjbxx.setBcqx(0l);
+        das_ajjbxx.setScrq(new Date());
+        das_ajjbxx.setYxbz(0l);
+
         System.out.println(das_ajjbxx);
 
 
         //DAS_BDC数据
         String BDCID = UUID.randomUUID().toString();
-        DAS_BDC das_bdc = new DAS_BDC(BDCID, AJID, TDZH, FWZL, QLR, "DAS_CQ", TDZH);
+
+//        das_bdc.build(BDCID, AJID, TDZH, FWZL, QLR, "DAS_CQ", TDZH);
+
+        das_bdc.setBdcid(BDCID);
+        das_bdc.setAjid(AJID);
+        das_bdc.setBdcqzh(TDZH);
+        das_bdc.setZl(FWZL);
+        das_bdc.setSyqr(QLR);
+        das_bdc.setYwlx("DAS_CQ");
+        das_bdc.setQzh(TDZH);
+
 
         //DAS_CQ数据
         String ID = UUID.randomUUID().toString();
-        DAS_CQ das_cq = new DAS_CQ(ID, AJID, QLR, TDZH, FWZL);
+//        das_cq.build(ID, AJID, QLR, TDZH,FWZL);
+        das_cq.setId(ID);
+        das_cq.setAjid(AJID);
+        das_cq.setSyqr(QLR);
+        das_cq.setQzh(TDZH);
+        das_cq.setZl(FWZL);
+
 
         //DAS_JNWJ数据
         int SXH = 0;       //顺序号
-        List<DAS_JNWJ> das_jnwjs = new ArrayList<>();
+        List<DasJnwj> das_jnwjs = new ArrayList<>();
         List<DAS_JNWJ_FJ> das_jnwj_fjs = new ArrayList<>();
         for (Map.Entry<String,List<File>> entry:map.entrySet()
                 ) {
@@ -88,7 +116,15 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
             String WJID = UUID.randomUUID().toString();
             List<File>  jpgs = entry.getValue();        //该种类下的图片
             int YS = jpgs.size();
-            das_jnwjs.add(new DAS_JNWJ(WJID,AJID,++SXH,TM,YS));
+
+//            das_jnwjs.add(new DAS_JNWJ(WJID,AJID,++SXH,TM,YS));
+            DasJnwj dasJnwj = new DasJnwj();
+            dasJnwj.setWjid(WJID);
+            dasJnwj.setAjid(AJID);
+            dasJnwj.setSxh(++SXH);
+            dasJnwj.setTm(TM);
+            dasJnwj.setYs(YS);
+            das_jnwjs.add(dasJnwj);
             //DAS_JNWJ_FJ数据
 //            int relativePathIndex = folderPath.indexOf("E:\\zigongDATA\\");
             String PATH = folderPath.substring("E:\\zigongDATA\\".length()-1);
@@ -100,6 +136,15 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
                 int postfixIndex = jpg.getName().lastIndexOf(".");
                 String FILETYPE = jpg.getName().substring(postfixIndex);
                 das_jnwj_fjs.add(new DAS_JNWJ_FJ(FJID,WJID,++YH,FJMC,0,PATH,FILETYPE,FJID,0));
+                DasJnwjFj dasJnwjFj = new DasJnwjFj();
+                dasJnwjFj.setFjid(FJID);
+                dasJnwjFj.setWjid(WJID);
+                dasJnwjFj.setYh(++YH);
+                dasJnwjFj.setFjmc(FJMC);
+                dasJnwjFj.setFjlx(0);
+                dasJnwjFj.setPath(PATH);
+                
+
             }
         }
     }

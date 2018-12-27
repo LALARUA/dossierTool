@@ -3,6 +3,8 @@ package com.supermap.dossiertool;
 import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.mapper.*;
 
+
+
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -25,29 +27,31 @@ public class DossiertoolApplicationTests {
 	@Autowired
 	ZGStockSystemServiceImpl handleData;
 
+
 	@Autowired
-	DAS_AJJBXXMapper das_ajjbxxMapper;
+	DasAjjbxxMapper dasAjjbxxMapper;
+
 	@Autowired
-	DAS_BDCMapper das_bdcMapper;
+	DasBdcMapper dasBdcMapper;
+
 	@Autowired
-	DAS_CQMapper das_cqMapper;
+	DasCqMapper dasCqMapper;
+
 	@Autowired
-	DAS_JNWJMapper das_jnwjMapper;
+	DasJnwjFjMapper dasJnwjFjMapper;
+
 	@Autowired
-	DAS_JNWJ_FJMapper das_jnwj_fjMapper;
+	DasJnwjMapper dasJnwjMapper;
 
 
 	@Test
 	public void contextLoads() throws Exception {
+		DasAjjbxx ajjbxx = new DasAjjbxx();
+		ajjbxx.setAjid("text");
+		ajjbxx.setAjbt("tsvgs");
+		dasAjjbxxMapper.insertSelective(ajjbxx);
 
-		Integer a = 5;
-		Integer B = 5;
-		System.out.println(a==B);
 
-		Integer c = 199;
-		Integer d = 199;
-		System.out.println(c==d
-		);
 //		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
 //		Date date = new Date();
 //		das_jnwj_fjMapper.insert(new DAS_JNWJ_FJ("test","test",1,"test",0,"test","test","test",0));

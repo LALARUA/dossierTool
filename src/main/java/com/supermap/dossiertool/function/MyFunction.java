@@ -22,7 +22,7 @@ import java.util.List;
  * @Date Created in 22:23 2018/12/20 0020
  */
 public class MyFunction {
-    public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
     /**
      * @description
      * @author xiangXX

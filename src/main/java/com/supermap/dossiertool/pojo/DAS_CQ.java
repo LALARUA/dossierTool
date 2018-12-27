@@ -14,7 +14,17 @@ public class DAS_CQ {
     private String QZH;
     private String ZL;
 
+    public DAS_CQ(){
+
+    }
     public DAS_CQ(String ID, String AJID, String SYQR, String QZH, String ZL) {
+        this.ID = ID;
+        this.AJID = AJID;
+        this.SYQR = SYQR;
+        this.QZH = QZH;
+        this.ZL = ZL;
+    }
+    public void build(String ID, String AJID, String SYQR, String QZH, String ZL){
         this.ID = ID;
         this.AJID = AJID;
         this.SYQR = SYQR;
