@@ -4,15 +4,15 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class DasBdc {
-    private Object bdcid;
+    private String bdcid;
 
-    private Object ajid;
+    private String ajid;
 
-    private Object xmbh;
+    private String xmbh;
 
     private Object ywh;
 
-    private Object bdcdyh;
+    private String bdcdyh;
 
     private Object bdcqzh;
 
@@ -100,27 +100,27 @@ public class DasBdc {
 
     private String fj;
 
-    public Object getBdcid() {
+    public String getBdcid() {
         return bdcid;
     }
 
-    public void setBdcid(Object bdcid) {
+    public void setBdcid(String bdcid) {
         this.bdcid = bdcid;
     }
 
-    public Object getAjid() {
+    public String getAjid() {
         return ajid;
     }
 
-    public void setAjid(Object ajid) {
+    public void setAjid(String ajid) {
         this.ajid = ajid;
     }
 
-    public Object getXmbh() {
+    public String getXmbh() {
         return xmbh;
     }
 
-    public void setXmbh(Object xmbh) {
+    public void setXmbh(String xmbh) {
         this.xmbh = xmbh;
     }
 
@@ -132,11 +132,11 @@ public class DasBdc {
         this.ywh = ywh;
     }
 
-    public Object getBdcdyh() {
+    public String getBdcdyh() {
         return bdcdyh;
     }
 
-    public void setBdcdyh(Object bdcdyh) {
+    public void setBdcdyh(String bdcdyh) {
         this.bdcdyh = bdcdyh;
     }
 

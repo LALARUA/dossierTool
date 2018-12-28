@@ -2,8 +2,10 @@ package com.supermap.dossiertool.service.serviceImpl;
 
 import com.supermap.dossiertool.bean.MyFile;
 import com.supermap.dossiertool.function.MyFunction;
+import com.supermap.dossiertool.mapper.*;
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.ZGStockSystemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,16 @@ import java.util.*;
  */
 @Service
 public class ZGStockSystemServiceImpl implements ZGStockSystemService{
+    @Autowired
+    DasAjjbxxMapper dasAjjbxxMapper;
+    @Autowired
+    DasBdcMapper dasBdcMapper;
+    @Autowired
+    DasCqMapper dasCqMapper;
+    @Autowired
+    DasJnwjMapper dasJnwjMapper;
+    @Autowired
+    DasJnwjFjMapper dasJnwjFjMapper;
 
     /**
      * @description
@@ -67,26 +79,21 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         int rightBracketIndex = TDZH.indexOf(")");
         Long ND = Long.valueOf(TDZH.substring(leftBracketIndex+1,rightBracketIndex));
         String AJID = UUID.randomUUID().toString();
-
-//        das_ajjbxx.build(AJID, ND, TDZH, AJH, WJJS, WJYS, 0, new Date(), 0);
         das_ajjbxx.setAjid(AJID);
         das_ajjbxx.setNd(ND);
         das_ajjbxx.setQzh(TDZH);
         das_ajjbxx.setAjh(AJH);
         das_ajjbxx.setWjjs(WJJS);
         das_ajjbxx.setWjjs(WJJS);
-        das_ajjbxx.setBcqx(0l);
+        das_ajjbxx.setBcqx(0);
         das_ajjbxx.setScrq(new Date());
-        das_ajjbxx.setYxbz(0l);
+        das_ajjbxx.setYxbz(0);
+        dasAjjbxxMapper.insertSelective(das_ajjbxx);
 
-        System.out.println(das_ajjbxx);
 
 
         //DAS_BDC数据
         String BDCID = UUID.randomUUID().toString();
-
-//        das_bdc.build(BDCID, AJID, TDZH, FWZL, QLR, "DAS_CQ", TDZH);
-
         das_bdc.setBdcid(BDCID);
         das_bdc.setAjid(AJID);
         das_bdc.setBdcqzh(TDZH);
@@ -94,22 +101,24 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         das_bdc.setSyqr(QLR);
         das_bdc.setYwlx("DAS_CQ");
         das_bdc.setQzh(TDZH);
+        dasBdcMapper.insertSelective(das_bdc);
 
 
         //DAS_CQ数据
         String ID = UUID.randomUUID().toString();
-//        das_cq.build(ID, AJID, QLR, TDZH,FWZL);
         das_cq.setId(ID);
         das_cq.setAjid(AJID);
         das_cq.setSyqr(QLR);
         das_cq.setQzh(TDZH);
         das_cq.setZl(FWZL);
+        dasCqMapper.insertSelective(das_cq);
 
 
         //DAS_JNWJ数据
         int SXH = 0;       //顺序号
         List<DasJnwj> das_jnwjs = new ArrayList<>();
-        List<DAS_JNWJ_FJ> das_jnwj_fjs = new ArrayList<>();
+        List<DasJnwjFj> das_jnwj_fjs = new ArrayList<>();
+        String PATH = folderPath.substring("E:\\zigongDATA\\".length()-1);
         for (Map.Entry<String,List<File>> entry:map.entrySet()
                 ) {
             String TM = entry.getKey();
@@ -124,10 +133,12 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
             dasJnwj.setSxh(++SXH);
             dasJnwj.setTm(TM);
             dasJnwj.setYs(YS);
+            dasJnwjMapper.insertSelective(dasJnwj);
             das_jnwjs.add(dasJnwj);
+
             //DAS_JNWJ_FJ数据
 //            int relativePathIndex = folderPath.indexOf("E:\\zigongDATA\\");
-            String PATH = folderPath.substring("E:\\zigongDATA\\".length()-1);
+
             int YH = 0;
             for (File jpg:jpgs
                     ) {
@@ -135,7 +146,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
                 String FJMC = jpg.getName();
                 int postfixIndex = jpg.getName().lastIndexOf(".");
                 String FILETYPE = jpg.getName().substring(postfixIndex);
-                das_jnwj_fjs.add(new DAS_JNWJ_FJ(FJID,WJID,++YH,FJMC,0,PATH,FILETYPE,FJID,0));
+//
                 DasJnwjFj dasJnwjFj = new DasJnwjFj();
                 dasJnwjFj.setFjid(FJID);
                 dasJnwjFj.setWjid(WJID);
@@ -143,7 +154,11 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
                 dasJnwjFj.setFjmc(FJMC);
                 dasJnwjFj.setFjlx(0);
                 dasJnwjFj.setPath(PATH);
-                
+                dasJnwjFj.setFiletype(FILETYPE);
+                dasJnwjFj.setFjid(FJID);
+                dasJnwjFj.setIsrk(0);
+                dasJnwjFjMapper.insertSelective(dasJnwjFj);
+                das_jnwj_fjs.add(dasJnwjFj);
 
             }
         }

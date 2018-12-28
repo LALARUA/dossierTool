@@ -3,10 +3,7 @@ package com.supermap.dossiertool.controller;
 import com.supermap.dossiertool.bean.MyFile;
 import com.supermap.dossiertool.config.MyPropertiesConfig;
 import com.supermap.dossiertool.function.MyFunction;
-import com.supermap.dossiertool.pojo.DAS_AJJBXX;
-import com.supermap.dossiertool.pojo.DAS_BDC;
-import com.supermap.dossiertool.pojo.DAS_CQ;
-import com.supermap.dossiertool.pojo.PublicExcelData;
+import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,10 +93,11 @@ public class ZGStockSystemController {
      */  
     @ResponseBody
     @PostMapping("/submitData")
-    public String submitData(DAS_AJJBXX das_ajjbxx, DAS_BDC das_bdc, DAS_CQ das_cq,String path){
+    public String submitData(DasAjjbxx das_ajjbxx, DasBdc das_bdc, DasCq das_cq, String path){
         try {
             zgStockSystemService.insertData(das_ajjbxx,das_bdc,das_cq,path);
         } catch (Exception e) {
+            e.printStackTrace();
             return "操作失败";
         }
         return "success";

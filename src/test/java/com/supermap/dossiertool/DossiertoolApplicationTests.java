@@ -51,6 +51,11 @@ public class DossiertoolApplicationTests {
 		ajjbxx.setAjbt("tsvgs");
 		dasAjjbxxMapper.insertSelective(ajjbxx);
 
+		DasBdc dasBdc = new DasBdc();
+		dasBdc.setQzh("sfasf");
+		dasBdc.setYwlx("Sfaf");
+		dasBdc.setBdcid("sfasf");
+		dasBdcMapper.insertSelective(dasBdc);
 
 //		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
 //		Date date = new Date();
@@ -192,14 +197,14 @@ public class DossiertoolApplicationTests {
 //			int end = positionContent.indexOf(".");
 //			positionContent = positionContent.substring(0,end);  //去除最后的 .0 字符串
 
-			if (row%2!=0)
-				s.append("<div class=\"from-row daxx\">\n");
-			String zs = sheet.getRow(row).getCell(13).toString();
-			String mc = sheet.getRow(row).getCell(14).toString();
-			s.append("<div class=\"daxx form-group col-md-6\">\n");
-			s.append("<label for=\""+mc+"\">"+zs+"</label>\n");
-			s.append("<input type=\"text\" class=\"form-control\" name=\""+mc+"\" id=\""+mc+"\" placeholder=\""+zs+"\">\n </div>\n");
 			if (row%2==0)
+				s.append("<div class=\"from-row zdxx\">\n");
+			String zs = sheet.getRow(row).getCell(1).toString();
+			String mc = sheet.getRow(row).getCell(2).toString();
+			s.append("<div class=\"zdxx form-group col-md-6\">\n");
+			s.append("<label for=\""+mc.toLowerCase()+"\">"+zs+"</label>\n");
+			s.append("<input type=\"text\" class=\"form-control\" name=\""+mc.toLowerCase()+"\" id=\""+mc.toLowerCase()+"\" placeholder=\""+zs+"\">\n </div>\n");
+			if (row%2!=0)
 				s.append(" </div>\n");
 		}
 

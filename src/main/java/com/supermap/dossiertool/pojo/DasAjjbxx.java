@@ -1,9 +1,11 @@
 package com.supermap.dossiertool.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class DasAjjbxx {
-    private Object ajid;
+    private String ajid;
 
     private Long nd;
 
@@ -21,10 +23,12 @@ public class DasAjjbxx {
 
     private String ajbt;
 
+
     private Date cdsj;
 
-    private Long bcqx;
+    private Integer bcqx;
 
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date qsrq;
 
     private Date zzrq;
@@ -51,7 +55,7 @@ public class DasAjjbxx {
 
     private Long fbbz;
 
-    private Long yxbz;
+    private Integer yxbz;
 
     private String dagbh;
 
@@ -127,11 +131,11 @@ public class DasAjjbxx {
 
     private Date zlsj;
 
-    public Object getAjid() {
+    public String getAjid() {
         return ajid;
     }
 
-    public void setAjid(Object ajid) {
+    public void setAjid(String ajid) {
         this.ajid = ajid;
     }
 
@@ -207,11 +211,11 @@ public class DasAjjbxx {
         this.cdsj = cdsj;
     }
 
-    public Long getBcqx() {
+    public Integer getBcqx() {
         return bcqx;
     }
 
-    public void setBcqx(Long bcqx) {
+    public void setBcqx(Integer bcqx) {
         this.bcqx = bcqx;
     }
 
@@ -319,11 +323,11 @@ public class DasAjjbxx {
         this.fbbz = fbbz;
     }
 
-    public Long getYxbz() {
+    public Integer getYxbz() {
         return yxbz;
     }
 
-    public void setYxbz(Long yxbz) {
+    public void setYxbz(Integer yxbz) {
         this.yxbz = yxbz;
     }
 

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supermap.dossiertool.smattrMapper.TdpzytMapper">
+  <resultMap id="BaseResultMap" type="com.supermap.dossiertool.smattrEntity.Tdpzyt">
+    <id column="BSM" jdbcType="NVARCHAR2" property="bsm" />
+    <result column="OBJECTID" jdbcType="DECIMAL" property="objectid" />
+    <result column="ZDBSM" jdbcType="NVARCHAR2" property="zdbsm" />
+    <result column="SFZYT" jdbcType="NVARCHAR2" property="sfzyt" />
+    <result column="TDYT" jdbcType="NVARCHAR2" property="tdyt" />
+    <result column="TDYTMC" jdbcType="NVARCHAR2" property="tdytmc" />
+    <result column="TDJG" jdbcType="NVARCHAR2" property="tdjg" />
+    <result column="TDDJ" jdbcType="NVARCHAR2" property="tddj" />
+    <result column="QSRQ" jdbcType="TIMESTAMP" property="qsrq" />
+    <result column="ZZRQ" jdbcType="TIMESTAMP" property="zzrq" />
+    <result column="SYQX" jdbcType="NVARCHAR2" property="syqx" />
+    <result column="BLZT" jdbcType="NVARCHAR2" property="blzt" />
+    <result column="ZDMJ" jdbcType="DECIMAL" property="zdmj" />
+    <result column="QLXZ" jdbcType="NVARCHAR2" property="qlxz" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    BSM, OBJECTID, ZDBSM, SFZYT, TDYT, TDYTMC, TDJG, TDDJ, QSRQ, ZZRQ, SYQX, BLZT, ZDMJ, 
+    QLXZ
+  </sql>
+  <select id="selectByExample" parameterType="pojo.TdpzytExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SMATTR.TDPZYT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SMATTR.TDPZYT
+    where BSM = #{bsm,jdbcType=NVARCHAR2}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SMATTR.TDPZYT
+    where BSM = #{bsm,jdbcType=NVARCHAR2}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.TdpzytExample">
+    delete from SMATTR.TDPZYT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.Tdpzyt">
+    insert into SMATTR.TDPZYT (BSM, OBJECTID, ZDBSM, 
+      SFZYT, TDYT, TDYTMC, 
+      TDJG, TDDJ, QSRQ, 
+      ZZRQ, SYQX, BLZT, 
+      ZDMJ, QLXZ)
+    values (#{bsm,jdbcType=NVARCHAR2}, #{objectid,jdbcType=DECIMAL}, #{zdbsm,jdbcType=NVARCHAR2}, 
+      #{sfzyt,jdbcType=NVARCHAR2}, #{tdyt,jdbcType=NVARCHAR2}, #{tdytmc,jdbcType=NVARCHAR2}, 
+      #{tdjg,jdbcType=NVARCHAR2}, #{tddj,jdbcType=NVARCHAR2}, #{qsrq,jdbcType=TIMESTAMP}, 
+      #{zzrq,jdbcType=TIMESTAMP}, #{syqx,jdbcType=NVARCHAR2}, #{blzt,jdbcType=NVARCHAR2}, 
+      #{zdmj,jdbcType=DECIMAL}, #{qlxz,jdbcType=NVARCHAR2})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Tdpzyt">
+    insert into SMATTR.TDPZYT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bsm != null">
+        BSM,
+      </if>
+      <if test="objectid != null">
+        OBJECTID,
+      </if>
+      <if test="zdbsm != null">
+        ZDBSM,
+      </if>
+      <if test="sfzyt != null">
+        SFZYT,
+      </if>
+      <if test="tdyt != null">
+        TDYT,
+      </if>
+      <if test="tdytmc != null">
+        TDYTMC,
+      </if>
+      <if test="tdjg != null">
+        TDJG,
+      </if>
+      <if test="tddj != null">
+        TDDJ,
+      </if>
+      <if test="qsrq != null">
+        QSRQ,
+      </if>
+      <if test="zzrq != null">
+        ZZRQ,
+      </if>
+      <if test="syqx != null">
+        SYQX,
+      </if>
+      <if test="blzt != null">
+        BLZT,
+      </if>
+      <if test="zdmj != null">
+        ZDMJ,
+      </if>
+      <if test="qlxz != null">
+        QLXZ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bsm != null">
+        #{bsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="objectid != null">
+        #{objectid,jdbcType=DECIMAL},
+      </if>
+      <if test="zdbsm != null">
+        #{zdbsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="sfzyt != null">
+        #{sfzyt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="tdyt != null">
+        #{tdyt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="tdytmc != null">
+        #{tdytmc,jdbcType=NVARCHAR2},
+      </if>
+      <if test="tdjg != null">
+        #{tdjg,jdbcType=NVARCHAR2},
+      </if>
+      <if test="tddj != null">
+        #{tddj,jdbcType=NVARCHAR2},
+      </if>
+      <if test="qsrq != null">
+        #{qsrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zzrq != null">
+        #{zzrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syqx != null">
+        #{syqx,jdbcType=NVARCHAR2},
+      </if>
+      <if test="blzt != null">
+        #{blzt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="zdmj != null">
+        #{zdmj,jdbcType=DECIMAL},
+      </if>
+      <if test="qlxz != null">
+        #{qlxz,jdbcType=NVARCHAR2},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.TdpzytExample" resultType="java.lang.Long">
+    select count(*) from SMATTR.TDPZYT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SMATTR.TDPZYT
+    <set>
+      <if test="record.bsm != null">
+        BSM = #{record.bsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.objectid != null">
+        OBJECTID = #{record.objectid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.zdbsm != null">
+        ZDBSM = #{record.zdbsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.sfzyt != null">
+        SFZYT = #{record.sfzyt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.tdyt != null">
+        TDYT = #{record.tdyt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.tdytmc != null">
+        TDYTMC = #{record.tdytmc,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.tdjg != null">
+        TDJG = #{record.tdjg,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.tddj != null">
+        TDDJ = #{record.tddj,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.qsrq != null">
+        QSRQ = #{record.qsrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zzrq != null">
+        ZZRQ = #{record.zzrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.syqx != null">
+        SYQX = #{record.syqx,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.blzt != null">
+        BLZT = #{record.blzt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.zdmj != null">
+        ZDMJ = #{record.zdmj,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qlxz != null">
+        QLXZ = #{record.qlxz,jdbcType=NVARCHAR2},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SMATTR.TDPZYT
+    set BSM = #{record.bsm,jdbcType=NVARCHAR2},
+      OBJECTID = #{record.objectid,jdbcType=DECIMAL},
+      ZDBSM = #{record.zdbsm,jdbcType=NVARCHAR2},
+      SFZYT = #{record.sfzyt,jdbcType=NVARCHAR2},
+      TDYT = #{record.tdyt,jdbcType=NVARCHAR2},
+      TDYTMC = #{record.tdytmc,jdbcType=NVARCHAR2},
+      TDJG = #{record.tdjg,jdbcType=NVARCHAR2},
+      TDDJ = #{record.tddj,jdbcType=NVARCHAR2},
+      QSRQ = #{record.qsrq,jdbcType=TIMESTAMP},
+      ZZRQ = #{record.zzrq,jdbcType=TIMESTAMP},
+      SYQX = #{record.syqx,jdbcType=NVARCHAR2},
+      BLZT = #{record.blzt,jdbcType=NVARCHAR2},
+      ZDMJ = #{record.zdmj,jdbcType=DECIMAL},
+      QLXZ = #{record.qlxz,jdbcType=NVARCHAR2}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Tdpzyt">
+    update SMATTR.TDPZYT
+    <set>
+      <if test="objectid != null">
+        OBJECTID = #{objectid,jdbcType=DECIMAL},
+      </if>
+      <if test="zdbsm != null">
+        ZDBSM = #{zdbsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="sfzyt != null">
+        SFZYT = #{sfzyt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="tdyt != null">
+        TDYT = #{tdyt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="tdytmc != null">
+        TDYTMC = #{tdytmc,jdbcType=NVARCHAR2},
+      </if>
+      <if test="tdjg != null">
+        TDJG = #{tdjg,jdbcType=NVARCHAR2},
+      </if>
+      <if test="tddj != null">
+        TDDJ = #{tddj,jdbcType=NVARCHAR2},
+      </if>
+      <if test="qsrq != null">
+        QSRQ = #{qsrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zzrq != null">
+        ZZRQ = #{zzrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syqx != null">
+        SYQX = #{syqx,jdbcType=NVARCHAR2},
+      </if>
+      <if test="blzt != null">
+        BLZT = #{blzt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="zdmj != null">
+        ZDMJ = #{zdmj,jdbcType=DECIMAL},
+      </if>
+      <if test="qlxz != null">
+        QLXZ = #{qlxz,jdbcType=NVARCHAR2},
+      </if>
+    </set>
+    where BSM = #{bsm,jdbcType=NVARCHAR2}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Tdpzyt">
+    update SMATTR.TDPZYT
+    set OBJECTID = #{objectid,jdbcType=DECIMAL},
+      ZDBSM = #{zdbsm,jdbcType=NVARCHAR2},
+      SFZYT = #{sfzyt,jdbcType=NVARCHAR2},
+      TDYT = #{tdyt,jdbcType=NVARCHAR2},
+      TDYTMC = #{tdytmc,jdbcType=NVARCHAR2},
+      TDJG = #{tdjg,jdbcType=NVARCHAR2},
+      TDDJ = #{tddj,jdbcType=NVARCHAR2},
+      QSRQ = #{qsrq,jdbcType=TIMESTAMP},
+      ZZRQ = #{zzrq,jdbcType=TIMESTAMP},
+      SYQX = #{syqx,jdbcType=NVARCHAR2},
+      BLZT = #{blzt,jdbcType=NVARCHAR2},
+      ZDMJ = #{zdmj,jdbcType=DECIMAL},
+      QLXZ = #{qlxz,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=NVARCHAR2}
+  </update>
+</mapper>

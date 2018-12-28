@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supermap.dossiertool.smattrMapper.JsydsyqMapper">
+  <resultMap id="BaseResultMap" type="com.supermap.dossiertool.smattrEntity.Jsydsyq">
+    <id column="BSM" jdbcType="NVARCHAR2" property="bsm" />
+    <result column="OBJECTID" jdbcType="DECIMAL" property="objectid" />
+    <result column="YSDM" jdbcType="NVARCHAR2" property="ysdm" />
+    <result column="ZDDM" jdbcType="NVARCHAR2" property="zddm" />
+    <result column="BDCDYBSM" jdbcType="NVARCHAR2" property="bdcdybsm" />
+    <result column="BDCDYH" jdbcType="NVARCHAR2" property="bdcdyh" />
+    <result column="YWH" jdbcType="NVARCHAR2" property="ywh" />
+    <result column="QLLX" jdbcType="NVARCHAR2" property="qllx" />
+    <result column="DJLX" jdbcType="NVARCHAR2" property="djlx" />
+    <result column="DJYY" jdbcType="NVARCHAR2" property="djyy" />
+    <result column="SYQMJ" jdbcType="DECIMAL" property="syqmj" />
+    <result column="SYQQSSJ" jdbcType="TIMESTAMP" property="syqqssj" />
+    <result column="SYQJSSJ" jdbcType="TIMESTAMP" property="syqjssj" />
+    <result column="QDJG" jdbcType="DECIMAL" property="qdjg" />
+    <result column="BDCQZH" jdbcType="NVARCHAR2" property="bdcqzh" />
+    <result column="QXDM" jdbcType="NVARCHAR2" property="qxdm" />
+    <result column="DJJG" jdbcType="NVARCHAR2" property="djjg" />
+    <result column="DBR" jdbcType="NVARCHAR2" property="dbr" />
+    <result column="DJSJ" jdbcType="TIMESTAMP" property="djsj" />
+    <result column="FJ" jdbcType="NVARCHAR2" property="fj" />
+    <result column="QSZT" jdbcType="NVARCHAR2" property="qszt" />
+    <result column="ZXYWH" jdbcType="NVARCHAR2" property="zxywh" />
+    <result column="ZXSJ" jdbcType="TIMESTAMP" property="zxsj" />
+    <result column="ZXYY" jdbcType="NVARCHAR2" property="zxyy" />
+    <result column="BLZT" jdbcType="NVARCHAR2" property="blzt" />
+    <result column="DAQZH" jdbcType="NVARCHAR2" property="daqzh" />
+    <result column="DAND" jdbcType="NVARCHAR2" property="dand" />
+    <result column="DAGH" jdbcType="NVARCHAR2" property="dagh" />
+    <result column="DAHH" jdbcType="NVARCHAR2" property="dahh" />
+    <result column="DAAJH" jdbcType="NVARCHAR2" property="daajh" />
+    <result column="DAAJBT" jdbcType="NVARCHAR2" property="daajbt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    BSM, OBJECTID, YSDM, ZDDM, BDCDYBSM, BDCDYH, YWH, QLLX, DJLX, DJYY, SYQMJ, SYQQSSJ, 
+    SYQJSSJ, QDJG, BDCQZH, QXDM, DJJG, DBR, DJSJ, FJ, QSZT, ZXYWH, ZXSJ, ZXYY, BLZT, 
+    DAQZH, DAND, DAGH, DAHH, DAAJH, DAAJBT
+  </sql>
+  <select id="selectByExample" parameterType="com.supermap.dossiertool.smattrEntity.JsydsyqExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SMATTR.JSYDSYQ
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SMATTR.JSYDSYQ
+    where BSM = #{bsm,jdbcType=NVARCHAR2}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SMATTR.JSYDSYQ
+    where BSM = #{bsm,jdbcType=NVARCHAR2}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.supermap.dossiertool.smattrEntity.JsydsyqExample">
+    delete from SMATTR.JSYDSYQ
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.supermap.dossiertool.smattrEntity.Jsydsyq">
+    insert into SMATTR.JSYDSYQ (BSM, OBJECTID, YSDM, 
+      ZDDM, BDCDYBSM, BDCDYH, 
+      YWH, QLLX, DJLX, 
+      DJYY, SYQMJ, SYQQSSJ, 
+      SYQJSSJ, QDJG, BDCQZH, 
+      QXDM, DJJG, DBR, 
+      DJSJ, FJ, QSZT, 
+      ZXYWH, ZXSJ, ZXYY, 
+      BLZT, DAQZH, DAND, 
+      DAGH, DAHH, DAAJH, 
+      DAAJBT)
+    values (#{bsm,jdbcType=NVARCHAR2}, #{objectid,jdbcType=DECIMAL}, #{ysdm,jdbcType=NVARCHAR2}, 
+      #{zddm,jdbcType=NVARCHAR2}, #{bdcdybsm,jdbcType=NVARCHAR2}, #{bdcdyh,jdbcType=NVARCHAR2}, 
+      #{ywh,jdbcType=NVARCHAR2}, #{qllx,jdbcType=NVARCHAR2}, #{djlx,jdbcType=NVARCHAR2}, 
+      #{djyy,jdbcType=NVARCHAR2}, #{syqmj,jdbcType=DECIMAL}, #{syqqssj,jdbcType=TIMESTAMP}, 
+      #{syqjssj,jdbcType=TIMESTAMP}, #{qdjg,jdbcType=DECIMAL}, #{bdcqzh,jdbcType=NVARCHAR2}, 
+      #{qxdm,jdbcType=NVARCHAR2}, #{djjg,jdbcType=NVARCHAR2}, #{dbr,jdbcType=NVARCHAR2}, 
+      #{djsj,jdbcType=TIMESTAMP}, #{fj,jdbcType=NVARCHAR2}, #{qszt,jdbcType=NVARCHAR2}, 
+      #{zxywh,jdbcType=NVARCHAR2}, #{zxsj,jdbcType=TIMESTAMP}, #{zxyy,jdbcType=NVARCHAR2}, 
+      #{blzt,jdbcType=NVARCHAR2}, #{daqzh,jdbcType=NVARCHAR2}, #{dand,jdbcType=NVARCHAR2}, 
+      #{dagh,jdbcType=NVARCHAR2}, #{dahh,jdbcType=NVARCHAR2}, #{daajh,jdbcType=NVARCHAR2}, 
+      #{daajbt,jdbcType=NVARCHAR2})
+  </insert>
+  <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.Jsydsyq">
+    insert into SMATTR.JSYDSYQ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bsm != null">
+        BSM,
+      </if>
+      <if test="objectid != null">
+        OBJECTID,
+      </if>
+      <if test="ysdm != null">
+        YSDM,
+      </if>
+      <if test="zddm != null">
+        ZDDM,
+      </if>
+      <if test="bdcdybsm != null">
+        BDCDYBSM,
+      </if>
+      <if test="bdcdyh != null">
+        BDCDYH,
+      </if>
+      <if test="ywh != null">
+        YWH,
+      </if>
+      <if test="qllx != null">
+        QLLX,
+      </if>
+      <if test="djlx != null">
+        DJLX,
+      </if>
+      <if test="djyy != null">
+        DJYY,
+      </if>
+      <if test="syqmj != null">
+        SYQMJ,
+      </if>
+      <if test="syqqssj != null">
+        SYQQSSJ,
+      </if>
+      <if test="syqjssj != null">
+        SYQJSSJ,
+      </if>
+      <if test="qdjg != null">
+        QDJG,
+      </if>
+      <if test="bdcqzh != null">
+        BDCQZH,
+      </if>
+      <if test="qxdm != null">
+        QXDM,
+      </if>
+      <if test="djjg != null">
+        DJJG,
+      </if>
+      <if test="dbr != null">
+        DBR,
+      </if>
+      <if test="djsj != null">
+        DJSJ,
+      </if>
+      <if test="fj != null">
+        FJ,
+      </if>
+      <if test="qszt != null">
+        QSZT,
+      </if>
+      <if test="zxywh != null">
+        ZXYWH,
+      </if>
+      <if test="zxsj != null">
+        ZXSJ,
+      </if>
+      <if test="zxyy != null">
+        ZXYY,
+      </if>
+      <if test="blzt != null">
+        BLZT,
+      </if>
+      <if test="daqzh != null">
+        DAQZH,
+      </if>
+      <if test="dand != null">
+        DAND,
+      </if>
+      <if test="dagh != null">
+        DAGH,
+      </if>
+      <if test="dahh != null">
+        DAHH,
+      </if>
+      <if test="daajh != null">
+        DAAJH,
+      </if>
+      <if test="daajbt != null">
+        DAAJBT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bsm != null">
+        #{bsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="objectid != null">
+        #{objectid,jdbcType=DECIMAL},
+      </if>
+      <if test="ysdm != null">
+        #{ysdm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="zddm != null">
+        #{zddm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="bdcdybsm != null">
+        #{bdcdybsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="bdcdyh != null">
+        #{bdcdyh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="ywh != null">
+        #{ywh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="qllx != null">
+        #{qllx,jdbcType=NVARCHAR2},
+      </if>
+      <if test="djlx != null">
+        #{djlx,jdbcType=NVARCHAR2},
+      </if>
+      <if test="djyy != null">
+        #{djyy,jdbcType=NVARCHAR2},
+      </if>
+      <if test="syqmj != null">
+        #{syqmj,jdbcType=DECIMAL},
+      </if>
+      <if test="syqqssj != null">
+        #{syqqssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syqjssj != null">
+        #{syqjssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qdjg != null">
+        #{qdjg,jdbcType=DECIMAL},
+      </if>
+      <if test="bdcqzh != null">
+        #{bdcqzh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="qxdm != null">
+        #{qxdm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="djjg != null">
+        #{djjg,jdbcType=NVARCHAR2},
+      </if>
+      <if test="dbr != null">
+        #{dbr,jdbcType=NVARCHAR2},
+      </if>
+      <if test="djsj != null">
+        #{djsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fj != null">
+        #{fj,jdbcType=NVARCHAR2},
+      </if>
+      <if test="qszt != null">
+        #{qszt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="zxywh != null">
+        #{zxywh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="zxsj != null">
+        #{zxsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zxyy != null">
+        #{zxyy,jdbcType=NVARCHAR2},
+      </if>
+      <if test="blzt != null">
+        #{blzt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="daqzh != null">
+        #{daqzh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="dand != null">
+        #{dand,jdbcType=NVARCHAR2},
+      </if>
+      <if test="dagh != null">
+        #{dagh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="dahh != null">
+        #{dahh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="daajh != null">
+        #{daajh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="daajbt != null">
+        #{daajbt,jdbcType=NVARCHAR2},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.supermap.dossiertool.smattrEntity.JsydsyqExample" resultType="java.lang.Long">
+    select count(*) from SMATTR.JSYDSYQ
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SMATTR.JSYDSYQ
+    <set>
+      <if test="record.bsm != null">
+        BSM = #{record.bsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.objectid != null">
+        OBJECTID = #{record.objectid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ysdm != null">
+        YSDM = #{record.ysdm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.zddm != null">
+        ZDDM = #{record.zddm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.bdcdybsm != null">
+        BDCDYBSM = #{record.bdcdybsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.bdcdyh != null">
+        BDCDYH = #{record.bdcdyh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.ywh != null">
+        YWH = #{record.ywh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.qllx != null">
+        QLLX = #{record.qllx,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.djlx != null">
+        DJLX = #{record.djlx,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.djyy != null">
+        DJYY = #{record.djyy,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.syqmj != null">
+        SYQMJ = #{record.syqmj,jdbcType=DECIMAL},
+      </if>
+      <if test="record.syqqssj != null">
+        SYQQSSJ = #{record.syqqssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.syqjssj != null">
+        SYQJSSJ = #{record.syqjssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.qdjg != null">
+        QDJG = #{record.qdjg,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bdcqzh != null">
+        BDCQZH = #{record.bdcqzh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.qxdm != null">
+        QXDM = #{record.qxdm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.djjg != null">
+        DJJG = #{record.djjg,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.dbr != null">
+        DBR = #{record.dbr,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.djsj != null">
+        DJSJ = #{record.djsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fj != null">
+        FJ = #{record.fj,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.qszt != null">
+        QSZT = #{record.qszt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.zxywh != null">
+        ZXYWH = #{record.zxywh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.zxsj != null">
+        ZXSJ = #{record.zxsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zxyy != null">
+        ZXYY = #{record.zxyy,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.blzt != null">
+        BLZT = #{record.blzt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.daqzh != null">
+        DAQZH = #{record.daqzh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.dand != null">
+        DAND = #{record.dand,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.dagh != null">
+        DAGH = #{record.dagh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.dahh != null">
+        DAHH = #{record.dahh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.daajh != null">
+        DAAJH = #{record.daajh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="record.daajbt != null">
+        DAAJBT = #{record.daajbt,jdbcType=NVARCHAR2},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SMATTR.JSYDSYQ
+    set BSM = #{record.bsm,jdbcType=NVARCHAR2},
+      OBJECTID = #{record.objectid,jdbcType=DECIMAL},
+      YSDM = #{record.ysdm,jdbcType=NVARCHAR2},
+      ZDDM = #{record.zddm,jdbcType=NVARCHAR2},
+      BDCDYBSM = #{record.bdcdybsm,jdbcType=NVARCHAR2},
+      BDCDYH = #{record.bdcdyh,jdbcType=NVARCHAR2},
+      YWH = #{record.ywh,jdbcType=NVARCHAR2},
+      QLLX = #{record.qllx,jdbcType=NVARCHAR2},
+      DJLX = #{record.djlx,jdbcType=NVARCHAR2},
+      DJYY = #{record.djyy,jdbcType=NVARCHAR2},
+      SYQMJ = #{record.syqmj,jdbcType=DECIMAL},
+      SYQQSSJ = #{record.syqqssj,jdbcType=TIMESTAMP},
+      SYQJSSJ = #{record.syqjssj,jdbcType=TIMESTAMP},
+      QDJG = #{record.qdjg,jdbcType=DECIMAL},
+      BDCQZH = #{record.bdcqzh,jdbcType=NVARCHAR2},
+      QXDM = #{record.qxdm,jdbcType=NVARCHAR2},
+      DJJG = #{record.djjg,jdbcType=NVARCHAR2},
+      DBR = #{record.dbr,jdbcType=NVARCHAR2},
+      DJSJ = #{record.djsj,jdbcType=TIMESTAMP},
+      FJ = #{record.fj,jdbcType=NVARCHAR2},
+      QSZT = #{record.qszt,jdbcType=NVARCHAR2},
+      ZXYWH = #{record.zxywh,jdbcType=NVARCHAR2},
+      ZXSJ = #{record.zxsj,jdbcType=TIMESTAMP},
+      ZXYY = #{record.zxyy,jdbcType=NVARCHAR2},
+      BLZT = #{record.blzt,jdbcType=NVARCHAR2},
+      DAQZH = #{record.daqzh,jdbcType=NVARCHAR2},
+      DAND = #{record.dand,jdbcType=NVARCHAR2},
+      DAGH = #{record.dagh,jdbcType=NVARCHAR2},
+      DAHH = #{record.dahh,jdbcType=NVARCHAR2},
+      DAAJH = #{record.daajh,jdbcType=NVARCHAR2},
+      DAAJBT = #{record.daajbt,jdbcType=NVARCHAR2}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.supermap.dossiertool.smattrEntity.Jsydsyq">
+    update SMATTR.JSYDSYQ
+    <set>
+      <if test="objectid != null">
+        OBJECTID = #{objectid,jdbcType=DECIMAL},
+      </if>
+      <if test="ysdm != null">
+        YSDM = #{ysdm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="zddm != null">
+        ZDDM = #{zddm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="bdcdybsm != null">
+        BDCDYBSM = #{bdcdybsm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="bdcdyh != null">
+        BDCDYH = #{bdcdyh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="ywh != null">
+        YWH = #{ywh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="qllx != null">
+        QLLX = #{qllx,jdbcType=NVARCHAR2},
+      </if>
+      <if test="djlx != null">
+        DJLX = #{djlx,jdbcType=NVARCHAR2},
+      </if>
+      <if test="djyy != null">
+        DJYY = #{djyy,jdbcType=NVARCHAR2},
+      </if>
+      <if test="syqmj != null">
+        SYQMJ = #{syqmj,jdbcType=DECIMAL},
+      </if>
+      <if test="syqqssj != null">
+        SYQQSSJ = #{syqqssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syqjssj != null">
+        SYQJSSJ = #{syqjssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qdjg != null">
+        QDJG = #{qdjg,jdbcType=DECIMAL},
+      </if>
+      <if test="bdcqzh != null">
+        BDCQZH = #{bdcqzh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="qxdm != null">
+        QXDM = #{qxdm,jdbcType=NVARCHAR2},
+      </if>
+      <if test="djjg != null">
+        DJJG = #{djjg,jdbcType=NVARCHAR2},
+      </if>
+      <if test="dbr != null">
+        DBR = #{dbr,jdbcType=NVARCHAR2},
+      </if>
+      <if test="djsj != null">
+        DJSJ = #{djsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fj != null">
+        FJ = #{fj,jdbcType=NVARCHAR2},
+      </if>
+      <if test="qszt != null">
+        QSZT = #{qszt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="zxywh != null">
+        ZXYWH = #{zxywh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="zxsj != null">
+        ZXSJ = #{zxsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zxyy != null">
+        ZXYY = #{zxyy,jdbcType=NVARCHAR2},
+      </if>
+      <if test="blzt != null">
+        BLZT = #{blzt,jdbcType=NVARCHAR2},
+      </if>
+      <if test="daqzh != null">
+        DAQZH = #{daqzh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="dand != null">
+        DAND = #{dand,jdbcType=NVARCHAR2},
+      </if>
+      <if test="dagh != null">
+        DAGH = #{dagh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="dahh != null">
+        DAHH = #{dahh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="daajh != null">
+        DAAJH = #{daajh,jdbcType=NVARCHAR2},
+      </if>
+      <if test="daajbt != null">
+        DAAJBT = #{daajbt,jdbcType=NVARCHAR2},
+      </if>
+    </set>
+    where BSM = #{bsm,jdbcType=NVARCHAR2}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.supermap.dossiertool.smattrEntity.Jsydsyq">
+    update SMATTR.JSYDSYQ
+    set OBJECTID = #{objectid,jdbcType=DECIMAL},
+      YSDM = #{ysdm,jdbcType=NVARCHAR2},
+      ZDDM = #{zddm,jdbcType=NVARCHAR2},
+      BDCDYBSM = #{bdcdybsm,jdbcType=NVARCHAR2},
+      BDCDYH = #{bdcdyh,jdbcType=NVARCHAR2},
+      YWH = #{ywh,jdbcType=NVARCHAR2},
+      QLLX = #{qllx,jdbcType=NVARCHAR2},
+      DJLX = #{djlx,jdbcType=NVARCHAR2},
+      DJYY = #{djyy,jdbcType=NVARCHAR2},
+      SYQMJ = #{syqmj,jdbcType=DECIMAL},
+      SYQQSSJ = #{syqqssj,jdbcType=TIMESTAMP},
+      SYQJSSJ = #{syqjssj,jdbcType=TIMESTAMP},
+      QDJG = #{qdjg,jdbcType=DECIMAL},
+      BDCQZH = #{bdcqzh,jdbcType=NVARCHAR2},
+      QXDM = #{qxdm,jdbcType=NVARCHAR2},
+      DJJG = #{djjg,jdbcType=NVARCHAR2},
+      DBR = #{dbr,jdbcType=NVARCHAR2},
+      DJSJ = #{djsj,jdbcType=TIMESTAMP},
+      FJ = #{fj,jdbcType=NVARCHAR2},
+      QSZT = #{qszt,jdbcType=NVARCHAR2},
+      ZXYWH = #{zxywh,jdbcType=NVARCHAR2},
+      ZXSJ = #{zxsj,jdbcType=TIMESTAMP},
+      ZXYY = #{zxyy,jdbcType=NVARCHAR2},
+      BLZT = #{blzt,jdbcType=NVARCHAR2},
+      DAQZH = #{daqzh,jdbcType=NVARCHAR2},
+      DAND = #{dand,jdbcType=NVARCHAR2},
+      DAGH = #{dagh,jdbcType=NVARCHAR2},
+      DAHH = #{dahh,jdbcType=NVARCHAR2},
+      DAAJH = #{daajh,jdbcType=NVARCHAR2},
+      DAAJBT = #{daajbt,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=NVARCHAR2}
+  </update>
+</mapper>

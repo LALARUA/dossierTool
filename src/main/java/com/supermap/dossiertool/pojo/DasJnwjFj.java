@@ -23,7 +23,7 @@ public class DasJnwjFj {
 
     private Object jnwjFjId;
 
-    private Long isrk;
+    private Integer isrk;
 
     private Object tenantId;
 
@@ -107,11 +107,11 @@ public class DasJnwjFj {
         this.jnwjFjId = jnwjFjId;
     }
 
-    public Long getIsrk() {
+    public Integer getIsrk() {
         return isrk;
     }
 
-    public void setIsrk(Long isrk) {
+    public void setIsrk(Integer isrk) {
         this.isrk = isrk;
     }
 
