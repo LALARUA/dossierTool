@@ -7,6 +7,10 @@ import com.supermap.dossiertool.mapper.*;
 
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
+import com.supermap.dossiertool.smattrEntity.Const;
+import com.supermap.dossiertool.smattrEntity.Jsydsyq;
+import com.supermap.dossiertool.smattrMapper.ConstMapper;
+import com.supermap.dossiertool.smattrMapper.JsydsyqMapper;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.junit.Test;
@@ -29,33 +33,17 @@ public class DossiertoolApplicationTests {
 
 
 	@Autowired
-	DasAjjbxxMapper dasAjjbxxMapper;
+	JsydsyqMapper jsydsyqMapper;
 
 	@Autowired
-	DasBdcMapper dasBdcMapper;
-
-	@Autowired
-	DasCqMapper dasCqMapper;
-
-	@Autowired
-	DasJnwjFjMapper dasJnwjFjMapper;
-
-	@Autowired
-	DasJnwjMapper dasJnwjMapper;
-
+	ConstMapper constMapper;
 
 	@Test
 	public void contextLoads() throws Exception {
-		DasAjjbxx ajjbxx = new DasAjjbxx();
-		ajjbxx.setAjid("text");
-		ajjbxx.setAjbt("tsvgs");
-		dasAjjbxxMapper.insertSelective(ajjbxx);
 
-		DasBdc dasBdc = new DasBdc();
-		dasBdc.setQzh("sfasf");
-		dasBdc.setYwlx("Sfaf");
-		dasBdc.setBdcid("sfasf");
-		dasBdcMapper.insertSelective(dasBdc);
+		List<Const> tdyt = constMapper.getSelected("QLLX");
+
+		System.out.println(55);
 
 //		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
 //		Date date = new Date();

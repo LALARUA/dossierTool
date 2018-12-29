@@ -1,6 +1,6 @@
 package com.supermap.dossiertool.smattrEntity;
 
-public class TxmWithBLOBs extends pojo.Txm {
+public class TxmWithBLOBs extends Txm {
     private byte[] dabhtxm;
 
     private byte[] dalxbhtxm;

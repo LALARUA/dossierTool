@@ -1,10 +1,14 @@
 package com.supermap.dossiertool.service.serviceImpl;
 
 import com.supermap.dossiertool.bean.MyFile;
+import com.supermap.dossiertool.bean.QlrList;
+import com.supermap.dossiertool.bean.TdpzytList;
 import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.mapper.*;
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.ZGStockSystemService;
+import com.supermap.dossiertool.smattrEntity.*;
+import com.supermap.dossiertool.smattrMapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -22,16 +26,18 @@ import java.util.*;
 @Service
 public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     @Autowired
-    DasAjjbxxMapper dasAjjbxxMapper;
+    JsydsyqMapper jsydsyqMapper;
     @Autowired
-    DasBdcMapper dasBdcMapper;
+    QlrMapper qlrMapper;
     @Autowired
-    DasCqMapper dasCqMapper;
+    TdpzytMapper tdpzytMapper;
     @Autowired
-    DasJnwjMapper dasJnwjMapper;
+    TxmMapper txmMapper;
     @Autowired
-    DasJnwjFjMapper dasJnwjFjMapper;
+    ZdjbxxMapper zdjbxxMapper;
 
+    @Autowired
+    ConstMapper constMapper;
     /**
      * @description
      * @author xiangXX
@@ -88,7 +94,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         das_ajjbxx.setBcqx(0);
         das_ajjbxx.setScrq(new Date());
         das_ajjbxx.setYxbz(0);
-        dasAjjbxxMapper.insertSelective(das_ajjbxx);
+
 
 
 
@@ -101,7 +107,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         das_bdc.setSyqr(QLR);
         das_bdc.setYwlx("DAS_CQ");
         das_bdc.setQzh(TDZH);
-        dasBdcMapper.insertSelective(das_bdc);
+
 
 
         //DAS_CQ数据
@@ -111,7 +117,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         das_cq.setSyqr(QLR);
         das_cq.setQzh(TDZH);
         das_cq.setZl(FWZL);
-        dasCqMapper.insertSelective(das_cq);
+
 
 
         //DAS_JNWJ数据
@@ -133,7 +139,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
             dasJnwj.setSxh(++SXH);
             dasJnwj.setTm(TM);
             dasJnwj.setYs(YS);
-            dasJnwjMapper.insertSelective(dasJnwj);
+
             das_jnwjs.add(dasJnwj);
 
             //DAS_JNWJ_FJ数据
@@ -157,16 +163,65 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
                 dasJnwjFj.setFiletype(FILETYPE);
                 dasJnwjFj.setFjid(FJID);
                 dasJnwjFj.setIsrk(0);
-                dasJnwjFjMapper.insertSelective(dasJnwjFj);
+
                 das_jnwj_fjs.add(dasJnwjFj);
 
             }
         }
     }
 
-    @Cacheable(cacheNames = "handlingAJH",key = "#AJH")
-    public List<MyFile> getJpgList(String path,String AJH){
+    @Override
+//    @Cacheable(key = "#selectNameList",cacheNames = "select")
+    public Map<String,List<Const>> getSelect(List<String> selectNameList) {
+        HashSet<String> strings = new HashSet<>(selectNameList);
+        Map<String,List<Const>> map = new HashMap<>();
+        strings.remove("");
+        for (String s : strings) {
+            map.put(s,constMapper.getSelected(s.toUpperCase()));
+        }
+        return map;
+    }
 
+    @Transactional
+    @Override
+    public void submitData(Zdjbxx zdjbxx, Jsydsyq jsydsyq, TdpzytList tdpzytList, QlrList qlrList, Txm txm) {
+        //宗地基本信息
+        zdjbxx.setObjectid(zdjbxxMapper.findMaxId());
+        String zdjbxxBsm = UUID.randomUUID().toString();  //宗地基本信息标识码
+        zdjbxx.setBsm(zdjbxxBsm);
+
+        //使用权信息
+        String syqBsm = UUID.randomUUID().toString();    //使用权标识码
+        jsydsyq.setBsm(syqBsm);
+        jsydsyq.setBdcdybsm(zdjbxxBsm);
+
+        jsydsyq.setObjectid(jsydsyqMapper.findMaxId());
+
+        //土地用途信息
+        List<Tdpzyt> tdyts = tdpzytList.getTdpzyts();   //土地用途列表
+        for (Tdpzyt t : tdyts) {
+            t.setObjectid(tdpzytMapper.findMaxId());
+            t.setBsm(UUID.randomUUID().toString());
+            t.setZdbsm(zdjbxxBsm);
+        }
+
+        //权利人信息
+        List<Qlr> qlrs = qlrList.getQlrs();       //权利人信息列表
+        for (Qlr q : qlrs) {
+            q.setBsm(UUID.randomUUID().toString());
+            q.setQlbsm(syqBsm);
+            q.setObjectid(qlrMapper.findMaxId());
+        }
+
+        //档案信息
+        txm.setZddm(zdjbxx.getZddm());
+        txm.setTxmid(txmMapper.findMaxId());
+
+    }
+
+
+//    @Cacheable(cacheNames = "handlingAJH",key = "#AJH")
+    public List<MyFile> getJpgList(String path,String AJH){
         return MyFunction.getJpgList(path);
     }
 

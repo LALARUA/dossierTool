@@ -2,37 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.supermap.dossiertool.smattrMapper.JsydsyqMapper">
   <resultMap id="BaseResultMap" type="com.supermap.dossiertool.smattrEntity.Jsydsyq">
-    <id column="BSM" jdbcType="NVARCHAR2" property="bsm" />
+    <id column="BSM" jdbcType="OTHER" property="bsm" />
     <result column="OBJECTID" jdbcType="DECIMAL" property="objectid" />
-    <result column="YSDM" jdbcType="NVARCHAR2" property="ysdm" />
-    <result column="ZDDM" jdbcType="NVARCHAR2" property="zddm" />
-    <result column="BDCDYBSM" jdbcType="NVARCHAR2" property="bdcdybsm" />
-    <result column="BDCDYH" jdbcType="NVARCHAR2" property="bdcdyh" />
-    <result column="YWH" jdbcType="NVARCHAR2" property="ywh" />
-    <result column="QLLX" jdbcType="NVARCHAR2" property="qllx" />
-    <result column="DJLX" jdbcType="NVARCHAR2" property="djlx" />
-    <result column="DJYY" jdbcType="NVARCHAR2" property="djyy" />
+    <result column="YSDM" jdbcType="OTHER" property="ysdm" />
+    <result column="ZDDM" jdbcType="OTHER" property="zddm" />
+    <result column="BDCDYBSM" jdbcType="OTHER" property="bdcdybsm" />
+    <result column="BDCDYH" jdbcType="OTHER" property="bdcdyh" />
+    <result column="YWH" jdbcType="OTHER" property="ywh" />
+    <result column="QLLX" jdbcType="OTHER" property="qllx" />
+    <result column="DJLX" jdbcType="OTHER" property="djlx" />
+    <result column="DJYY" jdbcType="OTHER" property="djyy" />
     <result column="SYQMJ" jdbcType="DECIMAL" property="syqmj" />
     <result column="SYQQSSJ" jdbcType="TIMESTAMP" property="syqqssj" />
     <result column="SYQJSSJ" jdbcType="TIMESTAMP" property="syqjssj" />
     <result column="QDJG" jdbcType="DECIMAL" property="qdjg" />
-    <result column="BDCQZH" jdbcType="NVARCHAR2" property="bdcqzh" />
-    <result column="QXDM" jdbcType="NVARCHAR2" property="qxdm" />
-    <result column="DJJG" jdbcType="NVARCHAR2" property="djjg" />
-    <result column="DBR" jdbcType="NVARCHAR2" property="dbr" />
+    <result column="BDCQZH" jdbcType="OTHER" property="bdcqzh" />
+    <result column="QXDM" jdbcType="OTHER" property="qxdm" />
+    <result column="DJJG" jdbcType="OTHER" property="djjg" />
+    <result column="DBR" jdbcType="OTHER" property="dbr" />
     <result column="DJSJ" jdbcType="TIMESTAMP" property="djsj" />
-    <result column="FJ" jdbcType="NVARCHAR2" property="fj" />
-    <result column="QSZT" jdbcType="NVARCHAR2" property="qszt" />
-    <result column="ZXYWH" jdbcType="NVARCHAR2" property="zxywh" />
+    <result column="FJ" jdbcType="OTHER" property="fj" />
+    <result column="QSZT" jdbcType="OTHER" property="qszt" />
+    <result column="ZXYWH" jdbcType="OTHER" property="zxywh" />
     <result column="ZXSJ" jdbcType="TIMESTAMP" property="zxsj" />
-    <result column="ZXYY" jdbcType="NVARCHAR2" property="zxyy" />
-    <result column="BLZT" jdbcType="NVARCHAR2" property="blzt" />
-    <result column="DAQZH" jdbcType="NVARCHAR2" property="daqzh" />
-    <result column="DAND" jdbcType="NVARCHAR2" property="dand" />
-    <result column="DAGH" jdbcType="NVARCHAR2" property="dagh" />
-    <result column="DAHH" jdbcType="NVARCHAR2" property="dahh" />
-    <result column="DAAJH" jdbcType="NVARCHAR2" property="daajh" />
-    <result column="DAAJBT" jdbcType="NVARCHAR2" property="daajbt" />
+    <result column="ZXYY" jdbcType="OTHER" property="zxyy" />
+    <result column="BLZT" jdbcType="OTHER" property="blzt" />
+    <result column="DAQZH" jdbcType="OTHER" property="daqzh" />
+    <result column="DAND" jdbcType="OTHER" property="dand" />
+    <result column="DAGH" jdbcType="OTHER" property="dagh" />
+    <result column="DAHH" jdbcType="OTHER" property="dahh" />
+    <result column="DAAJH" jdbcType="OTHER" property="daajh" />
+    <result column="DAAJBT" jdbcType="OTHER" property="daajbt" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -115,11 +115,11 @@
     select 
     <include refid="Base_Column_List" />
     from SMATTR.JSYDSYQ
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=OTHER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from SMATTR.JSYDSYQ
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=OTHER}
   </delete>
   <delete id="deleteByExample" parameterType="com.supermap.dossiertool.smattrEntity.JsydsyqExample">
     delete from SMATTR.JSYDSYQ
@@ -139,17 +139,17 @@
       BLZT, DAQZH, DAND, 
       DAGH, DAHH, DAAJH, 
       DAAJBT)
-    values (#{bsm,jdbcType=NVARCHAR2}, #{objectid,jdbcType=DECIMAL}, #{ysdm,jdbcType=NVARCHAR2}, 
-      #{zddm,jdbcType=NVARCHAR2}, #{bdcdybsm,jdbcType=NVARCHAR2}, #{bdcdyh,jdbcType=NVARCHAR2}, 
-      #{ywh,jdbcType=NVARCHAR2}, #{qllx,jdbcType=NVARCHAR2}, #{djlx,jdbcType=NVARCHAR2}, 
-      #{djyy,jdbcType=NVARCHAR2}, #{syqmj,jdbcType=DECIMAL}, #{syqqssj,jdbcType=TIMESTAMP}, 
-      #{syqjssj,jdbcType=TIMESTAMP}, #{qdjg,jdbcType=DECIMAL}, #{bdcqzh,jdbcType=NVARCHAR2}, 
-      #{qxdm,jdbcType=NVARCHAR2}, #{djjg,jdbcType=NVARCHAR2}, #{dbr,jdbcType=NVARCHAR2}, 
-      #{djsj,jdbcType=TIMESTAMP}, #{fj,jdbcType=NVARCHAR2}, #{qszt,jdbcType=NVARCHAR2}, 
-      #{zxywh,jdbcType=NVARCHAR2}, #{zxsj,jdbcType=TIMESTAMP}, #{zxyy,jdbcType=NVARCHAR2}, 
-      #{blzt,jdbcType=NVARCHAR2}, #{daqzh,jdbcType=NVARCHAR2}, #{dand,jdbcType=NVARCHAR2}, 
-      #{dagh,jdbcType=NVARCHAR2}, #{dahh,jdbcType=NVARCHAR2}, #{daajh,jdbcType=NVARCHAR2}, 
-      #{daajbt,jdbcType=NVARCHAR2})
+    values (#{bsm,jdbcType=OTHER}, #{objectid,jdbcType=DECIMAL}, #{ysdm,jdbcType=OTHER}, 
+      #{zddm,jdbcType=OTHER}, #{bdcdybsm,jdbcType=OTHER}, #{bdcdyh,jdbcType=OTHER}, 
+      #{ywh,jdbcType=OTHER}, #{qllx,jdbcType=OTHER}, #{djlx,jdbcType=OTHER}, 
+      #{djyy,jdbcType=OTHER}, #{syqmj,jdbcType=DECIMAL}, #{syqqssj,jdbcType=TIMESTAMP}, 
+      #{syqjssj,jdbcType=TIMESTAMP}, #{qdjg,jdbcType=DECIMAL}, #{bdcqzh,jdbcType=OTHER}, 
+      #{qxdm,jdbcType=OTHER}, #{djjg,jdbcType=OTHER}, #{dbr,jdbcType=OTHER}, 
+      #{djsj,jdbcType=TIMESTAMP}, #{fj,jdbcType=OTHER}, #{qszt,jdbcType=OTHER}, 
+      #{zxywh,jdbcType=OTHER}, #{zxsj,jdbcType=TIMESTAMP}, #{zxyy,jdbcType=OTHER}, 
+      #{blzt,jdbcType=OTHER}, #{daqzh,jdbcType=OTHER}, #{dand,jdbcType=OTHER}, 
+      #{dagh,jdbcType=OTHER}, #{dahh,jdbcType=OTHER}, #{daajh,jdbcType=OTHER}, 
+      #{daajbt,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.Jsydsyq">
     insert into SMATTR.JSYDSYQ
@@ -250,34 +250,34 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="bsm != null">
-        #{bsm,jdbcType=NVARCHAR2},
+        #{bsm,jdbcType=OTHER},
       </if>
       <if test="objectid != null">
         #{objectid,jdbcType=DECIMAL},
       </if>
       <if test="ysdm != null">
-        #{ysdm,jdbcType=NVARCHAR2},
+        #{ysdm,jdbcType=OTHER},
       </if>
       <if test="zddm != null">
-        #{zddm,jdbcType=NVARCHAR2},
+        #{zddm,jdbcType=OTHER},
       </if>
       <if test="bdcdybsm != null">
-        #{bdcdybsm,jdbcType=NVARCHAR2},
+        #{bdcdybsm,jdbcType=OTHER},
       </if>
       <if test="bdcdyh != null">
-        #{bdcdyh,jdbcType=NVARCHAR2},
+        #{bdcdyh,jdbcType=OTHER},
       </if>
       <if test="ywh != null">
-        #{ywh,jdbcType=NVARCHAR2},
+        #{ywh,jdbcType=OTHER},
       </if>
       <if test="qllx != null">
-        #{qllx,jdbcType=NVARCHAR2},
+        #{qllx,jdbcType=OTHER},
       </if>
       <if test="djlx != null">
-        #{djlx,jdbcType=NVARCHAR2},
+        #{djlx,jdbcType=OTHER},
       </if>
       <if test="djyy != null">
-        #{djyy,jdbcType=NVARCHAR2},
+        #{djyy,jdbcType=OTHER},
       </if>
       <if test="syqmj != null">
         #{syqmj,jdbcType=DECIMAL},
@@ -292,55 +292,55 @@
         #{qdjg,jdbcType=DECIMAL},
       </if>
       <if test="bdcqzh != null">
-        #{bdcqzh,jdbcType=NVARCHAR2},
+        #{bdcqzh,jdbcType=OTHER},
       </if>
       <if test="qxdm != null">
-        #{qxdm,jdbcType=NVARCHAR2},
+        #{qxdm,jdbcType=OTHER},
       </if>
       <if test="djjg != null">
-        #{djjg,jdbcType=NVARCHAR2},
+        #{djjg,jdbcType=OTHER},
       </if>
       <if test="dbr != null">
-        #{dbr,jdbcType=NVARCHAR2},
+        #{dbr,jdbcType=OTHER},
       </if>
       <if test="djsj != null">
         #{djsj,jdbcType=TIMESTAMP},
       </if>
       <if test="fj != null">
-        #{fj,jdbcType=NVARCHAR2},
+        #{fj,jdbcType=OTHER},
       </if>
       <if test="qszt != null">
-        #{qszt,jdbcType=NVARCHAR2},
+        #{qszt,jdbcType=OTHER},
       </if>
       <if test="zxywh != null">
-        #{zxywh,jdbcType=NVARCHAR2},
+        #{zxywh,jdbcType=OTHER},
       </if>
       <if test="zxsj != null">
         #{zxsj,jdbcType=TIMESTAMP},
       </if>
       <if test="zxyy != null">
-        #{zxyy,jdbcType=NVARCHAR2},
+        #{zxyy,jdbcType=OTHER},
       </if>
       <if test="blzt != null">
-        #{blzt,jdbcType=NVARCHAR2},
+        #{blzt,jdbcType=OTHER},
       </if>
       <if test="daqzh != null">
-        #{daqzh,jdbcType=NVARCHAR2},
+        #{daqzh,jdbcType=OTHER},
       </if>
       <if test="dand != null">
-        #{dand,jdbcType=NVARCHAR2},
+        #{dand,jdbcType=OTHER},
       </if>
       <if test="dagh != null">
-        #{dagh,jdbcType=NVARCHAR2},
+        #{dagh,jdbcType=OTHER},
       </if>
       <if test="dahh != null">
-        #{dahh,jdbcType=NVARCHAR2},
+        #{dahh,jdbcType=OTHER},
       </if>
       <if test="daajh != null">
-        #{daajh,jdbcType=NVARCHAR2},
+        #{daajh,jdbcType=OTHER},
       </if>
       <if test="daajbt != null">
-        #{daajbt,jdbcType=NVARCHAR2},
+        #{daajbt,jdbcType=OTHER},
       </if>
     </trim>
   </insert>
@@ -354,34 +354,34 @@
     update SMATTR.JSYDSYQ
     <set>
       <if test="record.bsm != null">
-        BSM = #{record.bsm,jdbcType=NVARCHAR2},
+        BSM = #{record.bsm,jdbcType=OTHER},
       </if>
       <if test="record.objectid != null">
         OBJECTID = #{record.objectid,jdbcType=DECIMAL},
       </if>
       <if test="record.ysdm != null">
-        YSDM = #{record.ysdm,jdbcType=NVARCHAR2},
+        YSDM = #{record.ysdm,jdbcType=OTHER},
       </if>
       <if test="record.zddm != null">
-        ZDDM = #{record.zddm,jdbcType=NVARCHAR2},
+        ZDDM = #{record.zddm,jdbcType=OTHER},
       </if>
       <if test="record.bdcdybsm != null">
-        BDCDYBSM = #{record.bdcdybsm,jdbcType=NVARCHAR2},
+        BDCDYBSM = #{record.bdcdybsm,jdbcType=OTHER},
       </if>
       <if test="record.bdcdyh != null">
-        BDCDYH = #{record.bdcdyh,jdbcType=NVARCHAR2},
+        BDCDYH = #{record.bdcdyh,jdbcType=OTHER},
       </if>
       <if test="record.ywh != null">
-        YWH = #{record.ywh,jdbcType=NVARCHAR2},
+        YWH = #{record.ywh,jdbcType=OTHER},
       </if>
       <if test="record.qllx != null">
-        QLLX = #{record.qllx,jdbcType=NVARCHAR2},
+        QLLX = #{record.qllx,jdbcType=OTHER},
       </if>
       <if test="record.djlx != null">
-        DJLX = #{record.djlx,jdbcType=NVARCHAR2},
+        DJLX = #{record.djlx,jdbcType=OTHER},
       </if>
       <if test="record.djyy != null">
-        DJYY = #{record.djyy,jdbcType=NVARCHAR2},
+        DJYY = #{record.djyy,jdbcType=OTHER},
       </if>
       <if test="record.syqmj != null">
         SYQMJ = #{record.syqmj,jdbcType=DECIMAL},
@@ -396,55 +396,55 @@
         QDJG = #{record.qdjg,jdbcType=DECIMAL},
       </if>
       <if test="record.bdcqzh != null">
-        BDCQZH = #{record.bdcqzh,jdbcType=NVARCHAR2},
+        BDCQZH = #{record.bdcqzh,jdbcType=OTHER},
       </if>
       <if test="record.qxdm != null">
-        QXDM = #{record.qxdm,jdbcType=NVARCHAR2},
+        QXDM = #{record.qxdm,jdbcType=OTHER},
       </if>
       <if test="record.djjg != null">
-        DJJG = #{record.djjg,jdbcType=NVARCHAR2},
+        DJJG = #{record.djjg,jdbcType=OTHER},
       </if>
       <if test="record.dbr != null">
-        DBR = #{record.dbr,jdbcType=NVARCHAR2},
+        DBR = #{record.dbr,jdbcType=OTHER},
       </if>
       <if test="record.djsj != null">
         DJSJ = #{record.djsj,jdbcType=TIMESTAMP},
       </if>
       <if test="record.fj != null">
-        FJ = #{record.fj,jdbcType=NVARCHAR2},
+        FJ = #{record.fj,jdbcType=OTHER},
       </if>
       <if test="record.qszt != null">
-        QSZT = #{record.qszt,jdbcType=NVARCHAR2},
+        QSZT = #{record.qszt,jdbcType=OTHER},
       </if>
       <if test="record.zxywh != null">
-        ZXYWH = #{record.zxywh,jdbcType=NVARCHAR2},
+        ZXYWH = #{record.zxywh,jdbcType=OTHER},
       </if>
       <if test="record.zxsj != null">
         ZXSJ = #{record.zxsj,jdbcType=TIMESTAMP},
       </if>
       <if test="record.zxyy != null">
-        ZXYY = #{record.zxyy,jdbcType=NVARCHAR2},
+        ZXYY = #{record.zxyy,jdbcType=OTHER},
       </if>
       <if test="record.blzt != null">
-        BLZT = #{record.blzt,jdbcType=NVARCHAR2},
+        BLZT = #{record.blzt,jdbcType=OTHER},
       </if>
       <if test="record.daqzh != null">
-        DAQZH = #{record.daqzh,jdbcType=NVARCHAR2},
+        DAQZH = #{record.daqzh,jdbcType=OTHER},
       </if>
       <if test="record.dand != null">
-        DAND = #{record.dand,jdbcType=NVARCHAR2},
+        DAND = #{record.dand,jdbcType=OTHER},
       </if>
       <if test="record.dagh != null">
-        DAGH = #{record.dagh,jdbcType=NVARCHAR2},
+        DAGH = #{record.dagh,jdbcType=OTHER},
       </if>
       <if test="record.dahh != null">
-        DAHH = #{record.dahh,jdbcType=NVARCHAR2},
+        DAHH = #{record.dahh,jdbcType=OTHER},
       </if>
       <if test="record.daajh != null">
-        DAAJH = #{record.daajh,jdbcType=NVARCHAR2},
+        DAAJH = #{record.daajh,jdbcType=OTHER},
       </if>
       <if test="record.daajbt != null">
-        DAAJBT = #{record.daajbt,jdbcType=NVARCHAR2},
+        DAAJBT = #{record.daajbt,jdbcType=OTHER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -453,37 +453,37 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update SMATTR.JSYDSYQ
-    set BSM = #{record.bsm,jdbcType=NVARCHAR2},
+    set BSM = #{record.bsm,jdbcType=OTHER},
       OBJECTID = #{record.objectid,jdbcType=DECIMAL},
-      YSDM = #{record.ysdm,jdbcType=NVARCHAR2},
-      ZDDM = #{record.zddm,jdbcType=NVARCHAR2},
-      BDCDYBSM = #{record.bdcdybsm,jdbcType=NVARCHAR2},
-      BDCDYH = #{record.bdcdyh,jdbcType=NVARCHAR2},
-      YWH = #{record.ywh,jdbcType=NVARCHAR2},
-      QLLX = #{record.qllx,jdbcType=NVARCHAR2},
-      DJLX = #{record.djlx,jdbcType=NVARCHAR2},
-      DJYY = #{record.djyy,jdbcType=NVARCHAR2},
+      YSDM = #{record.ysdm,jdbcType=OTHER},
+      ZDDM = #{record.zddm,jdbcType=OTHER},
+      BDCDYBSM = #{record.bdcdybsm,jdbcType=OTHER},
+      BDCDYH = #{record.bdcdyh,jdbcType=OTHER},
+      YWH = #{record.ywh,jdbcType=OTHER},
+      QLLX = #{record.qllx,jdbcType=OTHER},
+      DJLX = #{record.djlx,jdbcType=OTHER},
+      DJYY = #{record.djyy,jdbcType=OTHER},
       SYQMJ = #{record.syqmj,jdbcType=DECIMAL},
       SYQQSSJ = #{record.syqqssj,jdbcType=TIMESTAMP},
       SYQJSSJ = #{record.syqjssj,jdbcType=TIMESTAMP},
       QDJG = #{record.qdjg,jdbcType=DECIMAL},
-      BDCQZH = #{record.bdcqzh,jdbcType=NVARCHAR2},
-      QXDM = #{record.qxdm,jdbcType=NVARCHAR2},
-      DJJG = #{record.djjg,jdbcType=NVARCHAR2},
-      DBR = #{record.dbr,jdbcType=NVARCHAR2},
+      BDCQZH = #{record.bdcqzh,jdbcType=OTHER},
+      QXDM = #{record.qxdm,jdbcType=OTHER},
+      DJJG = #{record.djjg,jdbcType=OTHER},
+      DBR = #{record.dbr,jdbcType=OTHER},
       DJSJ = #{record.djsj,jdbcType=TIMESTAMP},
-      FJ = #{record.fj,jdbcType=NVARCHAR2},
-      QSZT = #{record.qszt,jdbcType=NVARCHAR2},
-      ZXYWH = #{record.zxywh,jdbcType=NVARCHAR2},
+      FJ = #{record.fj,jdbcType=OTHER},
+      QSZT = #{record.qszt,jdbcType=OTHER},
+      ZXYWH = #{record.zxywh,jdbcType=OTHER},
       ZXSJ = #{record.zxsj,jdbcType=TIMESTAMP},
-      ZXYY = #{record.zxyy,jdbcType=NVARCHAR2},
-      BLZT = #{record.blzt,jdbcType=NVARCHAR2},
-      DAQZH = #{record.daqzh,jdbcType=NVARCHAR2},
-      DAND = #{record.dand,jdbcType=NVARCHAR2},
-      DAGH = #{record.dagh,jdbcType=NVARCHAR2},
-      DAHH = #{record.dahh,jdbcType=NVARCHAR2},
-      DAAJH = #{record.daajh,jdbcType=NVARCHAR2},
-      DAAJBT = #{record.daajbt,jdbcType=NVARCHAR2}
+      ZXYY = #{record.zxyy,jdbcType=OTHER},
+      BLZT = #{record.blzt,jdbcType=OTHER},
+      DAQZH = #{record.daqzh,jdbcType=OTHER},
+      DAND = #{record.dand,jdbcType=OTHER},
+      DAGH = #{record.dagh,jdbcType=OTHER},
+      DAHH = #{record.dahh,jdbcType=OTHER},
+      DAAJH = #{record.daajh,jdbcType=OTHER},
+      DAAJBT = #{record.daajbt,jdbcType=OTHER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -495,28 +495,28 @@
         OBJECTID = #{objectid,jdbcType=DECIMAL},
       </if>
       <if test="ysdm != null">
-        YSDM = #{ysdm,jdbcType=NVARCHAR2},
+        YSDM = #{ysdm,jdbcType=OTHER},
       </if>
       <if test="zddm != null">
-        ZDDM = #{zddm,jdbcType=NVARCHAR2},
+        ZDDM = #{zddm,jdbcType=OTHER},
       </if>
       <if test="bdcdybsm != null">
-        BDCDYBSM = #{bdcdybsm,jdbcType=NVARCHAR2},
+        BDCDYBSM = #{bdcdybsm,jdbcType=OTHER},
       </if>
       <if test="bdcdyh != null">
-        BDCDYH = #{bdcdyh,jdbcType=NVARCHAR2},
+        BDCDYH = #{bdcdyh,jdbcType=OTHER},
       </if>
       <if test="ywh != null">
-        YWH = #{ywh,jdbcType=NVARCHAR2},
+        YWH = #{ywh,jdbcType=OTHER},
       </if>
       <if test="qllx != null">
-        QLLX = #{qllx,jdbcType=NVARCHAR2},
+        QLLX = #{qllx,jdbcType=OTHER},
       </if>
       <if test="djlx != null">
-        DJLX = #{djlx,jdbcType=NVARCHAR2},
+        DJLX = #{djlx,jdbcType=OTHER},
       </if>
       <if test="djyy != null">
-        DJYY = #{djyy,jdbcType=NVARCHAR2},
+        DJYY = #{djyy,jdbcType=OTHER},
       </if>
       <if test="syqmj != null">
         SYQMJ = #{syqmj,jdbcType=DECIMAL},
@@ -531,91 +531,91 @@
         QDJG = #{qdjg,jdbcType=DECIMAL},
       </if>
       <if test="bdcqzh != null">
-        BDCQZH = #{bdcqzh,jdbcType=NVARCHAR2},
+        BDCQZH = #{bdcqzh,jdbcType=OTHER},
       </if>
       <if test="qxdm != null">
-        QXDM = #{qxdm,jdbcType=NVARCHAR2},
+        QXDM = #{qxdm,jdbcType=OTHER},
       </if>
       <if test="djjg != null">
-        DJJG = #{djjg,jdbcType=NVARCHAR2},
+        DJJG = #{djjg,jdbcType=OTHER},
       </if>
       <if test="dbr != null">
-        DBR = #{dbr,jdbcType=NVARCHAR2},
+        DBR = #{dbr,jdbcType=OTHER},
       </if>
       <if test="djsj != null">
         DJSJ = #{djsj,jdbcType=TIMESTAMP},
       </if>
       <if test="fj != null">
-        FJ = #{fj,jdbcType=NVARCHAR2},
+        FJ = #{fj,jdbcType=OTHER},
       </if>
       <if test="qszt != null">
-        QSZT = #{qszt,jdbcType=NVARCHAR2},
+        QSZT = #{qszt,jdbcType=OTHER},
       </if>
       <if test="zxywh != null">
-        ZXYWH = #{zxywh,jdbcType=NVARCHAR2},
+        ZXYWH = #{zxywh,jdbcType=OTHER},
       </if>
       <if test="zxsj != null">
         ZXSJ = #{zxsj,jdbcType=TIMESTAMP},
       </if>
       <if test="zxyy != null">
-        ZXYY = #{zxyy,jdbcType=NVARCHAR2},
+        ZXYY = #{zxyy,jdbcType=OTHER},
       </if>
       <if test="blzt != null">
-        BLZT = #{blzt,jdbcType=NVARCHAR2},
+        BLZT = #{blzt,jdbcType=OTHER},
       </if>
       <if test="daqzh != null">
-        DAQZH = #{daqzh,jdbcType=NVARCHAR2},
+        DAQZH = #{daqzh,jdbcType=OTHER},
       </if>
       <if test="dand != null">
-        DAND = #{dand,jdbcType=NVARCHAR2},
+        DAND = #{dand,jdbcType=OTHER},
       </if>
       <if test="dagh != null">
-        DAGH = #{dagh,jdbcType=NVARCHAR2},
+        DAGH = #{dagh,jdbcType=OTHER},
       </if>
       <if test="dahh != null">
-        DAHH = #{dahh,jdbcType=NVARCHAR2},
+        DAHH = #{dahh,jdbcType=OTHER},
       </if>
       <if test="daajh != null">
-        DAAJH = #{daajh,jdbcType=NVARCHAR2},
+        DAAJH = #{daajh,jdbcType=OTHER},
       </if>
       <if test="daajbt != null">
-        DAAJBT = #{daajbt,jdbcType=NVARCHAR2},
+        DAAJBT = #{daajbt,jdbcType=OTHER},
       </if>
     </set>
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=OTHER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.supermap.dossiertool.smattrEntity.Jsydsyq">
     update SMATTR.JSYDSYQ
     set OBJECTID = #{objectid,jdbcType=DECIMAL},
-      YSDM = #{ysdm,jdbcType=NVARCHAR2},
-      ZDDM = #{zddm,jdbcType=NVARCHAR2},
-      BDCDYBSM = #{bdcdybsm,jdbcType=NVARCHAR2},
-      BDCDYH = #{bdcdyh,jdbcType=NVARCHAR2},
-      YWH = #{ywh,jdbcType=NVARCHAR2},
-      QLLX = #{qllx,jdbcType=NVARCHAR2},
-      DJLX = #{djlx,jdbcType=NVARCHAR2},
-      DJYY = #{djyy,jdbcType=NVARCHAR2},
+      YSDM = #{ysdm,jdbcType=OTHER},
+      ZDDM = #{zddm,jdbcType=OTHER},
+      BDCDYBSM = #{bdcdybsm,jdbcType=OTHER},
+      BDCDYH = #{bdcdyh,jdbcType=OTHER},
+      YWH = #{ywh,jdbcType=OTHER},
+      QLLX = #{qllx,jdbcType=OTHER},
+      DJLX = #{djlx,jdbcType=OTHER},
+      DJYY = #{djyy,jdbcType=OTHER},
       SYQMJ = #{syqmj,jdbcType=DECIMAL},
       SYQQSSJ = #{syqqssj,jdbcType=TIMESTAMP},
       SYQJSSJ = #{syqjssj,jdbcType=TIMESTAMP},
       QDJG = #{qdjg,jdbcType=DECIMAL},
-      BDCQZH = #{bdcqzh,jdbcType=NVARCHAR2},
-      QXDM = #{qxdm,jdbcType=NVARCHAR2},
-      DJJG = #{djjg,jdbcType=NVARCHAR2},
-      DBR = #{dbr,jdbcType=NVARCHAR2},
+      BDCQZH = #{bdcqzh,jdbcType=OTHER},
+      QXDM = #{qxdm,jdbcType=OTHER},
+      DJJG = #{djjg,jdbcType=OTHER},
+      DBR = #{dbr,jdbcType=OTHER},
       DJSJ = #{djsj,jdbcType=TIMESTAMP},
-      FJ = #{fj,jdbcType=NVARCHAR2},
-      QSZT = #{qszt,jdbcType=NVARCHAR2},
-      ZXYWH = #{zxywh,jdbcType=NVARCHAR2},
+      FJ = #{fj,jdbcType=OTHER},
+      QSZT = #{qszt,jdbcType=OTHER},
+      ZXYWH = #{zxywh,jdbcType=OTHER},
       ZXSJ = #{zxsj,jdbcType=TIMESTAMP},
-      ZXYY = #{zxyy,jdbcType=NVARCHAR2},
-      BLZT = #{blzt,jdbcType=NVARCHAR2},
-      DAQZH = #{daqzh,jdbcType=NVARCHAR2},
-      DAND = #{dand,jdbcType=NVARCHAR2},
-      DAGH = #{dagh,jdbcType=NVARCHAR2},
-      DAHH = #{dahh,jdbcType=NVARCHAR2},
-      DAAJH = #{daajh,jdbcType=NVARCHAR2},
-      DAAJBT = #{daajbt,jdbcType=NVARCHAR2}
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+      ZXYY = #{zxyy,jdbcType=OTHER},
+      BLZT = #{blzt,jdbcType=OTHER},
+      DAQZH = #{daqzh,jdbcType=OTHER},
+      DAND = #{dand,jdbcType=OTHER},
+      DAGH = #{dagh,jdbcType=OTHER},
+      DAHH = #{dahh,jdbcType=OTHER},
+      DAAJH = #{daajh,jdbcType=OTHER},
+      DAAJBT = #{daajbt,jdbcType=OTHER}
+    where BSM = #{bsm,jdbcType=OTHER}
   </update>
 </mapper>

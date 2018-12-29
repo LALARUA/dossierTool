@@ -2,56 +2,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.supermap.dossiertool.smattrMapper.QlrMapper">
   <resultMap id="BaseResultMap" type="com.supermap.dossiertool.smattrEntity.Qlr">
-    <id column="BSM" jdbcType="NVARCHAR2" property="bsm" />
+    <id column="BSM" jdbcType="OTHER" property="bsm" />
     <result column="OBJECTID" jdbcType="DECIMAL" property="objectid" />
-    <result column="YSDM" jdbcType="NVARCHAR2" property="ysdm" />
-    <result column="QLBSM" jdbcType="NVARCHAR2" property="qlbsm" />
-    <result column="BDCDYH" jdbcType="NVARCHAR2" property="bdcdyh" />
+    <result column="YSDM" jdbcType="OTHER" property="ysdm" />
+    <result column="QLBSM" jdbcType="OTHER" property="qlbsm" />
+    <result column="BDCDYH" jdbcType="OTHER" property="bdcdyh" />
     <result column="SXH" jdbcType="DECIMAL" property="sxh" />
-    <result column="QLRMC" jdbcType="NVARCHAR2" property="qlrmc" />
-    <result column="BDCQZH" jdbcType="NVARCHAR2" property="bdcqzh" />
-    <result column="QZYSXLH" jdbcType="NVARCHAR2" property="qzysxlh" />
-    <result column="SFCZR" jdbcType="NVARCHAR2" property="sfczr" />
-    <result column="ZJZL" jdbcType="NVARCHAR2" property="zjzl" />
-    <result column="ZJH" jdbcType="NVARCHAR2" property="zjh" />
-    <result column="FZJG" jdbcType="NVARCHAR2" property="fzjg" />
-    <result column="SSHY" jdbcType="NVARCHAR2" property="sshy" />
-    <result column="GJ" jdbcType="NVARCHAR2" property="gj" />
-    <result column="HJSZSS" jdbcType="NVARCHAR2" property="hjszss" />
-    <result column="XB" jdbcType="NVARCHAR2" property="xb" />
-    <result column="DH" jdbcType="NVARCHAR2" property="dh" />
-    <result column="DZ" jdbcType="NVARCHAR2" property="dz" />
-    <result column="YB" jdbcType="NVARCHAR2" property="yb" />
-    <result column="GZDW" jdbcType="NVARCHAR2" property="gzdw" />
-    <result column="DZYJ" jdbcType="NVARCHAR2" property="dzyj" />
-    <result column="QLRLX" jdbcType="NVARCHAR2" property="qlrlx" />
-    <result column="QLBL" jdbcType="NVARCHAR2" property="qlbl" />
-    <result column="GYFS" jdbcType="NVARCHAR2" property="gyfs" />
-    <result column="BZ" jdbcType="NVARCHAR2" property="bz" />
-    <result column="DLRXM" jdbcType="NVARCHAR2" property="dlrxm" />
-    <result column="DLRLXDH" jdbcType="NVARCHAR2" property="dlrlxdh" />
-    <result column="DLRZJHM" jdbcType="NVARCHAR2" property="dlrzjhm" />
-    <result column="DLRZJLX" jdbcType="NVARCHAR2" property="dlrzjlx" />
-    <result column="DLJGMC" jdbcType="NVARCHAR2" property="dljgmc" />
+    <result column="QLRMC" jdbcType="OTHER" property="qlrmc" />
+    <result column="BDCQZH" jdbcType="OTHER" property="bdcqzh" />
+    <result column="QZYSXLH" jdbcType="OTHER" property="qzysxlh" />
+    <result column="SFCZR" jdbcType="OTHER" property="sfczr" />
+    <result column="ZJZL" jdbcType="OTHER" property="zjzl" />
+    <result column="ZJH" jdbcType="OTHER" property="zjh" />
+    <result column="FZJG" jdbcType="OTHER" property="fzjg" />
+    <result column="SSHY" jdbcType="OTHER" property="sshy" />
+    <result column="GJ" jdbcType="OTHER" property="gj" />
+    <result column="HJSZSS" jdbcType="OTHER" property="hjszss" />
+    <result column="XB" jdbcType="OTHER" property="xb" />
+    <result column="DH" jdbcType="OTHER" property="dh" />
+    <result column="DZ" jdbcType="OTHER" property="dz" />
+    <result column="YB" jdbcType="OTHER" property="yb" />
+    <result column="GZDW" jdbcType="OTHER" property="gzdw" />
+    <result column="DZYJ" jdbcType="OTHER" property="dzyj" />
+    <result column="QLRLX" jdbcType="OTHER" property="qlrlx" />
+    <result column="QLBL" jdbcType="OTHER" property="qlbl" />
+    <result column="GYFS" jdbcType="OTHER" property="gyfs" />
+    <result column="BZ" jdbcType="OTHER" property="bz" />
+    <result column="DLRXM" jdbcType="OTHER" property="dlrxm" />
+    <result column="DLRLXDH" jdbcType="OTHER" property="dlrlxdh" />
+    <result column="DLRZJHM" jdbcType="OTHER" property="dlrzjhm" />
+    <result column="DLRZJLX" jdbcType="OTHER" property="dlrzjlx" />
+    <result column="DLJGMC" jdbcType="OTHER" property="dljgmc" />
     <result column="QLMJ" jdbcType="DECIMAL" property="qlmj" />
-    <result column="FDDBR" jdbcType="NVARCHAR2" property="fddbr" />
-    <result column="FDDBRDH" jdbcType="NVARCHAR2" property="fddbrdh" />
-    <result column="FDDBRZJHM" jdbcType="NVARCHAR2" property="fddbrzjhm" />
-    <result column="FDDBRZJLX" jdbcType="NVARCHAR2" property="fddbrzjlx" />
-    <result column="SQRID" jdbcType="NVARCHAR2" property="sqrid" />
-    <result column="FCZH" jdbcType="NVARCHAR2" property="fczh" />
-    <result column="BLZT" jdbcType="NVARCHAR2" property="blzt" />
-    <result column="YTDSYQR" jdbcType="NVARCHAR2" property="ytdsyqr" />
-    <result column="YBDCQZH" jdbcType="NVARCHAR2" property="ybdcqzh" />
-    <result column="FTXZ" jdbcType="NVARCHAR2" property="ftxz" />
-    <result column="FCZZL" jdbcType="NVARCHAR2" property="fczzl" />
-    <result column="XTDZZL" jdbcType="NVARCHAR2" property="xtdzzl" />
-    <result column="XTDCZFS" jdbcType="NVARCHAR2" property="xtdczfs" />
-    <result column="XTDQLXZ" jdbcType="NVARCHAR2" property="xtdqlxz" />
-    <result column="XTDTDYT" jdbcType="NVARCHAR2" property="xtdtdyt" />
-    <result column="XTDSYQX" jdbcType="NVARCHAR2" property="xtdsyqx" />
-    <result column="XTDQLQSSJ" jdbcType="NVARCHAR2" property="xtdqlqssj" />
-    <result column="XTDQLJSSJ" jdbcType="NVARCHAR2" property="xtdqljssj" />
+    <result column="FDDBR" jdbcType="OTHER" property="fddbr" />
+    <result column="FDDBRDH" jdbcType="OTHER" property="fddbrdh" />
+    <result column="FDDBRZJHM" jdbcType="OTHER" property="fddbrzjhm" />
+    <result column="FDDBRZJLX" jdbcType="OTHER" property="fddbrzjlx" />
+    <result column="SQRID" jdbcType="OTHER" property="sqrid" />
+    <result column="FCZH" jdbcType="OTHER" property="fczh" />
+    <result column="BLZT" jdbcType="OTHER" property="blzt" />
+    <result column="YTDSYQR" jdbcType="OTHER" property="ytdsyqr" />
+    <result column="YBDCQZH" jdbcType="OTHER" property="ybdcqzh" />
+    <result column="FTXZ" jdbcType="OTHER" property="ftxz" />
+    <result column="FCZZL" jdbcType="OTHER" property="fczzl" />
+    <result column="XTDZZL" jdbcType="OTHER" property="xtdzzl" />
+    <result column="XTDCZFS" jdbcType="OTHER" property="xtdczfs" />
+    <result column="XTDQLXZ" jdbcType="OTHER" property="xtdqlxz" />
+    <result column="XTDTDYT" jdbcType="OTHER" property="xtdtdyt" />
+    <result column="XTDSYQX" jdbcType="OTHER" property="xtdsyqx" />
+    <result column="XTDQLQSSJ" jdbcType="OTHER" property="xtdqlqssj" />
+    <result column="XTDQLJSSJ" jdbcType="OTHER" property="xtdqljssj" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -136,11 +136,11 @@
     select 
     <include refid="Base_Column_List" />
     from SMATTR.QLR
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=OTHER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from SMATTR.QLR
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=OTHER}
   </delete>
   <delete id="deleteByExample" parameterType="com.supermap.dossiertool.smattrEntity.QlrExample">
     delete from SMATTR.QLR
@@ -166,23 +166,23 @@
       FCZZL, XTDZZL, XTDCZFS, 
       XTDQLXZ, XTDTDYT, XTDSYQX, 
       XTDQLQSSJ, XTDQLJSSJ)
-    values (#{bsm,jdbcType=NVARCHAR2}, #{objectid,jdbcType=DECIMAL}, #{ysdm,jdbcType=NVARCHAR2}, 
-      #{qlbsm,jdbcType=NVARCHAR2}, #{bdcdyh,jdbcType=NVARCHAR2}, #{sxh,jdbcType=DECIMAL}, 
-      #{qlrmc,jdbcType=NVARCHAR2}, #{bdcqzh,jdbcType=NVARCHAR2}, #{qzysxlh,jdbcType=NVARCHAR2}, 
-      #{sfczr,jdbcType=NVARCHAR2}, #{zjzl,jdbcType=NVARCHAR2}, #{zjh,jdbcType=NVARCHAR2}, 
-      #{fzjg,jdbcType=NVARCHAR2}, #{sshy,jdbcType=NVARCHAR2}, #{gj,jdbcType=NVARCHAR2}, 
-      #{hjszss,jdbcType=NVARCHAR2}, #{xb,jdbcType=NVARCHAR2}, #{dh,jdbcType=NVARCHAR2}, 
-      #{dz,jdbcType=NVARCHAR2}, #{yb,jdbcType=NVARCHAR2}, #{gzdw,jdbcType=NVARCHAR2}, 
-      #{dzyj,jdbcType=NVARCHAR2}, #{qlrlx,jdbcType=NVARCHAR2}, #{qlbl,jdbcType=NVARCHAR2}, 
-      #{gyfs,jdbcType=NVARCHAR2}, #{bz,jdbcType=NVARCHAR2}, #{dlrxm,jdbcType=NVARCHAR2}, 
-      #{dlrlxdh,jdbcType=NVARCHAR2}, #{dlrzjhm,jdbcType=NVARCHAR2}, #{dlrzjlx,jdbcType=NVARCHAR2}, 
-      #{dljgmc,jdbcType=NVARCHAR2}, #{qlmj,jdbcType=DECIMAL}, #{fddbr,jdbcType=NVARCHAR2}, 
-      #{fddbrdh,jdbcType=NVARCHAR2}, #{fddbrzjhm,jdbcType=NVARCHAR2}, #{fddbrzjlx,jdbcType=NVARCHAR2}, 
-      #{sqrid,jdbcType=NVARCHAR2}, #{fczh,jdbcType=NVARCHAR2}, #{blzt,jdbcType=NVARCHAR2}, 
-      #{ytdsyqr,jdbcType=NVARCHAR2}, #{ybdcqzh,jdbcType=NVARCHAR2}, #{ftxz,jdbcType=NVARCHAR2}, 
-      #{fczzl,jdbcType=NVARCHAR2}, #{xtdzzl,jdbcType=NVARCHAR2}, #{xtdczfs,jdbcType=NVARCHAR2}, 
-      #{xtdqlxz,jdbcType=NVARCHAR2}, #{xtdtdyt,jdbcType=NVARCHAR2}, #{xtdsyqx,jdbcType=NVARCHAR2}, 
-      #{xtdqlqssj,jdbcType=NVARCHAR2}, #{xtdqljssj,jdbcType=NVARCHAR2})
+    values (#{bsm,jdbcType=OTHER}, #{objectid,jdbcType=DECIMAL}, #{ysdm,jdbcType=OTHER}, 
+      #{qlbsm,jdbcType=OTHER}, #{bdcdyh,jdbcType=OTHER}, #{sxh,jdbcType=DECIMAL}, 
+      #{qlrmc,jdbcType=OTHER}, #{bdcqzh,jdbcType=OTHER}, #{qzysxlh,jdbcType=OTHER}, 
+      #{sfczr,jdbcType=OTHER}, #{zjzl,jdbcType=OTHER}, #{zjh,jdbcType=OTHER}, 
+      #{fzjg,jdbcType=OTHER}, #{sshy,jdbcType=OTHER}, #{gj,jdbcType=OTHER}, 
+      #{hjszss,jdbcType=OTHER}, #{xb,jdbcType=OTHER}, #{dh,jdbcType=OTHER}, 
+      #{dz,jdbcType=OTHER}, #{yb,jdbcType=OTHER}, #{gzdw,jdbcType=OTHER}, 
+      #{dzyj,jdbcType=OTHER}, #{qlrlx,jdbcType=OTHER}, #{qlbl,jdbcType=OTHER}, 
+      #{gyfs,jdbcType=OTHER}, #{bz,jdbcType=OTHER}, #{dlrxm,jdbcType=OTHER}, 
+      #{dlrlxdh,jdbcType=OTHER}, #{dlrzjhm,jdbcType=OTHER}, #{dlrzjlx,jdbcType=OTHER}, 
+      #{dljgmc,jdbcType=OTHER}, #{qlmj,jdbcType=DECIMAL}, #{fddbr,jdbcType=OTHER}, 
+      #{fddbrdh,jdbcType=OTHER}, #{fddbrzjhm,jdbcType=OTHER}, #{fddbrzjlx,jdbcType=OTHER}, 
+      #{sqrid,jdbcType=OTHER}, #{fczh,jdbcType=OTHER}, #{blzt,jdbcType=OTHER}, 
+      #{ytdsyqr,jdbcType=OTHER}, #{ybdcqzh,jdbcType=OTHER}, #{ftxz,jdbcType=OTHER}, 
+      #{fczzl,jdbcType=OTHER}, #{xtdzzl,jdbcType=OTHER}, #{xtdczfs,jdbcType=OTHER}, 
+      #{xtdqlxz,jdbcType=OTHER}, #{xtdtdyt,jdbcType=OTHER}, #{xtdsyqx,jdbcType=OTHER}, 
+      #{xtdqlqssj,jdbcType=OTHER}, #{xtdqljssj,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.Qlr">
     insert into SMATTR.QLR
@@ -340,154 +340,154 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="bsm != null">
-        #{bsm,jdbcType=NVARCHAR2},
+        #{bsm,jdbcType=OTHER},
       </if>
       <if test="objectid != null">
         #{objectid,jdbcType=DECIMAL},
       </if>
       <if test="ysdm != null">
-        #{ysdm,jdbcType=NVARCHAR2},
+        #{ysdm,jdbcType=OTHER},
       </if>
       <if test="qlbsm != null">
-        #{qlbsm,jdbcType=NVARCHAR2},
+        #{qlbsm,jdbcType=OTHER},
       </if>
       <if test="bdcdyh != null">
-        #{bdcdyh,jdbcType=NVARCHAR2},
+        #{bdcdyh,jdbcType=OTHER},
       </if>
       <if test="sxh != null">
         #{sxh,jdbcType=DECIMAL},
       </if>
       <if test="qlrmc != null">
-        #{qlrmc,jdbcType=NVARCHAR2},
+        #{qlrmc,jdbcType=OTHER},
       </if>
       <if test="bdcqzh != null">
-        #{bdcqzh,jdbcType=NVARCHAR2},
+        #{bdcqzh,jdbcType=OTHER},
       </if>
       <if test="qzysxlh != null">
-        #{qzysxlh,jdbcType=NVARCHAR2},
+        #{qzysxlh,jdbcType=OTHER},
       </if>
       <if test="sfczr != null">
-        #{sfczr,jdbcType=NVARCHAR2},
+        #{sfczr,jdbcType=OTHER},
       </if>
       <if test="zjzl != null">
-        #{zjzl,jdbcType=NVARCHAR2},
+        #{zjzl,jdbcType=OTHER},
       </if>
       <if test="zjh != null">
-        #{zjh,jdbcType=NVARCHAR2},
+        #{zjh,jdbcType=OTHER},
       </if>
       <if test="fzjg != null">
-        #{fzjg,jdbcType=NVARCHAR2},
+        #{fzjg,jdbcType=OTHER},
       </if>
       <if test="sshy != null">
-        #{sshy,jdbcType=NVARCHAR2},
+        #{sshy,jdbcType=OTHER},
       </if>
       <if test="gj != null">
-        #{gj,jdbcType=NVARCHAR2},
+        #{gj,jdbcType=OTHER},
       </if>
       <if test="hjszss != null">
-        #{hjszss,jdbcType=NVARCHAR2},
+        #{hjszss,jdbcType=OTHER},
       </if>
       <if test="xb != null">
-        #{xb,jdbcType=NVARCHAR2},
+        #{xb,jdbcType=OTHER},
       </if>
       <if test="dh != null">
-        #{dh,jdbcType=NVARCHAR2},
+        #{dh,jdbcType=OTHER},
       </if>
       <if test="dz != null">
-        #{dz,jdbcType=NVARCHAR2},
+        #{dz,jdbcType=OTHER},
       </if>
       <if test="yb != null">
-        #{yb,jdbcType=NVARCHAR2},
+        #{yb,jdbcType=OTHER},
       </if>
       <if test="gzdw != null">
-        #{gzdw,jdbcType=NVARCHAR2},
+        #{gzdw,jdbcType=OTHER},
       </if>
       <if test="dzyj != null">
-        #{dzyj,jdbcType=NVARCHAR2},
+        #{dzyj,jdbcType=OTHER},
       </if>
       <if test="qlrlx != null">
-        #{qlrlx,jdbcType=NVARCHAR2},
+        #{qlrlx,jdbcType=OTHER},
       </if>
       <if test="qlbl != null">
-        #{qlbl,jdbcType=NVARCHAR2},
+        #{qlbl,jdbcType=OTHER},
       </if>
       <if test="gyfs != null">
-        #{gyfs,jdbcType=NVARCHAR2},
+        #{gyfs,jdbcType=OTHER},
       </if>
       <if test="bz != null">
-        #{bz,jdbcType=NVARCHAR2},
+        #{bz,jdbcType=OTHER},
       </if>
       <if test="dlrxm != null">
-        #{dlrxm,jdbcType=NVARCHAR2},
+        #{dlrxm,jdbcType=OTHER},
       </if>
       <if test="dlrlxdh != null">
-        #{dlrlxdh,jdbcType=NVARCHAR2},
+        #{dlrlxdh,jdbcType=OTHER},
       </if>
       <if test="dlrzjhm != null">
-        #{dlrzjhm,jdbcType=NVARCHAR2},
+        #{dlrzjhm,jdbcType=OTHER},
       </if>
       <if test="dlrzjlx != null">
-        #{dlrzjlx,jdbcType=NVARCHAR2},
+        #{dlrzjlx,jdbcType=OTHER},
       </if>
       <if test="dljgmc != null">
-        #{dljgmc,jdbcType=NVARCHAR2},
+        #{dljgmc,jdbcType=OTHER},
       </if>
       <if test="qlmj != null">
         #{qlmj,jdbcType=DECIMAL},
       </if>
       <if test="fddbr != null">
-        #{fddbr,jdbcType=NVARCHAR2},
+        #{fddbr,jdbcType=OTHER},
       </if>
       <if test="fddbrdh != null">
-        #{fddbrdh,jdbcType=NVARCHAR2},
+        #{fddbrdh,jdbcType=OTHER},
       </if>
       <if test="fddbrzjhm != null">
-        #{fddbrzjhm,jdbcType=NVARCHAR2},
+        #{fddbrzjhm,jdbcType=OTHER},
       </if>
       <if test="fddbrzjlx != null">
-        #{fddbrzjlx,jdbcType=NVARCHAR2},
+        #{fddbrzjlx,jdbcType=OTHER},
       </if>
       <if test="sqrid != null">
-        #{sqrid,jdbcType=NVARCHAR2},
+        #{sqrid,jdbcType=OTHER},
       </if>
       <if test="fczh != null">
-        #{fczh,jdbcType=NVARCHAR2},
+        #{fczh,jdbcType=OTHER},
       </if>
       <if test="blzt != null">
-        #{blzt,jdbcType=NVARCHAR2},
+        #{blzt,jdbcType=OTHER},
       </if>
       <if test="ytdsyqr != null">
-        #{ytdsyqr,jdbcType=NVARCHAR2},
+        #{ytdsyqr,jdbcType=OTHER},
       </if>
       <if test="ybdcqzh != null">
-        #{ybdcqzh,jdbcType=NVARCHAR2},
+        #{ybdcqzh,jdbcType=OTHER},
       </if>
       <if test="ftxz != null">
-        #{ftxz,jdbcType=NVARCHAR2},
+        #{ftxz,jdbcType=OTHER},
       </if>
       <if test="fczzl != null">
-        #{fczzl,jdbcType=NVARCHAR2},
+        #{fczzl,jdbcType=OTHER},
       </if>
       <if test="xtdzzl != null">
-        #{xtdzzl,jdbcType=NVARCHAR2},
+        #{xtdzzl,jdbcType=OTHER},
       </if>
       <if test="xtdczfs != null">
-        #{xtdczfs,jdbcType=NVARCHAR2},
+        #{xtdczfs,jdbcType=OTHER},
       </if>
       <if test="xtdqlxz != null">
-        #{xtdqlxz,jdbcType=NVARCHAR2},
+        #{xtdqlxz,jdbcType=OTHER},
       </if>
       <if test="xtdtdyt != null">
-        #{xtdtdyt,jdbcType=NVARCHAR2},
+        #{xtdtdyt,jdbcType=OTHER},
       </if>
       <if test="xtdsyqx != null">
-        #{xtdsyqx,jdbcType=NVARCHAR2},
+        #{xtdsyqx,jdbcType=OTHER},
       </if>
       <if test="xtdqlqssj != null">
-        #{xtdqlqssj,jdbcType=NVARCHAR2},
+        #{xtdqlqssj,jdbcType=OTHER},
       </if>
       <if test="xtdqljssj != null">
-        #{xtdqljssj,jdbcType=NVARCHAR2},
+        #{xtdqljssj,jdbcType=OTHER},
       </if>
     </trim>
   </insert>
@@ -501,154 +501,154 @@
     update SMATTR.QLR
     <set>
       <if test="record.bsm != null">
-        BSM = #{record.bsm,jdbcType=NVARCHAR2},
+        BSM = #{record.bsm,jdbcType=OTHER},
       </if>
       <if test="record.objectid != null">
         OBJECTID = #{record.objectid,jdbcType=DECIMAL},
       </if>
       <if test="record.ysdm != null">
-        YSDM = #{record.ysdm,jdbcType=NVARCHAR2},
+        YSDM = #{record.ysdm,jdbcType=OTHER},
       </if>
       <if test="record.qlbsm != null">
-        QLBSM = #{record.qlbsm,jdbcType=NVARCHAR2},
+        QLBSM = #{record.qlbsm,jdbcType=OTHER},
       </if>
       <if test="record.bdcdyh != null">
-        BDCDYH = #{record.bdcdyh,jdbcType=NVARCHAR2},
+        BDCDYH = #{record.bdcdyh,jdbcType=OTHER},
       </if>
       <if test="record.sxh != null">
         SXH = #{record.sxh,jdbcType=DECIMAL},
       </if>
       <if test="record.qlrmc != null">
-        QLRMC = #{record.qlrmc,jdbcType=NVARCHAR2},
+        QLRMC = #{record.qlrmc,jdbcType=OTHER},
       </if>
       <if test="record.bdcqzh != null">
-        BDCQZH = #{record.bdcqzh,jdbcType=NVARCHAR2},
+        BDCQZH = #{record.bdcqzh,jdbcType=OTHER},
       </if>
       <if test="record.qzysxlh != null">
-        QZYSXLH = #{record.qzysxlh,jdbcType=NVARCHAR2},
+        QZYSXLH = #{record.qzysxlh,jdbcType=OTHER},
       </if>
       <if test="record.sfczr != null">
-        SFCZR = #{record.sfczr,jdbcType=NVARCHAR2},
+        SFCZR = #{record.sfczr,jdbcType=OTHER},
       </if>
       <if test="record.zjzl != null">
-        ZJZL = #{record.zjzl,jdbcType=NVARCHAR2},
+        ZJZL = #{record.zjzl,jdbcType=OTHER},
       </if>
       <if test="record.zjh != null">
-        ZJH = #{record.zjh,jdbcType=NVARCHAR2},
+        ZJH = #{record.zjh,jdbcType=OTHER},
       </if>
       <if test="record.fzjg != null">
-        FZJG = #{record.fzjg,jdbcType=NVARCHAR2},
+        FZJG = #{record.fzjg,jdbcType=OTHER},
       </if>
       <if test="record.sshy != null">
-        SSHY = #{record.sshy,jdbcType=NVARCHAR2},
+        SSHY = #{record.sshy,jdbcType=OTHER},
       </if>
       <if test="record.gj != null">
-        GJ = #{record.gj,jdbcType=NVARCHAR2},
+        GJ = #{record.gj,jdbcType=OTHER},
       </if>
       <if test="record.hjszss != null">
-        HJSZSS = #{record.hjszss,jdbcType=NVARCHAR2},
+        HJSZSS = #{record.hjszss,jdbcType=OTHER},
       </if>
       <if test="record.xb != null">
-        XB = #{record.xb,jdbcType=NVARCHAR2},
+        XB = #{record.xb,jdbcType=OTHER},
       </if>
       <if test="record.dh != null">
-        DH = #{record.dh,jdbcType=NVARCHAR2},
+        DH = #{record.dh,jdbcType=OTHER},
       </if>
       <if test="record.dz != null">
-        DZ = #{record.dz,jdbcType=NVARCHAR2},
+        DZ = #{record.dz,jdbcType=OTHER},
       </if>
       <if test="record.yb != null">
-        YB = #{record.yb,jdbcType=NVARCHAR2},
+        YB = #{record.yb,jdbcType=OTHER},
       </if>
       <if test="record.gzdw != null">
-        GZDW = #{record.gzdw,jdbcType=NVARCHAR2},
+        GZDW = #{record.gzdw,jdbcType=OTHER},
       </if>
       <if test="record.dzyj != null">
-        DZYJ = #{record.dzyj,jdbcType=NVARCHAR2},
+        DZYJ = #{record.dzyj,jdbcType=OTHER},
       </if>
       <if test="record.qlrlx != null">
-        QLRLX = #{record.qlrlx,jdbcType=NVARCHAR2},
+        QLRLX = #{record.qlrlx,jdbcType=OTHER},
       </if>
       <if test="record.qlbl != null">
-        QLBL = #{record.qlbl,jdbcType=NVARCHAR2},
+        QLBL = #{record.qlbl,jdbcType=OTHER},
       </if>
       <if test="record.gyfs != null">
-        GYFS = #{record.gyfs,jdbcType=NVARCHAR2},
+        GYFS = #{record.gyfs,jdbcType=OTHER},
       </if>
       <if test="record.bz != null">
-        BZ = #{record.bz,jdbcType=NVARCHAR2},
+        BZ = #{record.bz,jdbcType=OTHER},
       </if>
       <if test="record.dlrxm != null">
-        DLRXM = #{record.dlrxm,jdbcType=NVARCHAR2},
+        DLRXM = #{record.dlrxm,jdbcType=OTHER},
       </if>
       <if test="record.dlrlxdh != null">
-        DLRLXDH = #{record.dlrlxdh,jdbcType=NVARCHAR2},
+        DLRLXDH = #{record.dlrlxdh,jdbcType=OTHER},
       </if>
       <if test="record.dlrzjhm != null">
-        DLRZJHM = #{record.dlrzjhm,jdbcType=NVARCHAR2},
+        DLRZJHM = #{record.dlrzjhm,jdbcType=OTHER},
       </if>
       <if test="record.dlrzjlx != null">
-        DLRZJLX = #{record.dlrzjlx,jdbcType=NVARCHAR2},
+        DLRZJLX = #{record.dlrzjlx,jdbcType=OTHER},
       </if>
       <if test="record.dljgmc != null">
-        DLJGMC = #{record.dljgmc,jdbcType=NVARCHAR2},
+        DLJGMC = #{record.dljgmc,jdbcType=OTHER},
       </if>
       <if test="record.qlmj != null">
         QLMJ = #{record.qlmj,jdbcType=DECIMAL},
       </if>
       <if test="record.fddbr != null">
-        FDDBR = #{record.fddbr,jdbcType=NVARCHAR2},
+        FDDBR = #{record.fddbr,jdbcType=OTHER},
       </if>
       <if test="record.fddbrdh != null">
-        FDDBRDH = #{record.fddbrdh,jdbcType=NVARCHAR2},
+        FDDBRDH = #{record.fddbrdh,jdbcType=OTHER},
       </if>
       <if test="record.fddbrzjhm != null">
-        FDDBRZJHM = #{record.fddbrzjhm,jdbcType=NVARCHAR2},
+        FDDBRZJHM = #{record.fddbrzjhm,jdbcType=OTHER},
       </if>
       <if test="record.fddbrzjlx != null">
-        FDDBRZJLX = #{record.fddbrzjlx,jdbcType=NVARCHAR2},
+        FDDBRZJLX = #{record.fddbrzjlx,jdbcType=OTHER},
       </if>
       <if test="record.sqrid != null">
-        SQRID = #{record.sqrid,jdbcType=NVARCHAR2},
+        SQRID = #{record.sqrid,jdbcType=OTHER},
       </if>
       <if test="record.fczh != null">
-        FCZH = #{record.fczh,jdbcType=NVARCHAR2},
+        FCZH = #{record.fczh,jdbcType=OTHER},
       </if>
       <if test="record.blzt != null">
-        BLZT = #{record.blzt,jdbcType=NVARCHAR2},
+        BLZT = #{record.blzt,jdbcType=OTHER},
       </if>
       <if test="record.ytdsyqr != null">
-        YTDSYQR = #{record.ytdsyqr,jdbcType=NVARCHAR2},
+        YTDSYQR = #{record.ytdsyqr,jdbcType=OTHER},
       </if>
       <if test="record.ybdcqzh != null">
-        YBDCQZH = #{record.ybdcqzh,jdbcType=NVARCHAR2},
+        YBDCQZH = #{record.ybdcqzh,jdbcType=OTHER},
       </if>
       <if test="record.ftxz != null">
-        FTXZ = #{record.ftxz,jdbcType=NVARCHAR2},
+        FTXZ = #{record.ftxz,jdbcType=OTHER},
       </if>
       <if test="record.fczzl != null">
-        FCZZL = #{record.fczzl,jdbcType=NVARCHAR2},
+        FCZZL = #{record.fczzl,jdbcType=OTHER},
       </if>
       <if test="record.xtdzzl != null">
-        XTDZZL = #{record.xtdzzl,jdbcType=NVARCHAR2},
+        XTDZZL = #{record.xtdzzl,jdbcType=OTHER},
       </if>
       <if test="record.xtdczfs != null">
-        XTDCZFS = #{record.xtdczfs,jdbcType=NVARCHAR2},
+        XTDCZFS = #{record.xtdczfs,jdbcType=OTHER},
       </if>
       <if test="record.xtdqlxz != null">
-        XTDQLXZ = #{record.xtdqlxz,jdbcType=NVARCHAR2},
+        XTDQLXZ = #{record.xtdqlxz,jdbcType=OTHER},
       </if>
       <if test="record.xtdtdyt != null">
-        XTDTDYT = #{record.xtdtdyt,jdbcType=NVARCHAR2},
+        XTDTDYT = #{record.xtdtdyt,jdbcType=OTHER},
       </if>
       <if test="record.xtdsyqx != null">
-        XTDSYQX = #{record.xtdsyqx,jdbcType=NVARCHAR2},
+        XTDSYQX = #{record.xtdsyqx,jdbcType=OTHER},
       </if>
       <if test="record.xtdqlqssj != null">
-        XTDQLQSSJ = #{record.xtdqlqssj,jdbcType=NVARCHAR2},
+        XTDQLQSSJ = #{record.xtdqlqssj,jdbcType=OTHER},
       </if>
       <if test="record.xtdqljssj != null">
-        XTDQLJSSJ = #{record.xtdqljssj,jdbcType=NVARCHAR2},
+        XTDQLJSSJ = #{record.xtdqljssj,jdbcType=OTHER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -657,56 +657,56 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update SMATTR.QLR
-    set BSM = #{record.bsm,jdbcType=NVARCHAR2},
+    set BSM = #{record.bsm,jdbcType=OTHER},
       OBJECTID = #{record.objectid,jdbcType=DECIMAL},
-      YSDM = #{record.ysdm,jdbcType=NVARCHAR2},
-      QLBSM = #{record.qlbsm,jdbcType=NVARCHAR2},
-      BDCDYH = #{record.bdcdyh,jdbcType=NVARCHAR2},
+      YSDM = #{record.ysdm,jdbcType=OTHER},
+      QLBSM = #{record.qlbsm,jdbcType=OTHER},
+      BDCDYH = #{record.bdcdyh,jdbcType=OTHER},
       SXH = #{record.sxh,jdbcType=DECIMAL},
-      QLRMC = #{record.qlrmc,jdbcType=NVARCHAR2},
-      BDCQZH = #{record.bdcqzh,jdbcType=NVARCHAR2},
-      QZYSXLH = #{record.qzysxlh,jdbcType=NVARCHAR2},
-      SFCZR = #{record.sfczr,jdbcType=NVARCHAR2},
-      ZJZL = #{record.zjzl,jdbcType=NVARCHAR2},
-      ZJH = #{record.zjh,jdbcType=NVARCHAR2},
-      FZJG = #{record.fzjg,jdbcType=NVARCHAR2},
-      SSHY = #{record.sshy,jdbcType=NVARCHAR2},
-      GJ = #{record.gj,jdbcType=NVARCHAR2},
-      HJSZSS = #{record.hjszss,jdbcType=NVARCHAR2},
-      XB = #{record.xb,jdbcType=NVARCHAR2},
-      DH = #{record.dh,jdbcType=NVARCHAR2},
-      DZ = #{record.dz,jdbcType=NVARCHAR2},
-      YB = #{record.yb,jdbcType=NVARCHAR2},
-      GZDW = #{record.gzdw,jdbcType=NVARCHAR2},
-      DZYJ = #{record.dzyj,jdbcType=NVARCHAR2},
-      QLRLX = #{record.qlrlx,jdbcType=NVARCHAR2},
-      QLBL = #{record.qlbl,jdbcType=NVARCHAR2},
-      GYFS = #{record.gyfs,jdbcType=NVARCHAR2},
-      BZ = #{record.bz,jdbcType=NVARCHAR2},
-      DLRXM = #{record.dlrxm,jdbcType=NVARCHAR2},
-      DLRLXDH = #{record.dlrlxdh,jdbcType=NVARCHAR2},
-      DLRZJHM = #{record.dlrzjhm,jdbcType=NVARCHAR2},
-      DLRZJLX = #{record.dlrzjlx,jdbcType=NVARCHAR2},
-      DLJGMC = #{record.dljgmc,jdbcType=NVARCHAR2},
+      QLRMC = #{record.qlrmc,jdbcType=OTHER},
+      BDCQZH = #{record.bdcqzh,jdbcType=OTHER},
+      QZYSXLH = #{record.qzysxlh,jdbcType=OTHER},
+      SFCZR = #{record.sfczr,jdbcType=OTHER},
+      ZJZL = #{record.zjzl,jdbcType=OTHER},
+      ZJH = #{record.zjh,jdbcType=OTHER},
+      FZJG = #{record.fzjg,jdbcType=OTHER},
+      SSHY = #{record.sshy,jdbcType=OTHER},
+      GJ = #{record.gj,jdbcType=OTHER},
+      HJSZSS = #{record.hjszss,jdbcType=OTHER},
+      XB = #{record.xb,jdbcType=OTHER},
+      DH = #{record.dh,jdbcType=OTHER},
+      DZ = #{record.dz,jdbcType=OTHER},
+      YB = #{record.yb,jdbcType=OTHER},
+      GZDW = #{record.gzdw,jdbcType=OTHER},
+      DZYJ = #{record.dzyj,jdbcType=OTHER},
+      QLRLX = #{record.qlrlx,jdbcType=OTHER},
+      QLBL = #{record.qlbl,jdbcType=OTHER},
+      GYFS = #{record.gyfs,jdbcType=OTHER},
+      BZ = #{record.bz,jdbcType=OTHER},
+      DLRXM = #{record.dlrxm,jdbcType=OTHER},
+      DLRLXDH = #{record.dlrlxdh,jdbcType=OTHER},
+      DLRZJHM = #{record.dlrzjhm,jdbcType=OTHER},
+      DLRZJLX = #{record.dlrzjlx,jdbcType=OTHER},
+      DLJGMC = #{record.dljgmc,jdbcType=OTHER},
       QLMJ = #{record.qlmj,jdbcType=DECIMAL},
-      FDDBR = #{record.fddbr,jdbcType=NVARCHAR2},
-      FDDBRDH = #{record.fddbrdh,jdbcType=NVARCHAR2},
-      FDDBRZJHM = #{record.fddbrzjhm,jdbcType=NVARCHAR2},
-      FDDBRZJLX = #{record.fddbrzjlx,jdbcType=NVARCHAR2},
-      SQRID = #{record.sqrid,jdbcType=NVARCHAR2},
-      FCZH = #{record.fczh,jdbcType=NVARCHAR2},
-      BLZT = #{record.blzt,jdbcType=NVARCHAR2},
-      YTDSYQR = #{record.ytdsyqr,jdbcType=NVARCHAR2},
-      YBDCQZH = #{record.ybdcqzh,jdbcType=NVARCHAR2},
-      FTXZ = #{record.ftxz,jdbcType=NVARCHAR2},
-      FCZZL = #{record.fczzl,jdbcType=NVARCHAR2},
-      XTDZZL = #{record.xtdzzl,jdbcType=NVARCHAR2},
-      XTDCZFS = #{record.xtdczfs,jdbcType=NVARCHAR2},
-      XTDQLXZ = #{record.xtdqlxz,jdbcType=NVARCHAR2},
-      XTDTDYT = #{record.xtdtdyt,jdbcType=NVARCHAR2},
-      XTDSYQX = #{record.xtdsyqx,jdbcType=NVARCHAR2},
-      XTDQLQSSJ = #{record.xtdqlqssj,jdbcType=NVARCHAR2},
-      XTDQLJSSJ = #{record.xtdqljssj,jdbcType=NVARCHAR2}
+      FDDBR = #{record.fddbr,jdbcType=OTHER},
+      FDDBRDH = #{record.fddbrdh,jdbcType=OTHER},
+      FDDBRZJHM = #{record.fddbrzjhm,jdbcType=OTHER},
+      FDDBRZJLX = #{record.fddbrzjlx,jdbcType=OTHER},
+      SQRID = #{record.sqrid,jdbcType=OTHER},
+      FCZH = #{record.fczh,jdbcType=OTHER},
+      BLZT = #{record.blzt,jdbcType=OTHER},
+      YTDSYQR = #{record.ytdsyqr,jdbcType=OTHER},
+      YBDCQZH = #{record.ybdcqzh,jdbcType=OTHER},
+      FTXZ = #{record.ftxz,jdbcType=OTHER},
+      FCZZL = #{record.fczzl,jdbcType=OTHER},
+      XTDZZL = #{record.xtdzzl,jdbcType=OTHER},
+      XTDCZFS = #{record.xtdczfs,jdbcType=OTHER},
+      XTDQLXZ = #{record.xtdqlxz,jdbcType=OTHER},
+      XTDTDYT = #{record.xtdtdyt,jdbcType=OTHER},
+      XTDSYQX = #{record.xtdsyqx,jdbcType=OTHER},
+      XTDQLQSSJ = #{record.xtdqlqssj,jdbcType=OTHER},
+      XTDQLJSSJ = #{record.xtdqljssj,jdbcType=OTHER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -718,203 +718,203 @@
         OBJECTID = #{objectid,jdbcType=DECIMAL},
       </if>
       <if test="ysdm != null">
-        YSDM = #{ysdm,jdbcType=NVARCHAR2},
+        YSDM = #{ysdm,jdbcType=OTHER},
       </if>
       <if test="qlbsm != null">
-        QLBSM = #{qlbsm,jdbcType=NVARCHAR2},
+        QLBSM = #{qlbsm,jdbcType=OTHER},
       </if>
       <if test="bdcdyh != null">
-        BDCDYH = #{bdcdyh,jdbcType=NVARCHAR2},
+        BDCDYH = #{bdcdyh,jdbcType=OTHER},
       </if>
       <if test="sxh != null">
         SXH = #{sxh,jdbcType=DECIMAL},
       </if>
       <if test="qlrmc != null">
-        QLRMC = #{qlrmc,jdbcType=NVARCHAR2},
+        QLRMC = #{qlrmc,jdbcType=OTHER},
       </if>
       <if test="bdcqzh != null">
-        BDCQZH = #{bdcqzh,jdbcType=NVARCHAR2},
+        BDCQZH = #{bdcqzh,jdbcType=OTHER},
       </if>
       <if test="qzysxlh != null">
-        QZYSXLH = #{qzysxlh,jdbcType=NVARCHAR2},
+        QZYSXLH = #{qzysxlh,jdbcType=OTHER},
       </if>
       <if test="sfczr != null">
-        SFCZR = #{sfczr,jdbcType=NVARCHAR2},
+        SFCZR = #{sfczr,jdbcType=OTHER},
       </if>
       <if test="zjzl != null">
-        ZJZL = #{zjzl,jdbcType=NVARCHAR2},
+        ZJZL = #{zjzl,jdbcType=OTHER},
       </if>
       <if test="zjh != null">
-        ZJH = #{zjh,jdbcType=NVARCHAR2},
+        ZJH = #{zjh,jdbcType=OTHER},
       </if>
       <if test="fzjg != null">
-        FZJG = #{fzjg,jdbcType=NVARCHAR2},
+        FZJG = #{fzjg,jdbcType=OTHER},
       </if>
       <if test="sshy != null">
-        SSHY = #{sshy,jdbcType=NVARCHAR2},
+        SSHY = #{sshy,jdbcType=OTHER},
       </if>
       <if test="gj != null">
-        GJ = #{gj,jdbcType=NVARCHAR2},
+        GJ = #{gj,jdbcType=OTHER},
       </if>
       <if test="hjszss != null">
-        HJSZSS = #{hjszss,jdbcType=NVARCHAR2},
+        HJSZSS = #{hjszss,jdbcType=OTHER},
       </if>
       <if test="xb != null">
-        XB = #{xb,jdbcType=NVARCHAR2},
+        XB = #{xb,jdbcType=OTHER},
       </if>
       <if test="dh != null">
-        DH = #{dh,jdbcType=NVARCHAR2},
+        DH = #{dh,jdbcType=OTHER},
       </if>
       <if test="dz != null">
-        DZ = #{dz,jdbcType=NVARCHAR2},
+        DZ = #{dz,jdbcType=OTHER},
       </if>
       <if test="yb != null">
-        YB = #{yb,jdbcType=NVARCHAR2},
+        YB = #{yb,jdbcType=OTHER},
       </if>
       <if test="gzdw != null">
-        GZDW = #{gzdw,jdbcType=NVARCHAR2},
+        GZDW = #{gzdw,jdbcType=OTHER},
       </if>
       <if test="dzyj != null">
-        DZYJ = #{dzyj,jdbcType=NVARCHAR2},
+        DZYJ = #{dzyj,jdbcType=OTHER},
       </if>
       <if test="qlrlx != null">
-        QLRLX = #{qlrlx,jdbcType=NVARCHAR2},
+        QLRLX = #{qlrlx,jdbcType=OTHER},
       </if>
       <if test="qlbl != null">
-        QLBL = #{qlbl,jdbcType=NVARCHAR2},
+        QLBL = #{qlbl,jdbcType=OTHER},
       </if>
       <if test="gyfs != null">
-        GYFS = #{gyfs,jdbcType=NVARCHAR2},
+        GYFS = #{gyfs,jdbcType=OTHER},
       </if>
       <if test="bz != null">
-        BZ = #{bz,jdbcType=NVARCHAR2},
+        BZ = #{bz,jdbcType=OTHER},
       </if>
       <if test="dlrxm != null">
-        DLRXM = #{dlrxm,jdbcType=NVARCHAR2},
+        DLRXM = #{dlrxm,jdbcType=OTHER},
       </if>
       <if test="dlrlxdh != null">
-        DLRLXDH = #{dlrlxdh,jdbcType=NVARCHAR2},
+        DLRLXDH = #{dlrlxdh,jdbcType=OTHER},
       </if>
       <if test="dlrzjhm != null">
-        DLRZJHM = #{dlrzjhm,jdbcType=NVARCHAR2},
+        DLRZJHM = #{dlrzjhm,jdbcType=OTHER},
       </if>
       <if test="dlrzjlx != null">
-        DLRZJLX = #{dlrzjlx,jdbcType=NVARCHAR2},
+        DLRZJLX = #{dlrzjlx,jdbcType=OTHER},
       </if>
       <if test="dljgmc != null">
-        DLJGMC = #{dljgmc,jdbcType=NVARCHAR2},
+        DLJGMC = #{dljgmc,jdbcType=OTHER},
       </if>
       <if test="qlmj != null">
         QLMJ = #{qlmj,jdbcType=DECIMAL},
       </if>
       <if test="fddbr != null">
-        FDDBR = #{fddbr,jdbcType=NVARCHAR2},
+        FDDBR = #{fddbr,jdbcType=OTHER},
       </if>
       <if test="fddbrdh != null">
-        FDDBRDH = #{fddbrdh,jdbcType=NVARCHAR2},
+        FDDBRDH = #{fddbrdh,jdbcType=OTHER},
       </if>
       <if test="fddbrzjhm != null">
-        FDDBRZJHM = #{fddbrzjhm,jdbcType=NVARCHAR2},
+        FDDBRZJHM = #{fddbrzjhm,jdbcType=OTHER},
       </if>
       <if test="fddbrzjlx != null">
-        FDDBRZJLX = #{fddbrzjlx,jdbcType=NVARCHAR2},
+        FDDBRZJLX = #{fddbrzjlx,jdbcType=OTHER},
       </if>
       <if test="sqrid != null">
-        SQRID = #{sqrid,jdbcType=NVARCHAR2},
+        SQRID = #{sqrid,jdbcType=OTHER},
       </if>
       <if test="fczh != null">
-        FCZH = #{fczh,jdbcType=NVARCHAR2},
+        FCZH = #{fczh,jdbcType=OTHER},
       </if>
       <if test="blzt != null">
-        BLZT = #{blzt,jdbcType=NVARCHAR2},
+        BLZT = #{blzt,jdbcType=OTHER},
       </if>
       <if test="ytdsyqr != null">
-        YTDSYQR = #{ytdsyqr,jdbcType=NVARCHAR2},
+        YTDSYQR = #{ytdsyqr,jdbcType=OTHER},
       </if>
       <if test="ybdcqzh != null">
-        YBDCQZH = #{ybdcqzh,jdbcType=NVARCHAR2},
+        YBDCQZH = #{ybdcqzh,jdbcType=OTHER},
       </if>
       <if test="ftxz != null">
-        FTXZ = #{ftxz,jdbcType=NVARCHAR2},
+        FTXZ = #{ftxz,jdbcType=OTHER},
       </if>
       <if test="fczzl != null">
-        FCZZL = #{fczzl,jdbcType=NVARCHAR2},
+        FCZZL = #{fczzl,jdbcType=OTHER},
       </if>
       <if test="xtdzzl != null">
-        XTDZZL = #{xtdzzl,jdbcType=NVARCHAR2},
+        XTDZZL = #{xtdzzl,jdbcType=OTHER},
       </if>
       <if test="xtdczfs != null">
-        XTDCZFS = #{xtdczfs,jdbcType=NVARCHAR2},
+        XTDCZFS = #{xtdczfs,jdbcType=OTHER},
       </if>
       <if test="xtdqlxz != null">
-        XTDQLXZ = #{xtdqlxz,jdbcType=NVARCHAR2},
+        XTDQLXZ = #{xtdqlxz,jdbcType=OTHER},
       </if>
       <if test="xtdtdyt != null">
-        XTDTDYT = #{xtdtdyt,jdbcType=NVARCHAR2},
+        XTDTDYT = #{xtdtdyt,jdbcType=OTHER},
       </if>
       <if test="xtdsyqx != null">
-        XTDSYQX = #{xtdsyqx,jdbcType=NVARCHAR2},
+        XTDSYQX = #{xtdsyqx,jdbcType=OTHER},
       </if>
       <if test="xtdqlqssj != null">
-        XTDQLQSSJ = #{xtdqlqssj,jdbcType=NVARCHAR2},
+        XTDQLQSSJ = #{xtdqlqssj,jdbcType=OTHER},
       </if>
       <if test="xtdqljssj != null">
-        XTDQLJSSJ = #{xtdqljssj,jdbcType=NVARCHAR2},
+        XTDQLJSSJ = #{xtdqljssj,jdbcType=OTHER},
       </if>
     </set>
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=OTHER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.supermap.dossiertool.smattrEntity.Qlr">
     update SMATTR.QLR
     set OBJECTID = #{objectid,jdbcType=DECIMAL},
-      YSDM = #{ysdm,jdbcType=NVARCHAR2},
-      QLBSM = #{qlbsm,jdbcType=NVARCHAR2},
-      BDCDYH = #{bdcdyh,jdbcType=NVARCHAR2},
+      YSDM = #{ysdm,jdbcType=OTHER},
+      QLBSM = #{qlbsm,jdbcType=OTHER},
+      BDCDYH = #{bdcdyh,jdbcType=OTHER},
       SXH = #{sxh,jdbcType=DECIMAL},
-      QLRMC = #{qlrmc,jdbcType=NVARCHAR2},
-      BDCQZH = #{bdcqzh,jdbcType=NVARCHAR2},
-      QZYSXLH = #{qzysxlh,jdbcType=NVARCHAR2},
-      SFCZR = #{sfczr,jdbcType=NVARCHAR2},
-      ZJZL = #{zjzl,jdbcType=NVARCHAR2},
-      ZJH = #{zjh,jdbcType=NVARCHAR2},
-      FZJG = #{fzjg,jdbcType=NVARCHAR2},
-      SSHY = #{sshy,jdbcType=NVARCHAR2},
-      GJ = #{gj,jdbcType=NVARCHAR2},
-      HJSZSS = #{hjszss,jdbcType=NVARCHAR2},
-      XB = #{xb,jdbcType=NVARCHAR2},
-      DH = #{dh,jdbcType=NVARCHAR2},
-      DZ = #{dz,jdbcType=NVARCHAR2},
-      YB = #{yb,jdbcType=NVARCHAR2},
-      GZDW = #{gzdw,jdbcType=NVARCHAR2},
-      DZYJ = #{dzyj,jdbcType=NVARCHAR2},
-      QLRLX = #{qlrlx,jdbcType=NVARCHAR2},
-      QLBL = #{qlbl,jdbcType=NVARCHAR2},
-      GYFS = #{gyfs,jdbcType=NVARCHAR2},
-      BZ = #{bz,jdbcType=NVARCHAR2},
-      DLRXM = #{dlrxm,jdbcType=NVARCHAR2},
-      DLRLXDH = #{dlrlxdh,jdbcType=NVARCHAR2},
-      DLRZJHM = #{dlrzjhm,jdbcType=NVARCHAR2},
-      DLRZJLX = #{dlrzjlx,jdbcType=NVARCHAR2},
-      DLJGMC = #{dljgmc,jdbcType=NVARCHAR2},
+      QLRMC = #{qlrmc,jdbcType=OTHER},
+      BDCQZH = #{bdcqzh,jdbcType=OTHER},
+      QZYSXLH = #{qzysxlh,jdbcType=OTHER},
+      SFCZR = #{sfczr,jdbcType=OTHER},
+      ZJZL = #{zjzl,jdbcType=OTHER},
+      ZJH = #{zjh,jdbcType=OTHER},
+      FZJG = #{fzjg,jdbcType=OTHER},
+      SSHY = #{sshy,jdbcType=OTHER},
+      GJ = #{gj,jdbcType=OTHER},
+      HJSZSS = #{hjszss,jdbcType=OTHER},
+      XB = #{xb,jdbcType=OTHER},
+      DH = #{dh,jdbcType=OTHER},
+      DZ = #{dz,jdbcType=OTHER},
+      YB = #{yb,jdbcType=OTHER},
+      GZDW = #{gzdw,jdbcType=OTHER},
+      DZYJ = #{dzyj,jdbcType=OTHER},
+      QLRLX = #{qlrlx,jdbcType=OTHER},
+      QLBL = #{qlbl,jdbcType=OTHER},
+      GYFS = #{gyfs,jdbcType=OTHER},
+      BZ = #{bz,jdbcType=OTHER},
+      DLRXM = #{dlrxm,jdbcType=OTHER},
+      DLRLXDH = #{dlrlxdh,jdbcType=OTHER},
+      DLRZJHM = #{dlrzjhm,jdbcType=OTHER},
+      DLRZJLX = #{dlrzjlx,jdbcType=OTHER},
+      DLJGMC = #{dljgmc,jdbcType=OTHER},
       QLMJ = #{qlmj,jdbcType=DECIMAL},
-      FDDBR = #{fddbr,jdbcType=NVARCHAR2},
-      FDDBRDH = #{fddbrdh,jdbcType=NVARCHAR2},
-      FDDBRZJHM = #{fddbrzjhm,jdbcType=NVARCHAR2},
-      FDDBRZJLX = #{fddbrzjlx,jdbcType=NVARCHAR2},
-      SQRID = #{sqrid,jdbcType=NVARCHAR2},
-      FCZH = #{fczh,jdbcType=NVARCHAR2},
-      BLZT = #{blzt,jdbcType=NVARCHAR2},
-      YTDSYQR = #{ytdsyqr,jdbcType=NVARCHAR2},
-      YBDCQZH = #{ybdcqzh,jdbcType=NVARCHAR2},
-      FTXZ = #{ftxz,jdbcType=NVARCHAR2},
-      FCZZL = #{fczzl,jdbcType=NVARCHAR2},
-      XTDZZL = #{xtdzzl,jdbcType=NVARCHAR2},
-      XTDCZFS = #{xtdczfs,jdbcType=NVARCHAR2},
-      XTDQLXZ = #{xtdqlxz,jdbcType=NVARCHAR2},
-      XTDTDYT = #{xtdtdyt,jdbcType=NVARCHAR2},
-      XTDSYQX = #{xtdsyqx,jdbcType=NVARCHAR2},
-      XTDQLQSSJ = #{xtdqlqssj,jdbcType=NVARCHAR2},
-      XTDQLJSSJ = #{xtdqljssj,jdbcType=NVARCHAR2}
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+      FDDBR = #{fddbr,jdbcType=OTHER},
+      FDDBRDH = #{fddbrdh,jdbcType=OTHER},
+      FDDBRZJHM = #{fddbrzjhm,jdbcType=OTHER},
+      FDDBRZJLX = #{fddbrzjlx,jdbcType=OTHER},
+      SQRID = #{sqrid,jdbcType=OTHER},
+      FCZH = #{fczh,jdbcType=OTHER},
+      BLZT = #{blzt,jdbcType=OTHER},
+      YTDSYQR = #{ytdsyqr,jdbcType=OTHER},
+      YBDCQZH = #{ybdcqzh,jdbcType=OTHER},
+      FTXZ = #{ftxz,jdbcType=OTHER},
+      FCZZL = #{fczzl,jdbcType=OTHER},
+      XTDZZL = #{xtdzzl,jdbcType=OTHER},
+      XTDCZFS = #{xtdczfs,jdbcType=OTHER},
+      XTDQLXZ = #{xtdqlxz,jdbcType=OTHER},
+      XTDTDYT = #{xtdtdyt,jdbcType=OTHER},
+      XTDSYQX = #{xtdsyqx,jdbcType=OTHER},
+      XTDQLQSSJ = #{xtdqlqssj,jdbcType=OTHER},
+      XTDQLJSSJ = #{xtdqljssj,jdbcType=OTHER}
+    where BSM = #{bsm,jdbcType=OTHER}
   </update>
 </mapper>

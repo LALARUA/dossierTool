@@ -4,12 +4,16 @@ import com.supermap.dossiertool.smattrEntity.Zdjbxx;
 import com.supermap.dossiertool.smattrEntity.ZdjbxxExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Mapper
 public interface ZdjbxxMapper {
+    @Select("SELECT S_ZDJBXX.NEXTVAL FROM DUAL")
+    BigDecimal findMaxId();
     long countByExample(ZdjbxxExample example);
 
     int deleteByExample(ZdjbxxExample example);

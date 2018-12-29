@@ -4,12 +4,18 @@ import com.supermap.dossiertool.smattrEntity.Jsydsyq;
 import com.supermap.dossiertool.smattrEntity.JsydsyqExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Mapper
 public interface JsydsyqMapper {
+
+    @Select("SELECT S_JSYDSYQ.NEXTVAL FROM DUAL")
+    BigDecimal findMaxId();
+
     long countByExample(JsydsyqExample example);
 
     int deleteByExample(JsydsyqExample example);

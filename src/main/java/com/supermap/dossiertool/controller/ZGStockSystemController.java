@@ -1,10 +1,17 @@
 package com.supermap.dossiertool.controller;
 
+import com.sun.xml.internal.txw2.TXW;
 import com.supermap.dossiertool.bean.MyFile;
+import com.supermap.dossiertool.bean.QlrList;
+import com.supermap.dossiertool.bean.TdpzytList;
 import com.supermap.dossiertool.config.MyPropertiesConfig;
 import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
+import com.supermap.dossiertool.smattrEntity.Const;
+import com.supermap.dossiertool.smattrEntity.Jsydsyq;
+import com.supermap.dossiertool.smattrEntity.Txm;
+import com.supermap.dossiertool.smattrEntity.Zdjbxx;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -93,13 +100,16 @@ public class ZGStockSystemController {
      */  
     @ResponseBody
     @PostMapping("/submitData")
-    public String submitData(DasAjjbxx das_ajjbxx, DasBdc das_bdc, DasCq das_cq, String path){
-        try {
-            zgStockSystemService.insertData(das_ajjbxx,das_bdc,das_cq,path);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "操作失败";
-        }
+    public String submitData(Zdjbxx zdjbxx, Jsydsyq jsydsyq, TdpzytList tdpzytList, QlrList qlrList, Txm txm){
+
         return "success";
+    }
+
+    @ResponseBody
+    @GetMapping("/getSelect")
+    public  Map<String,List<Const>> getSelect(@RequestParam("selectNameList") List<String> selectNameList){
+
+      return zgStockSystemService.getSelect(selectNameList);
+
     }
 }

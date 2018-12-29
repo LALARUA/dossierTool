@@ -2,20 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.supermap.dossiertool.smattrMapper.TdpzytMapper">
   <resultMap id="BaseResultMap" type="com.supermap.dossiertool.smattrEntity.Tdpzyt">
-    <id column="BSM" jdbcType="NVARCHAR2" property="bsm" />
+    <id column="BSM" jdbcType="OTHER" property="bsm" />
     <result column="OBJECTID" jdbcType="DECIMAL" property="objectid" />
-    <result column="ZDBSM" jdbcType="NVARCHAR2" property="zdbsm" />
-    <result column="SFZYT" jdbcType="NVARCHAR2" property="sfzyt" />
-    <result column="TDYT" jdbcType="NVARCHAR2" property="tdyt" />
-    <result column="TDYTMC" jdbcType="NVARCHAR2" property="tdytmc" />
-    <result column="TDJG" jdbcType="NVARCHAR2" property="tdjg" />
-    <result column="TDDJ" jdbcType="NVARCHAR2" property="tddj" />
+    <result column="ZDBSM" jdbcType="OTHER" property="zdbsm" />
+    <result column="SFZYT" jdbcType="OTHER" property="sfzyt" />
+    <result column="TDYT" jdbcType="OTHER" property="tdyt" />
+    <result column="TDYTMC" jdbcType="OTHER" property="tdytmc" />
+    <result column="TDJG" jdbcType="OTHER" property="tdjg" />
+    <result column="TDDJ" jdbcType="OTHER" property="tddj" />
     <result column="QSRQ" jdbcType="TIMESTAMP" property="qsrq" />
     <result column="ZZRQ" jdbcType="TIMESTAMP" property="zzrq" />
-    <result column="SYQX" jdbcType="NVARCHAR2" property="syqx" />
-    <result column="BLZT" jdbcType="NVARCHAR2" property="blzt" />
+    <result column="SYQX" jdbcType="OTHER" property="syqx" />
+    <result column="BLZT" jdbcType="OTHER" property="blzt" />
     <result column="ZDMJ" jdbcType="DECIMAL" property="zdmj" />
-    <result column="QLXZ" jdbcType="NVARCHAR2" property="qlxz" />
+    <result column="QLXZ" jdbcType="OTHER" property="qlxz" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -79,7 +79,7 @@
     BSM, OBJECTID, ZDBSM, SFZYT, TDYT, TDYTMC, TDJG, TDDJ, QSRQ, ZZRQ, SYQX, BLZT, ZDMJ, 
     QLXZ
   </sql>
-  <select id="selectByExample" parameterType="pojo.TdpzytExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.supermap.dossiertool.smattrEntity.TdpzytExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,31 +97,31 @@
     select 
     <include refid="Base_Column_List" />
     from SMATTR.TDPZYT
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=OTHER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from SMATTR.TDPZYT
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=OTHER}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.TdpzytExample">
+  <delete id="deleteByExample" parameterType="com.supermap.dossiertool.smattrEntity.TdpzytExample">
     delete from SMATTR.TDPZYT
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.Tdpzyt">
+  <insert id="insert" parameterType="com.supermap.dossiertool.smattrEntity.Tdpzyt">
     insert into SMATTR.TDPZYT (BSM, OBJECTID, ZDBSM, 
       SFZYT, TDYT, TDYTMC, 
       TDJG, TDDJ, QSRQ, 
       ZZRQ, SYQX, BLZT, 
       ZDMJ, QLXZ)
-    values (#{bsm,jdbcType=NVARCHAR2}, #{objectid,jdbcType=DECIMAL}, #{zdbsm,jdbcType=NVARCHAR2}, 
-      #{sfzyt,jdbcType=NVARCHAR2}, #{tdyt,jdbcType=NVARCHAR2}, #{tdytmc,jdbcType=NVARCHAR2}, 
-      #{tdjg,jdbcType=NVARCHAR2}, #{tddj,jdbcType=NVARCHAR2}, #{qsrq,jdbcType=TIMESTAMP}, 
-      #{zzrq,jdbcType=TIMESTAMP}, #{syqx,jdbcType=NVARCHAR2}, #{blzt,jdbcType=NVARCHAR2}, 
-      #{zdmj,jdbcType=DECIMAL}, #{qlxz,jdbcType=NVARCHAR2})
+    values (#{bsm,jdbcType=OTHER}, #{objectid,jdbcType=DECIMAL}, #{zdbsm,jdbcType=OTHER}, 
+      #{sfzyt,jdbcType=OTHER}, #{tdyt,jdbcType=OTHER}, #{tdytmc,jdbcType=OTHER}, 
+      #{tdjg,jdbcType=OTHER}, #{tddj,jdbcType=OTHER}, #{qsrq,jdbcType=TIMESTAMP}, 
+      #{zzrq,jdbcType=TIMESTAMP}, #{syqx,jdbcType=OTHER}, #{blzt,jdbcType=OTHER}, 
+      #{zdmj,jdbcType=DECIMAL}, #{qlxz,jdbcType=OTHER})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.Tdpzyt">
+  <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.Tdpzyt">
     insert into SMATTR.TDPZYT
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="bsm != null">
@@ -169,28 +169,28 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="bsm != null">
-        #{bsm,jdbcType=NVARCHAR2},
+        #{bsm,jdbcType=OTHER},
       </if>
       <if test="objectid != null">
         #{objectid,jdbcType=DECIMAL},
       </if>
       <if test="zdbsm != null">
-        #{zdbsm,jdbcType=NVARCHAR2},
+        #{zdbsm,jdbcType=OTHER},
       </if>
       <if test="sfzyt != null">
-        #{sfzyt,jdbcType=NVARCHAR2},
+        #{sfzyt,jdbcType=OTHER},
       </if>
       <if test="tdyt != null">
-        #{tdyt,jdbcType=NVARCHAR2},
+        #{tdyt,jdbcType=OTHER},
       </if>
       <if test="tdytmc != null">
-        #{tdytmc,jdbcType=NVARCHAR2},
+        #{tdytmc,jdbcType=OTHER},
       </if>
       <if test="tdjg != null">
-        #{tdjg,jdbcType=NVARCHAR2},
+        #{tdjg,jdbcType=OTHER},
       </if>
       <if test="tddj != null">
-        #{tddj,jdbcType=NVARCHAR2},
+        #{tddj,jdbcType=OTHER},
       </if>
       <if test="qsrq != null">
         #{qsrq,jdbcType=TIMESTAMP},
@@ -199,20 +199,20 @@
         #{zzrq,jdbcType=TIMESTAMP},
       </if>
       <if test="syqx != null">
-        #{syqx,jdbcType=NVARCHAR2},
+        #{syqx,jdbcType=OTHER},
       </if>
       <if test="blzt != null">
-        #{blzt,jdbcType=NVARCHAR2},
+        #{blzt,jdbcType=OTHER},
       </if>
       <if test="zdmj != null">
         #{zdmj,jdbcType=DECIMAL},
       </if>
       <if test="qlxz != null">
-        #{qlxz,jdbcType=NVARCHAR2},
+        #{qlxz,jdbcType=OTHER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.TdpzytExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.supermap.dossiertool.smattrEntity.TdpzytExample" resultType="java.lang.Long">
     select count(*) from SMATTR.TDPZYT
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -222,28 +222,28 @@
     update SMATTR.TDPZYT
     <set>
       <if test="record.bsm != null">
-        BSM = #{record.bsm,jdbcType=NVARCHAR2},
+        BSM = #{record.bsm,jdbcType=OTHER},
       </if>
       <if test="record.objectid != null">
         OBJECTID = #{record.objectid,jdbcType=DECIMAL},
       </if>
       <if test="record.zdbsm != null">
-        ZDBSM = #{record.zdbsm,jdbcType=NVARCHAR2},
+        ZDBSM = #{record.zdbsm,jdbcType=OTHER},
       </if>
       <if test="record.sfzyt != null">
-        SFZYT = #{record.sfzyt,jdbcType=NVARCHAR2},
+        SFZYT = #{record.sfzyt,jdbcType=OTHER},
       </if>
       <if test="record.tdyt != null">
-        TDYT = #{record.tdyt,jdbcType=NVARCHAR2},
+        TDYT = #{record.tdyt,jdbcType=OTHER},
       </if>
       <if test="record.tdytmc != null">
-        TDYTMC = #{record.tdytmc,jdbcType=NVARCHAR2},
+        TDYTMC = #{record.tdytmc,jdbcType=OTHER},
       </if>
       <if test="record.tdjg != null">
-        TDJG = #{record.tdjg,jdbcType=NVARCHAR2},
+        TDJG = #{record.tdjg,jdbcType=OTHER},
       </if>
       <if test="record.tddj != null">
-        TDDJ = #{record.tddj,jdbcType=NVARCHAR2},
+        TDDJ = #{record.tddj,jdbcType=OTHER},
       </if>
       <if test="record.qsrq != null">
         QSRQ = #{record.qsrq,jdbcType=TIMESTAMP},
@@ -252,16 +252,16 @@
         ZZRQ = #{record.zzrq,jdbcType=TIMESTAMP},
       </if>
       <if test="record.syqx != null">
-        SYQX = #{record.syqx,jdbcType=NVARCHAR2},
+        SYQX = #{record.syqx,jdbcType=OTHER},
       </if>
       <if test="record.blzt != null">
-        BLZT = #{record.blzt,jdbcType=NVARCHAR2},
+        BLZT = #{record.blzt,jdbcType=OTHER},
       </if>
       <if test="record.zdmj != null">
         ZDMJ = #{record.zdmj,jdbcType=DECIMAL},
       </if>
       <if test="record.qlxz != null">
-        QLXZ = #{record.qlxz,jdbcType=NVARCHAR2},
+        QLXZ = #{record.qlxz,jdbcType=OTHER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -270,47 +270,47 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update SMATTR.TDPZYT
-    set BSM = #{record.bsm,jdbcType=NVARCHAR2},
+    set BSM = #{record.bsm,jdbcType=OTHER},
       OBJECTID = #{record.objectid,jdbcType=DECIMAL},
-      ZDBSM = #{record.zdbsm,jdbcType=NVARCHAR2},
-      SFZYT = #{record.sfzyt,jdbcType=NVARCHAR2},
-      TDYT = #{record.tdyt,jdbcType=NVARCHAR2},
-      TDYTMC = #{record.tdytmc,jdbcType=NVARCHAR2},
-      TDJG = #{record.tdjg,jdbcType=NVARCHAR2},
-      TDDJ = #{record.tddj,jdbcType=NVARCHAR2},
+      ZDBSM = #{record.zdbsm,jdbcType=OTHER},
+      SFZYT = #{record.sfzyt,jdbcType=OTHER},
+      TDYT = #{record.tdyt,jdbcType=OTHER},
+      TDYTMC = #{record.tdytmc,jdbcType=OTHER},
+      TDJG = #{record.tdjg,jdbcType=OTHER},
+      TDDJ = #{record.tddj,jdbcType=OTHER},
       QSRQ = #{record.qsrq,jdbcType=TIMESTAMP},
       ZZRQ = #{record.zzrq,jdbcType=TIMESTAMP},
-      SYQX = #{record.syqx,jdbcType=NVARCHAR2},
-      BLZT = #{record.blzt,jdbcType=NVARCHAR2},
+      SYQX = #{record.syqx,jdbcType=OTHER},
+      BLZT = #{record.blzt,jdbcType=OTHER},
       ZDMJ = #{record.zdmj,jdbcType=DECIMAL},
-      QLXZ = #{record.qlxz,jdbcType=NVARCHAR2}
+      QLXZ = #{record.qlxz,jdbcType=OTHER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.Tdpzyt">
+  <update id="updateByPrimaryKeySelective" parameterType="com.supermap.dossiertool.smattrEntity.Tdpzyt">
     update SMATTR.TDPZYT
     <set>
       <if test="objectid != null">
         OBJECTID = #{objectid,jdbcType=DECIMAL},
       </if>
       <if test="zdbsm != null">
-        ZDBSM = #{zdbsm,jdbcType=NVARCHAR2},
+        ZDBSM = #{zdbsm,jdbcType=OTHER},
       </if>
       <if test="sfzyt != null">
-        SFZYT = #{sfzyt,jdbcType=NVARCHAR2},
+        SFZYT = #{sfzyt,jdbcType=OTHER},
       </if>
       <if test="tdyt != null">
-        TDYT = #{tdyt,jdbcType=NVARCHAR2},
+        TDYT = #{tdyt,jdbcType=OTHER},
       </if>
       <if test="tdytmc != null">
-        TDYTMC = #{tdytmc,jdbcType=NVARCHAR2},
+        TDYTMC = #{tdytmc,jdbcType=OTHER},
       </if>
       <if test="tdjg != null">
-        TDJG = #{tdjg,jdbcType=NVARCHAR2},
+        TDJG = #{tdjg,jdbcType=OTHER},
       </if>
       <if test="tddj != null">
-        TDDJ = #{tddj,jdbcType=NVARCHAR2},
+        TDDJ = #{tddj,jdbcType=OTHER},
       </if>
       <if test="qsrq != null">
         QSRQ = #{qsrq,jdbcType=TIMESTAMP},
@@ -319,35 +319,35 @@
         ZZRQ = #{zzrq,jdbcType=TIMESTAMP},
       </if>
       <if test="syqx != null">
-        SYQX = #{syqx,jdbcType=NVARCHAR2},
+        SYQX = #{syqx,jdbcType=OTHER},
       </if>
       <if test="blzt != null">
-        BLZT = #{blzt,jdbcType=NVARCHAR2},
+        BLZT = #{blzt,jdbcType=OTHER},
       </if>
       <if test="zdmj != null">
         ZDMJ = #{zdmj,jdbcType=DECIMAL},
       </if>
       <if test="qlxz != null">
-        QLXZ = #{qlxz,jdbcType=NVARCHAR2},
+        QLXZ = #{qlxz,jdbcType=OTHER},
       </if>
     </set>
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+    where BSM = #{bsm,jdbcType=OTHER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.Tdpzyt">
+  <update id="updateByPrimaryKey" parameterType="com.supermap.dossiertool.smattrEntity.Tdpzyt">
     update SMATTR.TDPZYT
     set OBJECTID = #{objectid,jdbcType=DECIMAL},
-      ZDBSM = #{zdbsm,jdbcType=NVARCHAR2},
-      SFZYT = #{sfzyt,jdbcType=NVARCHAR2},
-      TDYT = #{tdyt,jdbcType=NVARCHAR2},
-      TDYTMC = #{tdytmc,jdbcType=NVARCHAR2},
-      TDJG = #{tdjg,jdbcType=NVARCHAR2},
-      TDDJ = #{tddj,jdbcType=NVARCHAR2},
+      ZDBSM = #{zdbsm,jdbcType=OTHER},
+      SFZYT = #{sfzyt,jdbcType=OTHER},
+      TDYT = #{tdyt,jdbcType=OTHER},
+      TDYTMC = #{tdytmc,jdbcType=OTHER},
+      TDJG = #{tdjg,jdbcType=OTHER},
+      TDDJ = #{tddj,jdbcType=OTHER},
       QSRQ = #{qsrq,jdbcType=TIMESTAMP},
       ZZRQ = #{zzrq,jdbcType=TIMESTAMP},
-      SYQX = #{syqx,jdbcType=NVARCHAR2},
-      BLZT = #{blzt,jdbcType=NVARCHAR2},
+      SYQX = #{syqx,jdbcType=OTHER},
+      BLZT = #{blzt,jdbcType=OTHER},
       ZDMJ = #{zdmj,jdbcType=DECIMAL},
-      QLXZ = #{qlxz,jdbcType=NVARCHAR2}
-    where BSM = #{bsm,jdbcType=NVARCHAR2}
+      QLXZ = #{qlxz,jdbcType=OTHER}
+    where BSM = #{bsm,jdbcType=OTHER}
   </update>
 </mapper>

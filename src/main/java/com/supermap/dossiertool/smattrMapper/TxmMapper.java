@@ -5,12 +5,16 @@ import com.supermap.dossiertool.smattrEntity.TxmExample;
 import com.supermap.dossiertool.smattrEntity.TxmWithBLOBs;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Mapper
 public interface TxmMapper {
+    @Select("SELECT S_TXM.NEXTVAL FROM DUAL")
+    short findMaxId();
     long countByExample(TxmExample example);
 
     int deleteByExample(TxmExample example);

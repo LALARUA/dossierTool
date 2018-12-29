@@ -3,24 +3,24 @@
 <mapper namespace="com.supermap.dossiertool.smattrMapper.TxmMapper">
   <resultMap id="BaseResultMap" type="com.supermap.dossiertool.smattrEntity.Txm">
     <result column="TXMID" jdbcType="DECIMAL" property="txmid" />
-    <result column="ZDDM" jdbcType="NVARCHAR2" property="zddm" />
-    <result column="ZDBSM" jdbcType="NVARCHAR2" property="zdbsm" />
+    <result column="ZDDM" jdbcType="OTHER" property="zddm" />
+    <result column="ZDBSM" jdbcType="OTHER" property="zdbsm" />
     <result column="DABH" jdbcType="DECIMAL" property="dabh" />
-    <result column="DALXBH" jdbcType="NVARCHAR2" property="dalxbh" />
-    <result column="DALX" jdbcType="NVARCHAR2" property="dalx" />
-    <result column="IP" jdbcType="NVARCHAR2" property="ip" />
-    <result column="MAC" jdbcType="NVARCHAR2" property="mac" />
-    <result column="JSJM" jdbcType="NVARCHAR2" property="jsjm" />
+    <result column="DALXBH" jdbcType="OTHER" property="dalxbh" />
+    <result column="DALX" jdbcType="OTHER" property="dalx" />
+    <result column="IP" jdbcType="OTHER" property="ip" />
+    <result column="MAC" jdbcType="OTHER" property="mac" />
+    <result column="JSJM" jdbcType="OTHER" property="jsjm" />
     <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="BGQX" jdbcType="NVARCHAR2" property="bgqx" />
-    <result column="FPYS" jdbcType="NVARCHAR2" property="fpys" />
-    <result column="JNMLCZBZ" jdbcType="NVARCHAR2" property="jnmlczbz" />
-    <result column="ZL" jdbcType="NVARCHAR2" property="zl" />
-    <result column="ZXSJ" jdbcType="NVARCHAR2" property="zxsj" />
-    <result column="ZN" jdbcType="NVARCHAR2" property="zn" />
-    <result column="ZY" jdbcType="NVARCHAR2" property="zy" />
-    <result column="DN" jdbcType="NVARCHAR2" property="dn" />
-    <result column="DY" jdbcType="NVARCHAR2" property="dy" />
+    <result column="BGQX" jdbcType="OTHER" property="bgqx" />
+    <result column="FPYS" jdbcType="OTHER" property="fpys" />
+    <result column="JNMLCZBZ" jdbcType="OTHER" property="jnmlczbz" />
+    <result column="ZL" jdbcType="OTHER" property="zl" />
+    <result column="ZXSJ" jdbcType="OTHER" property="zxsj" />
+    <result column="ZN" jdbcType="OTHER" property="zn" />
+    <result column="ZY" jdbcType="OTHER" property="zy" />
+    <result column="DN" jdbcType="OTHER" property="dn" />
+    <result column="DY" jdbcType="OTHER" property="dy" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.supermap.dossiertool.smattrEntity.TxmWithBLOBs">
     <result column="DABHTXM" jdbcType="BLOB" property="dabhtxm" />
@@ -135,12 +135,12 @@
       JNMLCZBZ, ZL, ZXSJ, 
       ZN, ZY, DN, DY, 
       DABHTXM, DALXBHTXM)
-    values (#{txmid,jdbcType=DECIMAL}, #{zddm,jdbcType=NVARCHAR2}, #{zdbsm,jdbcType=NVARCHAR2}, 
-      #{dabh,jdbcType=DECIMAL}, #{dalxbh,jdbcType=NVARCHAR2}, #{dalx,jdbcType=NVARCHAR2}, 
-      #{ip,jdbcType=NVARCHAR2}, #{mac,jdbcType=NVARCHAR2}, #{jsjm,jdbcType=NVARCHAR2}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{bgqx,jdbcType=NVARCHAR2}, #{fpys,jdbcType=NVARCHAR2}, 
-      #{jnmlczbz,jdbcType=NVARCHAR2}, #{zl,jdbcType=NVARCHAR2}, #{zxsj,jdbcType=NVARCHAR2}, 
-      #{zn,jdbcType=NVARCHAR2}, #{zy,jdbcType=NVARCHAR2}, #{dn,jdbcType=NVARCHAR2}, #{dy,jdbcType=NVARCHAR2}, 
+    values (#{txmid,jdbcType=DECIMAL}, #{zddm,jdbcType=OTHER}, #{zdbsm,jdbcType=OTHER}, 
+      #{dabh,jdbcType=DECIMAL}, #{dalxbh,jdbcType=OTHER}, #{dalx,jdbcType=OTHER}, 
+      #{ip,jdbcType=OTHER}, #{mac,jdbcType=OTHER}, #{jsjm,jdbcType=OTHER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{bgqx,jdbcType=OTHER}, #{fpys,jdbcType=OTHER}, 
+      #{jnmlczbz,jdbcType=OTHER}, #{zl,jdbcType=OTHER}, #{zxsj,jdbcType=OTHER}, 
+      #{zn,jdbcType=OTHER}, #{zy,jdbcType=OTHER}, #{dn,jdbcType=OTHER}, #{dy,jdbcType=OTHER}, 
       #{dabhtxm,jdbcType=BLOB}, #{dalxbhtxm,jdbcType=BLOB})
   </insert>
   <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.TxmWithBLOBs">
@@ -215,58 +215,58 @@
         #{txmid,jdbcType=DECIMAL},
       </if>
       <if test="zddm != null">
-        #{zddm,jdbcType=NVARCHAR2},
+        #{zddm,jdbcType=OTHER},
       </if>
       <if test="zdbsm != null">
-        #{zdbsm,jdbcType=NVARCHAR2},
+        #{zdbsm,jdbcType=OTHER},
       </if>
       <if test="dabh != null">
         #{dabh,jdbcType=DECIMAL},
       </if>
       <if test="dalxbh != null">
-        #{dalxbh,jdbcType=NVARCHAR2},
+        #{dalxbh,jdbcType=OTHER},
       </if>
       <if test="dalx != null">
-        #{dalx,jdbcType=NVARCHAR2},
+        #{dalx,jdbcType=OTHER},
       </if>
       <if test="ip != null">
-        #{ip,jdbcType=NVARCHAR2},
+        #{ip,jdbcType=OTHER},
       </if>
       <if test="mac != null">
-        #{mac,jdbcType=NVARCHAR2},
+        #{mac,jdbcType=OTHER},
       </if>
       <if test="jsjm != null">
-        #{jsjm,jdbcType=NVARCHAR2},
+        #{jsjm,jdbcType=OTHER},
       </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="bgqx != null">
-        #{bgqx,jdbcType=NVARCHAR2},
+        #{bgqx,jdbcType=OTHER},
       </if>
       <if test="fpys != null">
-        #{fpys,jdbcType=NVARCHAR2},
+        #{fpys,jdbcType=OTHER},
       </if>
       <if test="jnmlczbz != null">
-        #{jnmlczbz,jdbcType=NVARCHAR2},
+        #{jnmlczbz,jdbcType=OTHER},
       </if>
       <if test="zl != null">
-        #{zl,jdbcType=NVARCHAR2},
+        #{zl,jdbcType=OTHER},
       </if>
       <if test="zxsj != null">
-        #{zxsj,jdbcType=NVARCHAR2},
+        #{zxsj,jdbcType=OTHER},
       </if>
       <if test="zn != null">
-        #{zn,jdbcType=NVARCHAR2},
+        #{zn,jdbcType=OTHER},
       </if>
       <if test="zy != null">
-        #{zy,jdbcType=NVARCHAR2},
+        #{zy,jdbcType=OTHER},
       </if>
       <if test="dn != null">
-        #{dn,jdbcType=NVARCHAR2},
+        #{dn,jdbcType=OTHER},
       </if>
       <if test="dy != null">
-        #{dy,jdbcType=NVARCHAR2},
+        #{dy,jdbcType=OTHER},
       </if>
       <if test="dabhtxm != null">
         #{dabhtxm,jdbcType=BLOB},
@@ -289,58 +289,58 @@
         TXMID = #{record.txmid,jdbcType=DECIMAL},
       </if>
       <if test="record.zddm != null">
-        ZDDM = #{record.zddm,jdbcType=NVARCHAR2},
+        ZDDM = #{record.zddm,jdbcType=OTHER},
       </if>
       <if test="record.zdbsm != null">
-        ZDBSM = #{record.zdbsm,jdbcType=NVARCHAR2},
+        ZDBSM = #{record.zdbsm,jdbcType=OTHER},
       </if>
       <if test="record.dabh != null">
         DABH = #{record.dabh,jdbcType=DECIMAL},
       </if>
       <if test="record.dalxbh != null">
-        DALXBH = #{record.dalxbh,jdbcType=NVARCHAR2},
+        DALXBH = #{record.dalxbh,jdbcType=OTHER},
       </if>
       <if test="record.dalx != null">
-        DALX = #{record.dalx,jdbcType=NVARCHAR2},
+        DALX = #{record.dalx,jdbcType=OTHER},
       </if>
       <if test="record.ip != null">
-        IP = #{record.ip,jdbcType=NVARCHAR2},
+        IP = #{record.ip,jdbcType=OTHER},
       </if>
       <if test="record.mac != null">
-        MAC = #{record.mac,jdbcType=NVARCHAR2},
+        MAC = #{record.mac,jdbcType=OTHER},
       </if>
       <if test="record.jsjm != null">
-        JSJM = #{record.jsjm,jdbcType=NVARCHAR2},
+        JSJM = #{record.jsjm,jdbcType=OTHER},
       </if>
       <if test="record.createtime != null">
         CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.bgqx != null">
-        BGQX = #{record.bgqx,jdbcType=NVARCHAR2},
+        BGQX = #{record.bgqx,jdbcType=OTHER},
       </if>
       <if test="record.fpys != null">
-        FPYS = #{record.fpys,jdbcType=NVARCHAR2},
+        FPYS = #{record.fpys,jdbcType=OTHER},
       </if>
       <if test="record.jnmlczbz != null">
-        JNMLCZBZ = #{record.jnmlczbz,jdbcType=NVARCHAR2},
+        JNMLCZBZ = #{record.jnmlczbz,jdbcType=OTHER},
       </if>
       <if test="record.zl != null">
-        ZL = #{record.zl,jdbcType=NVARCHAR2},
+        ZL = #{record.zl,jdbcType=OTHER},
       </if>
       <if test="record.zxsj != null">
-        ZXSJ = #{record.zxsj,jdbcType=NVARCHAR2},
+        ZXSJ = #{record.zxsj,jdbcType=OTHER},
       </if>
       <if test="record.zn != null">
-        ZN = #{record.zn,jdbcType=NVARCHAR2},
+        ZN = #{record.zn,jdbcType=OTHER},
       </if>
       <if test="record.zy != null">
-        ZY = #{record.zy,jdbcType=NVARCHAR2},
+        ZY = #{record.zy,jdbcType=OTHER},
       </if>
       <if test="record.dn != null">
-        DN = #{record.dn,jdbcType=NVARCHAR2},
+        DN = #{record.dn,jdbcType=OTHER},
       </if>
       <if test="record.dy != null">
-        DY = #{record.dy,jdbcType=NVARCHAR2},
+        DY = #{record.dy,jdbcType=OTHER},
       </if>
       <if test="record.dabhtxm != null">
         DABHTXM = #{record.dabhtxm,jdbcType=BLOB},
@@ -356,24 +356,24 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update SMATTR.TXM
     set TXMID = #{record.txmid,jdbcType=DECIMAL},
-      ZDDM = #{record.zddm,jdbcType=NVARCHAR2},
-      ZDBSM = #{record.zdbsm,jdbcType=NVARCHAR2},
+      ZDDM = #{record.zddm,jdbcType=OTHER},
+      ZDBSM = #{record.zdbsm,jdbcType=OTHER},
       DABH = #{record.dabh,jdbcType=DECIMAL},
-      DALXBH = #{record.dalxbh,jdbcType=NVARCHAR2},
-      DALX = #{record.dalx,jdbcType=NVARCHAR2},
-      IP = #{record.ip,jdbcType=NVARCHAR2},
-      MAC = #{record.mac,jdbcType=NVARCHAR2},
-      JSJM = #{record.jsjm,jdbcType=NVARCHAR2},
+      DALXBH = #{record.dalxbh,jdbcType=OTHER},
+      DALX = #{record.dalx,jdbcType=OTHER},
+      IP = #{record.ip,jdbcType=OTHER},
+      MAC = #{record.mac,jdbcType=OTHER},
+      JSJM = #{record.jsjm,jdbcType=OTHER},
       CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
-      BGQX = #{record.bgqx,jdbcType=NVARCHAR2},
-      FPYS = #{record.fpys,jdbcType=NVARCHAR2},
-      JNMLCZBZ = #{record.jnmlczbz,jdbcType=NVARCHAR2},
-      ZL = #{record.zl,jdbcType=NVARCHAR2},
-      ZXSJ = #{record.zxsj,jdbcType=NVARCHAR2},
-      ZN = #{record.zn,jdbcType=NVARCHAR2},
-      ZY = #{record.zy,jdbcType=NVARCHAR2},
-      DN = #{record.dn,jdbcType=NVARCHAR2},
-      DY = #{record.dy,jdbcType=NVARCHAR2},
+      BGQX = #{record.bgqx,jdbcType=OTHER},
+      FPYS = #{record.fpys,jdbcType=OTHER},
+      JNMLCZBZ = #{record.jnmlczbz,jdbcType=OTHER},
+      ZL = #{record.zl,jdbcType=OTHER},
+      ZXSJ = #{record.zxsj,jdbcType=OTHER},
+      ZN = #{record.zn,jdbcType=OTHER},
+      ZY = #{record.zy,jdbcType=OTHER},
+      DN = #{record.dn,jdbcType=OTHER},
+      DY = #{record.dy,jdbcType=OTHER},
       DABHTXM = #{record.dabhtxm,jdbcType=BLOB},
       DALXBHTXM = #{record.dalxbhtxm,jdbcType=BLOB}
     <if test="_parameter != null">
@@ -383,24 +383,24 @@
   <update id="updateByExample" parameterType="map">
     update SMATTR.TXM
     set TXMID = #{record.txmid,jdbcType=DECIMAL},
-      ZDDM = #{record.zddm,jdbcType=NVARCHAR2},
-      ZDBSM = #{record.zdbsm,jdbcType=NVARCHAR2},
+      ZDDM = #{record.zddm,jdbcType=OTHER},
+      ZDBSM = #{record.zdbsm,jdbcType=OTHER},
       DABH = #{record.dabh,jdbcType=DECIMAL},
-      DALXBH = #{record.dalxbh,jdbcType=NVARCHAR2},
-      DALX = #{record.dalx,jdbcType=NVARCHAR2},
-      IP = #{record.ip,jdbcType=NVARCHAR2},
-      MAC = #{record.mac,jdbcType=NVARCHAR2},
-      JSJM = #{record.jsjm,jdbcType=NVARCHAR2},
+      DALXBH = #{record.dalxbh,jdbcType=OTHER},
+      DALX = #{record.dalx,jdbcType=OTHER},
+      IP = #{record.ip,jdbcType=OTHER},
+      MAC = #{record.mac,jdbcType=OTHER},
+      JSJM = #{record.jsjm,jdbcType=OTHER},
       CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
-      BGQX = #{record.bgqx,jdbcType=NVARCHAR2},
-      FPYS = #{record.fpys,jdbcType=NVARCHAR2},
-      JNMLCZBZ = #{record.jnmlczbz,jdbcType=NVARCHAR2},
-      ZL = #{record.zl,jdbcType=NVARCHAR2},
-      ZXSJ = #{record.zxsj,jdbcType=NVARCHAR2},
-      ZN = #{record.zn,jdbcType=NVARCHAR2},
-      ZY = #{record.zy,jdbcType=NVARCHAR2},
-      DN = #{record.dn,jdbcType=NVARCHAR2},
-      DY = #{record.dy,jdbcType=NVARCHAR2}
+      BGQX = #{record.bgqx,jdbcType=OTHER},
+      FPYS = #{record.fpys,jdbcType=OTHER},
+      JNMLCZBZ = #{record.jnmlczbz,jdbcType=OTHER},
+      ZL = #{record.zl,jdbcType=OTHER},
+      ZXSJ = #{record.zxsj,jdbcType=OTHER},
+      ZN = #{record.zn,jdbcType=OTHER},
+      ZY = #{record.zy,jdbcType=OTHER},
+      DN = #{record.dn,jdbcType=OTHER},
+      DY = #{record.dy,jdbcType=OTHER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
