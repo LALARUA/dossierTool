@@ -9,12 +9,19 @@ import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.ZGStockSystemService;
 import com.supermap.dossiertool.smattrEntity.*;
 import com.supermap.dossiertool.smattrMapper.*;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.nio.file.Path;
 import java.util.*;
 
@@ -171,7 +178,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     }
 
     @Override
-//    @Cacheable(key = "#selectNameList",cacheNames = "select")
+    @Cacheable(key = "#selectNameList",cacheNames = "select")
     public Map<String,List<Const>> getSelect(List<String> selectNameList) {
         HashSet<String> strings = new HashSet<>(selectNameList);
         Map<String,List<Const>> map = new HashMap<>();
@@ -223,6 +230,41 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
 //    @Cacheable(cacheNames = "handlingAJH",key = "#AJH")
     public List<MyFile> getJpgList(String path,String AJH){
         return MyFunction.getJpgList(path);
+    }
+
+    @Override
+    public PublicExcelData getPublicExcelData(String excelPath, String AJH) throws Exception {
+        excelPath = "E:\\zigongDATA\\自贡数据\\打印台账汇总.xls";
+
+        File excel = new File(excelPath);
+        FileInputStream fileInputStream = new FileInputStream(excel);
+        String postfix = excelPath.substring(excelPath.lastIndexOf("."));
+        Workbook wb = null;
+        if (".xls".equals(postfix))
+            wb = new HSSFWorkbook(fileInputStream);
+        else if (".xlsx".equals(postfix))
+            wb = new XSSFWorkbook(fileInputStream);
+        for (int i = 0; i < wb.getNumberOfSheets(); i++) {
+            Sheet sheet = wb.getSheetAt(i);
+            int lastRowNum = sheet.getLastRowNum();
+            PublicExcelData publicDataFromExcel = null;
+            for (int row = 1;row <= lastRowNum; row++) {
+                Cell cell = sheet.getRow(row).getCell(0);
+                String positionContent = cell.toString();
+                int end = positionContent.indexOf(".");
+                positionContent = positionContent.substring(0,end);  //去除最后的 .0 字符串
+                if (AJH.equals(positionContent)){
+                    publicDataFromExcel = new PublicExcelData();
+                    Row rowFromAJH = sheet.getRow(row);
+                    publicDataFromExcel.setQLR(rowFromAJH.getCell(1).toString());
+                    publicDataFromExcel.setTDZH(rowFromAJH.getCell(2).toString());
+                    publicDataFromExcel.setFWZL(rowFromAJH.getCell(3).toString());
+                    return publicDataFromExcel;
+                }
+            }
+        }
+
+        return null;
     }
 
 }

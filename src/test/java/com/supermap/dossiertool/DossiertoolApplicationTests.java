@@ -6,6 +6,7 @@ import com.supermap.dossiertool.mapper.*;
 
 
 import com.supermap.dossiertool.pojo.*;
+import com.supermap.dossiertool.service.ZGStockSystemService;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
 import com.supermap.dossiertool.smattrEntity.Const;
 import com.supermap.dossiertool.smattrEntity.Jsydsyq;
@@ -33,6 +34,8 @@ public class DossiertoolApplicationTests {
 
 
 	@Autowired
+	ZGStockSystemService zgStockSystemService;
+	@Autowired
 	JsydsyqMapper jsydsyqMapper;
 
 	@Autowired
@@ -40,10 +43,8 @@ public class DossiertoolApplicationTests {
 
 	@Test
 	public void contextLoads() throws Exception {
+zgStockSystemService.getPublicExcelData("Sfa","5000048");
 
-		List<Const> tdyt = constMapper.getSelected("QLLX");
-
-		System.out.println(55);
 
 //		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
 //		Date date = new Date();

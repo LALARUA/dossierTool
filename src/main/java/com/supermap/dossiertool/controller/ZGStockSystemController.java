@@ -70,7 +70,7 @@ public class ZGStockSystemController {
     public Map getJpgList(String path,String AJH/*@RequestParam(required = false,defaultValue = "E:\\zigongDATA\\自贡数据\\打印台账汇总.xls") String excelPath*/){
         Map map = new HashMap<>();
         try {
-            PublicExcelData publicExcelData = MyFunction.getPublicExcelData(myPropertiesConfig.getExcelPath(), AJH);
+            PublicExcelData publicExcelData = zgStockSystemService.getPublicExcelData(myPropertiesConfig.getExcelPath(), AJH);
             if (publicExcelData==null){
                 map.put("error","未查找到该案卷号台账信息");
                 return map;

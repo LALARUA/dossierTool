@@ -22,4 +22,5 @@ public interface ZGStockSystemService {
     Map<String,List<Const>> getSelect(List<String> selectNameList);
     void submitData(Zdjbxx zdjbxx, Jsydsyq jsydsyq, TdpzytList tdpzytList, QlrList qlrList, Txm txm);
     List<MyFile> getJpgList(String path, String AJH);
+    PublicExcelData getPublicExcelData(String excelPath,String AJH) throws Exception;
 }
