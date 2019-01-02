@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public interface ZGStockSystemService {
     void insertData(DasAjjbxx das_ajjbxx, DasBdc das_bdc, DasCq das_cq, String folderPath) throws Exception;
-    Map<String,List<Const>> getSelect(List<String> selectNameList);
+    Map<String,Map> getSelect(List<String> selectsFromConstNameList,List<String> selectsFromOtherNameList);
     void submitData(Zdjbxx zdjbxx, Jsydsyq jsydsyq, TdpzytList tdpzytList, QlrList qlrList, Txm txm);
     List<MyFile> getJpgList(String path, String AJH);
     PublicExcelData getPublicExcelData(String excelPath,String AJH) throws Exception;

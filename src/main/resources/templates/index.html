@@ -180,19 +180,19 @@
                     </div>
                     <div class="zdxx form-group col-md-6">
                         <label  for="qllx">权利类型</label>
-                        <select getselect="qllx" id="qllx" name="qllx" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="qllx" id="qllx" name="qllx" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                 </div>
                 <div class="from-row zdxx">
                     <div class="zdxx form-group col-md-6">
                         <label for="qlxz">权利性质</label>
-                        <select getselect="qlxz" id="qlxz" name="qlxz" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="qlxz" id="qlxz" name="qlxz" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                     <div class="zdxx form-group col-md-6">
                         <label for="qlsdfs">权利设定方式</label>
-                        <select getselect="qlsdfs" id="qlsdfs" name="qlsdfs" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="qlsdfs" id="qlsdfs" name="qlsdfs" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                 </div>
@@ -303,7 +303,7 @@
                     </div>
                     <div class="zdxx form-group col-md-6">
                         <label for="syqlx">所有权类型</label>
-                        <select getselect="syqlx" id="syqlx" name="syqlx" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="syqlx" id="syqlx" name="syqlx" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                              </div>
                 </div>
@@ -350,51 +350,58 @@
                 <div class="from-row zdxx">
                     <div class="zdxx form-group col-md-6">
                         <label for="clrq">测量日期</label>
-                        <input type="text" class="form-control" name="clrq" id="clrq" placeholder="测量日期">
+                        <input type="date" class="form-control" name="clrq" id="clrq" placeholder="测量日期">
                     </div>
-                    <div class="zdxx form-group col-md-6">
+                    <div class="zdxx form-group col-md-12">
                         <label for="jzdwsm">界址点位说明</label>
                         <input type="text" class="form-control" name="jzdwsm" id="jzdwsm" placeholder="界址点位说明">
                     </div>
                 </div>
                 <div class="from-row zdxx">
                     <div class="zdxx form-group col-md-6">
-                        <label for="ybzddm">预编宗地代码</label>
-                        <input type="text" class="form-control" name="ybzddm" id="ybzddm" placeholder="预编宗地代码">
+                        <label for="qxmc">区县名称</label>
+                        <select dmId="qxdm" getselect="xzq" class="form-control getSelectFromOther custom-select custom-select-lg mb-3" name="qxmc" id="qxmc" placeholder="区县名称">
+                        </select>
                     </div>
                     <div class="zdxx form-group col-md-6">
                         <label for="qxdm">区县代码</label>
                         <input type="text" class="form-control" name="qxdm" id="qxdm" placeholder="区县代码">
+
                     </div>
+
                 </div>
                 <div class="from-row zdxx">
                     <div class="zdxx form-group col-md-6">
+                        <label for="djqmc">地籍区名称</label>
+                        <select dmId="djqdm" getselect="djq"  class="form-control getSelectFromOther custom-select custom-select-lg mb-3" name="djqmc" id="djqmc" placeholder="地籍区名称">
+                        </select>
+                    </div>
+                    <div class="zdxx form-group col-md-6">
                         <label for="djqdm">地籍区代码</label>
                         <input type="text" class="form-control" name="djqdm" id="djqdm" placeholder="地籍区代码">
+                    </div>
+
+                </div>
+
+                <div class="from-row zdxx">
+                    <div class="zdxx form-group col-md-6">
+                        <label for="djzqmc">地籍子区名称</label>
+                        <select dmId="djzqdm" getselect="djzq" class="form-control getSelectFromOther custom-select custom-select-lg mb-3" name="djzqmc" id="djzqmc" placeholder="地籍子区名称">
+                        </select>
                     </div>
                     <div class="zdxx form-group col-md-6">
                         <label for="djzqdm">地籍子区代码</label>
                         <input type="text" class="form-control" name="djzqdm" id="djzqdm" placeholder="地籍子区代码">
                     </div>
-                </div>
-                <div class="from-row zdxx">
-                    <div class="zdxx form-group col-md-6">
-                        <label for="qxmc">区县名称</label>
-                        <input type="text" class="form-control" name="qxmc" id="qxmc" placeholder="区县名称">
-                    </div>
-                    <div class="zdxx form-group col-md-6">
-                        <label for="djqmc">地籍区名称</label>
-                        <input type="text" class="form-control" name="djqmc" id="djqmc" placeholder="地籍区名称">
-                    </div>
-                </div>
-                <div class="from-row zdxx">
-                    <div class="zdxx form-group col-md-6">
-                        <label for="djzqmc">地籍子区名称</label>
-                        <input type="text" class="form-control" name="djzqmc" id="djzqmc" placeholder="地籍子区名称">
-                    </div>
-                    <div class="zdxx form-group col-md-6"></div>
-                </div>
 
+                </div>
+                <div class="from-row zdxx">
+                    <div class="zdxx form-group col-md-6">
+                        <label for="ybzddm">预编宗地代码</label>
+                        <input type="text" class="form-control" name="ybzddm" id="ybzddm" placeholder="预编宗地代码">
+                    </div>
+
+                </div>
 
                 <div id="originTdxxForm" class="tdxxForm">
 
@@ -406,10 +413,10 @@
                     </div>
                 </div>
                 <div class="from-row tdytxx zdxx">
-                    <div  class="tdytxx form-group col-md-6">
-                        <label for="zdbsm">宗地标识码</label>
-                        <input type="text" class="form-control" name="zdbsm" id="zdbsm" placeholder="宗地标识码">
-                    </div>
+                    <!--<div  class="tdytxx form-group col-md-6">-->
+                        <!--<label for="zdbsm">宗地标识码</label>-->
+                        <!--<input type="text" class="form-control" name="zdbsm" id="zdbsm" placeholder="宗地标识码">-->
+                    <!--</div>-->
                     <div class="tdytxx form-group col-md-6">
                         <label for="sfzyt">是否主用途</label>
                         <input type="text" class="form-control" name="sfzyt" id="sfzyt" placeholder="是否主用途">
@@ -418,7 +425,7 @@
                 <div class="from-row tdytxx zdxx">
                     <div class="tdytxx form-group col-md-6">
                         <label for="tdyt">土地用途</label>
-                        <select getselect="tdyt" id="tdyt" name="tdyt" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="tdyt" id="tdyt" name="tdyt" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                     <div class="tdytxx form-group col-md-6">
@@ -433,7 +440,7 @@
                     </div>
                     <div class="tdytxx form-group col-md-6">
                         <label for="tddj">土地等级</label>
-                        <select getselect="tddj" id="tddj" name="tddj" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="tddj" id="tddj" name="tddj" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                 </div>
@@ -464,7 +471,7 @@
                     </div>
                     <div class="tdytxx form-group col-md-6">
                         <label for="qlxz">权利性质</label>
-                        <select getselect="qlxz" id="qlxz" name="qlxz" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="qlxz" id="qlxz" name="qlxz" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                 </div>
@@ -481,21 +488,21 @@
 
 
                     <!--使用权信息表单-->
+                <!--<div class="from-row syqxx">-->
+                    <!--<div class="xyqxx form-group col-md-6">-->
+                        <!--<label for="zddm">宗地代码</label>-->
+                        <!--<input type="text" class="form-control" name="zddm" id="zddm" placeholder="宗地代码">-->
+                    <!--</div>-->
+                    <!--<div class="xyqxx form-group col-md-6">-->
+                        <!--<label for="bdcdybsm">单元标识码</label>-->
+                        <!--<input type="text" class="form-control" name="bdcdybsm" id="bdcdybsm" placeholder="单元标识码">-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="from-row syqxx">
-                    <div class="xyqxx form-group col-md-6">
-                        <label for="zddm">宗地代码</label>
-                        <input type="text" class="form-control" name="zddm" id="zddm" placeholder="宗地代码">
-                    </div>
-                    <div class="xyqxx form-group col-md-6">
-                        <label for="bdcdybsm">单元标识码</label>
-                        <input type="text" class="form-control" name="bdcdybsm" id="bdcdybsm" placeholder="单元标识码">
-                    </div>
-                </div>
-                <div class="from-row syqxx">
-                    <div class="xyqxx form-group col-md-6">
-                        <label for="bdcdyh">不动产单元号</label>
-                        <input type="text" class="form-control" name="bdcdyh" id="bdcdyh" placeholder="不动产单元号">
-                    </div>
+                    <!--<div class="xyqxx form-group col-md-6">-->
+                        <!--<label for="bdcdyh">不动产单元号</label>-->
+                        <!--<input type="text" class="form-control" name="bdcdyh" id="bdcdyh" placeholder="不动产单元号">-->
+                    <!--</div>-->
                     <div class="xyqxx form-group col-md-6">
                         <label for="ywh">受理编号</label>
                         <input type="text" class="form-control" name="ywh" id="ywh" placeholder="受理编号">
@@ -504,12 +511,12 @@
                 <div class="from-row syqxx">
                     <!--<div class="xyqxx form-group col-md-6">-->
                         <!--<label for="qllx">权利类型</label>-->
-                        <!--<select id="qllx" name="qllx" class="form-control getSelect custom-select custom-select-lg mb-3">-->
+                        <!--<select id="qllx" name="qllx" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">-->
                         <!--</select>-->
                     <!--</div>-->
                     <div class="xyqxx form-group col-md-6">
                         <label for="djlx">登记类型</label>
-                        <select getselect="djlx"id="djlx" name="djlx" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="djlx"id="djlx" name="djlx" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                 </div>
@@ -544,10 +551,10 @@
                     </div>
                 </div>
                 <div class="from-row syqxx">
-                    <div class="xyqxx form-group col-md-6">
-                        <label for="qxdm">区县代码</label>
-                        <input type="text" class="form-control" name="qxdm" id="qxdm" placeholder="区县代码">
-                    </div>
+                    <!--<div class="xyqxx form-group col-md-6">-->
+                        <!--<label for="qxdm">区县代码</label>-->
+                        <!--<input type="text" class="form-control" name="qxdm" id="qxdm" placeholder="区县代码">-->
+                    <!--</div>-->
                     <div class="xyqxx form-group col-md-6">
                         <label for="djjg">登记机构</label>
                         <input type="text" class="form-control" name="djjg" id="djjg" placeholder="登记机构">
@@ -570,7 +577,7 @@
                     </div>
                     <div class="xyqxx form-group col-md-6">
                         <label for="qszt">权属状态</label>
-                        <select getselect="qszt" id="qszt" name="qszt" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="qszt" id="qszt" name="qszt" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                 </div>
@@ -596,21 +603,21 @@
                 <!--权利人信息表单-->
 
                 <div id="originQlrxxForm" class="qlrxxForm">
+                <!--<div class="from-row qlrxx">-->
+                    <!--<div class="qlrxx form-group col-md-6">-->
+                        <!--<label for="qlbsm">权利标识码</label>-->
+                        <!--<input type="text" class="form-control" name="qlbsm" id="qlbsm" placeholder="权利标识码">-->
+                    <!--</div>-->
+                    <!--<div class="qlrxx form-group col-md-6">-->
+                        <!--<label for="bdcdyh">不动产单元号</label>-->
+                        <!--<input type="text" class="form-control" name="bdcdyh" id="bdcdyh" placeholder="不动产单元号">-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="from-row qlrxx">
-                    <div class="qlrxx form-group col-md-6">
-                        <label for="qlbsm">权利标识码</label>
-                        <input type="text" class="form-control" name="qlbsm" id="qlbsm" placeholder="权利标识码">
-                    </div>
-                    <div class="qlrxx form-group col-md-6">
-                        <label for="bdcdyh">不动产单元号</label>
-                        <input type="text" class="form-control" name="bdcdyh" id="bdcdyh" placeholder="不动产单元号">
-                    </div>
-                </div>
-                <div class="from-row qlrxx">
-                    <div class="qlrxx form-group col-md-6">
-                        <label for="sxh">顺序号</label>
-                        <input type="text" class="form-control" name="sxh" id="sxh" placeholder="顺序号">
-                    </div>
+                    <!--<div class="qlrxx form-group col-md-6">-->
+                        <!--<label for="sxh">顺序号</label>-->
+                        <!--<input type="text" class="form-control" name="sxh" id="sxh" placeholder="顺序号">-->
+                    <!--</div>-->
                     <div class="qlrxx form-group col-md-6">
                         <label for="qlrmc">权利人名称</label>
                         <input type="text" class="form-control" name="qlrmc" id="qlrmc" placeholder="权利人名称">
@@ -633,7 +640,9 @@
                     </div>
                     <div class="qlrxx form-group col-md-6">
                         <label for="zjzl">证件种类</label>
-                        <input type="text" class="form-control" name="zjzl" id="zjzl" placeholder="证件种类">
+                        <select getselect="zjlx" class="form-control getSelectFromConst custom-select custom-select-lg mb-3" name="zjzl" id="zjzl" placeholder="证件种类">
+
+                        </select>
                     </div>
                 </div>
                 <div class="from-row qlrxx">
@@ -653,7 +662,7 @@
                     </div>
                     <div class="qlrxx form-group col-md-6">
                         <label for="gj">国家/地区</label>
-                        <select getselect="gjdq" id="gj" name="gj" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="gjdq" id="gj" name="gj" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                 </div>
@@ -664,7 +673,7 @@
                     </div>
                     <div class="qlrxx form-group col-md-6">
                             <label for="xb">性别</label>
-                            <select getselect="xb"  id="xb" name="xb" class="form-control getSelect custom-select custom-select-lg mb-3">
+                            <select getselect="xb"  id="xb" name="xb" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
 
                             </select>
 
@@ -697,7 +706,7 @@
                     </div>
                     <div class="qlrxx form-group col-md-6">
                         <label for="qlrlx">权利人类型</label>
-                        <select getselect="qlrlx" id="qlrlx" name="qlrlx" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="qlrlx" id="qlrlx" name="qlrlx" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                 </div>
@@ -708,7 +717,7 @@
                     </div>
                     <div class="qlrxx form-group col-md-6">
                         <label for="gyfs">共有方式</label>
-                        <select getselect="gyfs" id="gyfs" name="gyfs" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="gyfs" id="gyfs" name="gyfs" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                 </div>
@@ -735,7 +744,7 @@
                 <div class="from-row qlrxx">
                     <div class="qlrxx form-group col-md-6">
                         <label for="dlrzjlx">代理人证件类型</label>
-                        <select getselect="zjlx" id="dlrzjlx" name="dlrzjlx" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select getselect="zjlx" id="dlrzjlx" name="dlrzjlx" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                     <div class="qlrxx form-group col-md-6">
@@ -766,7 +775,7 @@
                 <div class="from-row qlrxx">
                     <div class="qlrxx form-group col-md-6">
                         <label for="fddbrzjlx">法定代表人证件类型</label>
-                        <select  getselect="zjlx" id="fddbrzjlx" name="fddbrzjlx" class="form-control getSelect custom-select custom-select-lg mb-3">
+                        <select  getselect="zjlx" id="fddbrzjlx" name="fddbrzjlx" class="form-control getSelectFromConst custom-select custom-select-lg mb-3">
                         </select>
                     </div>
                     <div class="qlrxx form-group col-md-6">
@@ -807,17 +816,20 @@
                 <div class="from-row qlrxx">
                     <div class="qlrxx form-group col-md-6">
                         <label for="xtdczfs">小土地持证方式</label>
-                        <input type="text" class="form-control" name="xtdczfs" id="xtdczfs" placeholder="小土地持证方式">
+                        <select getselect="czfs" class="form-control getSelectFromConst custom-select custom-select-lg mb-3" name="xtdczfs" id="xtdczfs" placeholder="小土地持证方式">
+                        </select>
                     </div>
                     <div class="qlrxx form-group col-md-6">
                         <label for="xtdqlxz">小土地权利性质</label>
-                        <input type="text" class="form-control" name="xtdqlxz" id="xtdqlxz" placeholder="小土地权利性质">
+                        <select getselect="qlxz" class="form-control getSelectFromConst custom-select custom-select-lg mb-3" name="xtdqlxz" id="xtdqlxz" placeholder="小土地权利性质">
+                        </select>
                     </div>
                 </div>
                 <div class="from-row qlrxx">
                     <div class="qlrxx form-group col-md-6">
                         <label for="xtdtdyt">小土地土地用途</label>
-                        <input type="text" class="form-control" name="xtdtdyt" id="xtdtdyt" placeholder="小土地土地用途">
+                        <select getselect="tdyt"  class="form-control getSelectFromConst custom-select custom-select-lg mb-3" name="xtdtdyt" id="xtdtdyt" placeholder="小土地土地用途">
+                        </select>
                     </div>
                     <div class="qlrxx form-group col-md-6">
                         <label for="xtdsyqx">小土地使用期限</label>
@@ -905,32 +917,43 @@
 <script type="text/javascript" src="js//bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script type="text/javascript" th:inline="javascript">
 window.onload = function (ev) {
-    var selectMap = new Map();
-    var selects = $(".getSelect");
+    var selectsFromConst = $(".getSelectFromConst");
+    var selectsFromOther = $(".getSelectFromOther")
     var initSelect = function () {
-        var selectNameList = [];
-       for (var i = 0;i<selects.length;i++){
-           selectNameList.push(selects.eq(i).attr("getselect"))
+        var selectsFromConstNameList = [];
+       for (var i = 0;i<selectsFromConst.length;i++){
+           selectsFromConstNameList.push(selectsFromConst.eq(i).attr("getselect"))
        }
+        var selectsFromOtherNameList = [];
+        for (var i = 0;i<selectsFromOther.length;i++){
+            selectsFromOtherNameList.push(selectsFromOther.eq(i).attr("getselect"))
+        }
         $.ajax({
             url: '/getSelect',
             type: 'get', //
             async: true,    //或false,是否异步
-            data:'selectNameList='+ selectNameList,
+            data:'selectsFromConstNameList='+ selectsFromConstNameList+'&selectsFromOtherNameList='+selectsFromOtherNameList,
             timeout: 5000,    //超时时间
             dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text
             success: function (data) {
-                selectMap = data
-
-                for (var i = 0;i<selects.length;i++){
-                   var getselect =  selects.eq(i).attr("getselect");
-
-                  var constList = data[getselect];
-                  var constListString="";
+                for (var i = 0;i<selectsFromConst.length;i++){
+                   var getselect =  selectsFromConst.eq(i).attr("getselect");
+                  var constList = data['selectsFromConst'][getselect];
+                  var constListString="<option style='display: none'></option>";
                   for (var j = 0;j<constList.length;j++){
                       constListString+="<option  value="+constList[j].constValue+">"+constList[j].consttrans+"</option>";
                   }
-                  selects.eq(i).append(constListString);
+                    selectsFromConst.eq(i).append(constListString);
+                }
+
+                for (var i = 0;i<selectsFromOther.length;i++){
+                    var getselect = selectsFromOther.eq(i).attr("getselect");
+                    var otherList = data['selectsFromOther'][getselect];
+                    var otherListString = "<option style='display: none'></option>"
+                    for (var j = 0;j<otherList.length;j++){
+                        otherListString+="<option class='djqx' dm="+otherList[j].dm+"  value="+otherList[j].mc+">"+otherList[j].mc+"</option>";
+                    }
+                    selectsFromOther.eq(i).append(otherListString);
                 }
 
             },
@@ -945,6 +968,13 @@ window.onload = function (ev) {
     $(".from-row").hide();
     $(".zdxx").show();
 
+    $(document).on('change', '.getSelectFromOther', function () {
+
+        var dm = $(this).find("option:selected").attr("dm")
+        var dmId = $(this).attr("dmId");
+        $("#"+dmId).val(dm)
+
+    })
     $(document).on('click', '#submitForm', function () {
 
 
@@ -1024,79 +1054,6 @@ window.onload = function (ev) {
             "                        <button deleteTdxxIndex='"+tdxxIndex+"'style=\"margin-left: 200px\"  class=\"deleteBtn btn btn-danger\">删除</button>\n" +
             "                    </div>\n" +
             "                </div> </div>")
-        // $("#addTdxx").before("\n" +"<div class='tdxxForm' id="+id+">"+
-        //     "                <div class=\"from-row tdytxx zdxx\">\n" +
-        //     "                    <div class=\"zdxx form-group col-md-12\">\n" +
-        //     "                        <hr>\n" +
-        //     "                        <h3 style=\"float: left\">土地用途信息</h3>\n" +
-        //     "                    </div>\n" +
-        //     "                </div>\n" +
-        //     "                <div class=\"from-row tdytxx zdxx\">\n" +
-        //     "                    <div  class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"zdbsm\">宗地标识码</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"zdbsm\" id=\"zdbsm\" placeholder=\"宗地标识码\">\n" +
-        //     "                    </div>\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"sfzyt\">是否主用途</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"sfzyt\" id=\"sfzyt\" placeholder=\"是否主用途\">\n" +
-        //     "                    </div>\n" +
-        //     "                </div>\n" +
-        //     "                <div class=\"from-row tdytxx zdxx\">\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"tdyt\">土地用途</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"tdyt\" id=\"tdyt\" placeholder=\"土地用途\">\n" +
-        //     "                    </div>\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"tdytmc\">土地用途名称</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"tdytmc\" id=\"tdytmc\" placeholder=\"土地用途名称\">\n" +
-        //     "                    </div>\n" +
-        //     "                </div>\n" +
-        //     "                <div class=\"from-row tdytxx zdxx\">\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"tdjg\">土地价格</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"tdjg\" id=\"tdjg\" placeholder=\"土地价格\">\n" +
-        //     "                    </div>\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"tddj\">土地等级</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"tddj\" id=\"tddj\" placeholder=\"土地等级\">\n" +
-        //     "                    </div>\n" +
-        //     "                </div>\n" +
-        //     "                <div class=\"from-row tdytxx zdxx\">\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"qsrq\">使用权起始时间</label>\n" +
-        //     "                        <input type=\"date\" class=\"form-control\" name=\"qsrq\" id=\"qsrq\" placeholder=\"使用权起始时间\">\n" +
-        //     "                    </div>\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"zzrq\">使用权终止日期</label>\n" +
-        //     "                        <input type=\"date\" class=\"form-control\" name=\"zzrq\" id=\"zzrq\" placeholder=\"使用权终止日期\">\n" +
-        //     "                    </div>\n" +
-        //     "                </div>\n" +
-        //     "                <div class=\"from-row tdytxx zdxx\">\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"syqx\">使用期限</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"syqx\" id=\"syqx\" placeholder=\"使用期限\">\n" +
-        //     "                    </div>\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"blzt\">补录状态</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"blzt\" id=\"blzt\" placeholder=\"补录状态\">\n" +
-        //     "                    </div>\n" +
-        //     "                </div>\n" +
-        //     "                <div class=\"from-row tdytxx zdxx\">\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"zdmj\">宗地面积</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"zdmj\" id=\"zdmj\" placeholder=\"宗地面积\">\n" +
-        //     "                    </div>\n" +
-        //     "                    <div class=\"tdytxx form-group col-md-6\">\n" +
-        //     "                        <label for=\"qlxz\">权利性质</label>\n" +
-        //     "                        <input type=\"text\" class=\"form-control\" name=\"qlxz\" id=\"qlxz\" placeholder=\"权利性质\">\n" +
-        //     "                    </div>\n" +
-        //     "                </div>\n" +
-        //     "                <div  class=\"from-row zdxx tdytxx\">\n" +
-        //     "                    <div class=\"zdxx tdytxx form-group col-md-6\">\n" +
-        //     "                        <button deleteTdxxIndex='"+tdxxIndex+"'style=\"margin-left: 200px\"  class=\"deleteBtn btn btn-danger\">删除</button>\n" +
-        //     "                    </div>\n" +
-        //     "                </div> </div>")
-
         return false
 
     })

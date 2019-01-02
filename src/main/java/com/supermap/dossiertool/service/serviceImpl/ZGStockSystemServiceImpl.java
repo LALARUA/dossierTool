@@ -1,5 +1,6 @@
 package com.supermap.dossiertool.service.serviceImpl;
 
+import com.supermap.dossiertool.bean.Djqx;
 import com.supermap.dossiertool.bean.MyFile;
 import com.supermap.dossiertool.bean.QlrList;
 import com.supermap.dossiertool.bean.TdpzytList;
@@ -9,7 +10,9 @@ import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.ZGStockSystemService;
 import com.supermap.dossiertool.smattrEntity.*;
 import com.supermap.dossiertool.smattrMapper.*;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -22,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.*;
 
@@ -45,6 +49,8 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
 
     @Autowired
     ConstMapper constMapper;
+    @Autowired
+    OtherMapper otherMapper;
     /**
      * @description
      * @author xiangXX
@@ -178,14 +184,23 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     }
 
     @Override
-    @Cacheable(key = "#selectNameList",cacheNames = "select")
-    public Map<String,List<Const>> getSelect(List<String> selectNameList) {
-        HashSet<String> strings = new HashSet<>(selectNameList);
-        Map<String,List<Const>> map = new HashMap<>();
-        strings.remove("");
+//    @Cacheable(key = "#selectNameList",cacheNames = "select")
+    public Map<String,Map> getSelect(List<String> selectsFromConstNameList,List<String> selectsFromOtherNameList) {
+        HashSet<String> strings = new HashSet<>(selectsFromConstNameList);
+        Map<String,List<Const>> selectsFromConstMap = new HashMap<>();
+
         for (String s : strings) {
-            map.put(s,constMapper.getSelected(s.toUpperCase()));
+            selectsFromConstMap.put(s,constMapper.getSelected(s.toUpperCase()));
         }
+
+        Map<String,List<Djqx>> selectsFromOtherMap = new HashMap<>();
+        for (String s : selectsFromOtherNameList) {
+            selectsFromOtherMap.put(s,otherMapper.djqxs(s));
+        }
+
+        Map<String,Map> map = new HashMap<>();
+        map.put("selectsFromConst",selectsFromConstMap);
+        map.put("selectsFromOther",selectsFromOtherMap);
         return map;
     }
 
@@ -201,8 +216,9 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         String syqBsm = UUID.randomUUID().toString();    //使用权标识码
         jsydsyq.setBsm(syqBsm);
         jsydsyq.setBdcdybsm(zdjbxxBsm);
-
+        jsydsyq.setBdcdyh(zdjbxx.getBdcdyh());
         jsydsyq.setObjectid(jsydsyqMapper.findMaxId());
+
 
         //土地用途信息
         List<Tdpzyt> tdyts = tdpzytList.getTdpzyts();   //土地用途列表
@@ -213,11 +229,14 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         }
 
         //权利人信息
+        BigDecimal sxh = new BigDecimal(0);
         List<Qlr> qlrs = qlrList.getQlrs();       //权利人信息列表
         for (Qlr q : qlrs) {
             q.setBsm(UUID.randomUUID().toString());
             q.setQlbsm(syqBsm);
             q.setObjectid(qlrMapper.findMaxId());
+            q.setSxh(sxh.add(new BigDecimal(1)));
+            q.setBdcdyh(zdjbxx.getBdcdyh());
         }
 
         //档案信息
@@ -235,7 +254,6 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     @Override
     public PublicExcelData getPublicExcelData(String excelPath, String AJH) throws Exception {
         excelPath = "E:\\zigongDATA\\自贡数据\\打印台账汇总.xls";
-
         File excel = new File(excelPath);
         FileInputStream fileInputStream = new FileInputStream(excel);
         String postfix = excelPath.substring(excelPath.lastIndexOf("."));

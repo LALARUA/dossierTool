@@ -107,9 +107,9 @@ public class ZGStockSystemController {
 
     @ResponseBody
     @GetMapping("/getSelect")
-    public  Map<String,List<Const>> getSelect(@RequestParam("selectNameList") List<String> selectNameList){
+    public  Map<String,Map> getSelect(@RequestParam("selectsFromConstNameList") List<String> selectsFromConstNameList,@RequestParam("selectsFromOtherNameList") List<String> selectsFromOtherNameList){
 
-      return zgStockSystemService.getSelect(selectNameList);
+      return zgStockSystemService.getSelect(selectsFromConstNameList,selectsFromOtherNameList);
 
     }
 }

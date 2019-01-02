@@ -1,17 +1,15 @@
 package com.supermap.dossiertool;
 
+import com.supermap.dossiertool.bean.Djqx;
 import com.supermap.dossiertool.function.MyFunction;
-import com.supermap.dossiertool.mapper.*;
-
 
 
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.ZGStockSystemService;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
-import com.supermap.dossiertool.smattrEntity.Const;
-import com.supermap.dossiertool.smattrEntity.Jsydsyq;
 import com.supermap.dossiertool.smattrMapper.ConstMapper;
 import com.supermap.dossiertool.smattrMapper.JsydsyqMapper;
+import com.supermap.dossiertool.smattrMapper.OtherMapper;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.junit.Test;
@@ -41,9 +39,14 @@ public class DossiertoolApplicationTests {
 	@Autowired
 	ConstMapper constMapper;
 
+	@Autowired
+	OtherMapper otherMapper;
+
 	@Test
 	public void contextLoads() throws Exception {
-zgStockSystemService.getPublicExcelData("Sfa","5000048");
+
+		List<Djqx> xzq = otherMapper.djqxs("xzq");
+		System.out.println();
 
 
 //		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
@@ -66,6 +69,7 @@ zgStockSystemService.getPublicExcelData("Sfa","5000048");
 //		System.out.println(byId);
 //		System.out.println(byId1);
 	}
+
 
 
 	@Test
@@ -201,5 +205,8 @@ zgStockSystemService.getPublicExcelData("Sfa","5000048");
 		System.out.println(s);
 	}
 
+
+
 }
+
 
