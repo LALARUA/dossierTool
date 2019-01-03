@@ -1,5 +1,7 @@
 package com.supermap.dossiertool.bean;
 
+import java.util.List;
+
 /**
  * @Author: xiangXX
  * @Description:
@@ -7,8 +9,8 @@ package com.supermap.dossiertool.bean;
  */
 public class PublicExcelData {
     public String DABH;
-    private String QLR;  //权利人
-    private String TDZH; //土地证号
+    private List<String> QLR;  //权利人
+    private List<String> TDZH; //土地证号
     private String FWZL; //房屋坐落
     private String FPYS;
     private String BGQX;
@@ -64,19 +66,19 @@ public class PublicExcelData {
         this.BGQX = BGQX;
     }
 
-    public String getQLR() {
+    public List<String> getQLR() {
         return QLR;
     }
 
-    public void setQLR(String QLR) {
+    public void setQLR(List<String> QLR) {
         this.QLR = QLR;
     }
 
-    public String getTDZH() {
+    public List<String> getTDZH() {
         return TDZH;
     }
 
-    public void setTDZH(String TDZH) {
+    public void setTDZH(List<String> TDZH) {
         this.TDZH = TDZH;
     }
 

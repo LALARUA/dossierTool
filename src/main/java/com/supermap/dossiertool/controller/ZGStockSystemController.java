@@ -74,6 +74,7 @@ public class ZGStockSystemController {
             map.put("excelData",publicExcelData);
             map.put("jpgs",MyFunction.getJpgList(path));
         } catch (Exception e) {
+            e.printStackTrace();
                 map.put("error","操作失败");
         }
         return map;
