@@ -2,7 +2,7 @@ package com.supermap.dossiertool.function;
 
 import com.supermap.dossiertool.bean.MyFile;
 import com.supermap.dossiertool.bean.MyFolder;
-import com.supermap.dossiertool.pojo.PublicExcelData;
+import com.supermap.dossiertool.bean.PublicExcelData;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -11,9 +11,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

@@ -20,7 +20,7 @@
     <result column="FJXZMM" jdbcType="VARCHAR" property="fjxzmm" />
     <result column="BLZT" jdbcType="DECIMAL" property="blzt" />
     <result column="PROJECT_ID" jdbcType="VARCHAR" property="projectId" />
-    <result column="YS" jdbcType="DECIMAL" property="ys" />
+    <result column="FPYS" jdbcType="DECIMAL" property="ys" />
     <result column="SCRQ" jdbcType="TIMESTAMP" property="scrq" />
     <result column="NODEID" jdbcType="OTHER" property="nodeid" />
     <result column="SX" jdbcType="OTHER" property="sx" />
@@ -87,7 +87,7 @@
   </sql>
   <sql id="Base_Column_List">
     WJID, AJID, FWJID, SXH, WH, ZRZ, TM, RQ, YH, JNQSY, WJZT, YJFS, FYJFS, BZ, WJLX, 
-    FJXZMM, BLZT, PROJECT_ID, YS, SCRQ, NODEID, SX, YWDH, TENANT_ID
+    FJXZMM, BLZT, PROJECT_ID, FPYS, SCRQ, NODEID, SX, YWDH, TENANT_ID
   </sql>
   <select id="selectByExample" parameterType="com.supermap.dossiertool.pojo.DasJnwjExample" resultMap="BaseResultMap">
     select
@@ -115,7 +115,7 @@
       RQ, YH, JNQSY, WJZT, 
       YJFS, FYJFS, BZ, WJLX, 
       FJXZMM, BLZT, PROJECT_ID, 
-      YS, SCRQ, NODEID, SX, 
+      FPYS, SCRQ, NODEID, SX,
       YWDH, TENANT_ID)
     values (#{wjid,jdbcType=OTHER}, #{ajid,jdbcType=OTHER}, #{fwjid,jdbcType=OTHER}, 
       #{sxh,jdbcType=DECIMAL}, #{wh,jdbcType=VARCHAR}, #{zrz,jdbcType=VARCHAR}, #{tm,jdbcType=VARCHAR}, 
@@ -183,7 +183,7 @@
         PROJECT_ID,
       </if>
       <if test="ys != null">
-        YS,
+        FPYS,
       </if>
       <if test="scrq != null">
         SCRQ,
@@ -340,7 +340,7 @@
         PROJECT_ID = #{record.projectId,jdbcType=VARCHAR},
       </if>
       <if test="record.ys != null">
-        YS = #{record.ys,jdbcType=DECIMAL},
+        FPYS = #{record.ys,jdbcType=DECIMAL},
       </if>
       <if test="record.scrq != null">
         SCRQ = #{record.scrq,jdbcType=TIMESTAMP},
@@ -382,7 +382,7 @@
       FJXZMM = #{record.fjxzmm,jdbcType=VARCHAR},
       BLZT = #{record.blzt,jdbcType=DECIMAL},
       PROJECT_ID = #{record.projectId,jdbcType=VARCHAR},
-      YS = #{record.ys,jdbcType=DECIMAL},
+      FPYS = #{record.ys,jdbcType=DECIMAL},
       SCRQ = #{record.scrq,jdbcType=TIMESTAMP},
       NODEID = #{record.nodeid,jdbcType=OTHER},
       SX = #{record.sx,jdbcType=OTHER},

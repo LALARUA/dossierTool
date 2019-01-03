@@ -1,20 +1,17 @@
 package com.supermap.dossiertool.controller;
 
-import com.sun.xml.internal.txw2.TXW;
 import com.supermap.dossiertool.bean.MyFile;
+import com.supermap.dossiertool.bean.PublicExcelData;
 import com.supermap.dossiertool.bean.QlrList;
 import com.supermap.dossiertool.bean.TdpzytList;
 import com.supermap.dossiertool.config.MyPropertiesConfig;
 import com.supermap.dossiertool.function.MyFunction;
-import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
-import com.supermap.dossiertool.smattrEntity.Const;
 import com.supermap.dossiertool.smattrEntity.Jsydsyq;
 import com.supermap.dossiertool.smattrEntity.Txm;
 import com.supermap.dossiertool.smattrEntity.Zdjbxx;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
@@ -22,7 +19,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.util.*;
 

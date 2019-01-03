@@ -1,32 +1,24 @@
 package com.supermap.dossiertool.service.serviceImpl;
 
-import com.supermap.dossiertool.bean.Djqx;
-import com.supermap.dossiertool.bean.MyFile;
-import com.supermap.dossiertool.bean.QlrList;
-import com.supermap.dossiertool.bean.TdpzytList;
+import com.supermap.dossiertool.bean.*;
 import com.supermap.dossiertool.function.MyFunction;
-import com.supermap.dossiertool.mapper.*;
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.ZGStockSystemService;
 import com.supermap.dossiertool.smattrEntity.*;
 import com.supermap.dossiertool.smattrMapper.*;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.math.BigDecimal;
-import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -274,9 +266,16 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
                 if (AJH.equals(positionContent)){
                     publicDataFromExcel = new PublicExcelData();
                     Row rowFromAJH = sheet.getRow(row);
+                    publicDataFromExcel.setDABH(AJH);
                     publicDataFromExcel.setQLR(rowFromAJH.getCell(1).toString());
                     publicDataFromExcel.setTDZH(rowFromAJH.getCell(2).toString());
                     publicDataFromExcel.setFWZL(rowFromAJH.getCell(3).toString());
+                    publicDataFromExcel.setZDDM(rowFromAJH.getCell(4).toString());
+                    String s = rowFromAJH.getCell(5).toString();
+                    publicDataFromExcel.setFPYS(s.substring(0,s.indexOf(".")));
+                    publicDataFromExcel.setBGQX(rowFromAJH.getCell(6).toString());
+                    publicDataFromExcel.setDALXBH(rowFromAJH.getCell(7).toString());
+                    publicDataFromExcel.setDALX(rowFromAJH.getCell(7).toString().substring(0,1));
                     return publicDataFromExcel;
                 }
             }
