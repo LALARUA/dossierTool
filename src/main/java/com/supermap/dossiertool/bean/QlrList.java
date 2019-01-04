@@ -11,6 +11,7 @@ import java.util.List;
  * @Date Created in 15:31 2018/12/28 0028
  */
 public class QlrList {
+
     List<Qlr> qlrs = new ArrayList<>();
 
     public List<Qlr> getQlrs() {

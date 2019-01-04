@@ -36,7 +36,7 @@
     <result column="ZM" jdbcType="OTHER" property="zm" />
     <result column="CLJS" jdbcType="OTHER" property="cljs" />
     <result column="SHYJ" jdbcType="OTHER" property="shyj" />
-    <result column="SHR" jdbcType="OTHER" property="shr" />
+    <!--<result column="SHR" jdbcType="OTHER" property="shr" />-->
     <result column="SHRQ" jdbcType="TIMESTAMP" property="shrq" />
     <result column="JZZDMJ" jdbcType="DECIMAL" property="jzzdmj" />
     <result column="JZMJ" jdbcType="DECIMAL" property="jzmj" />
@@ -134,11 +134,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    BSM, OBJECTID, YSDM, ZDDM, BDCDYH, ZDTZM, ZL, ZDMJ, MJDW, YT, DJ, JG, QLLX, QLXZ, 
-    QLSDFS, RJL, JZMD, JZXG, ZDSZD, ZDSZN, ZDSZX, ZDSZB, ZDT, TFH, DJH, BZ, ZT, CQZT, 
-    GMJJHYFLDM, TDQSLYZMCL, ZH, ZM, CLJS, SHYJ, SHR, SHRQ, JZZDMJ, JZMJ, SYQLX, PZYT, 
-    PZMJ, JZXZXSM, DCJS, DCR, DCRQ, BLC, CLR, CLRQ, JZDWSM, YBZDDM, QXDM, DJQDM, DJZQDM, 
-    QXMC, DJQMC, DJZQMC, BLZT, DAQZH, DAND, DAGH, DAHH, DAAJH, DAAJBT, LRRY, LRRYID, 
+    BSM, OBJECTID, YSDM, ZDDM, BDCDYH, ZDTZM, ZL, ZDMJ, MJDW, YT, DJ, JG, QLLX, QLXZ,
+    QLSDFS, RJL, JZMD, JZXG, ZDSZD, ZDSZN, ZDSZX, ZDSZB, ZDT, TFH, DJH, BZ, ZT, CQZT,
+    GMJJHYFLDM, TDQSLYZMCL, ZH, ZM, CLJS, SHYJ, /*SHR,*/ SHRQ, JZZDMJ, JZMJ, SYQLX, PZYT,
+    PZMJ, JZXZXSM, DCJS, DCR, DCRQ, BLC, CLR, CLRQ, JZDWSM, YBZDDM, QXDM, DJQDM, DJZQDM,
+    QXMC, DJQMC, DJZQMC, BLZT, DAQZH, DAND, DAGH, DAHH, DAAJH, DAAJBT, LRRY, LRRYID,
     LRSJ, ZHXGRY, ZHXGSJ, BT, CCZT, DYZT, ZHXGRYID
   </sql>
   <select id="selectByExample" parameterType="com.supermap.dossiertool.smattrEntity.ZdjbxxExample" resultMap="BaseResultMap">
@@ -156,7 +156,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from SMATTR.ZDJBXX
     where BSM = #{bsm,jdbcType=OTHER}
@@ -172,53 +172,53 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.supermap.dossiertool.smattrEntity.Zdjbxx">
-    insert into SMATTR.ZDJBXX (BSM, OBJECTID, YSDM, 
-      ZDDM, BDCDYH, ZDTZM, 
-      ZL, ZDMJ, MJDW, 
-      YT, DJ, JG, QLLX, 
-      QLXZ, QLSDFS, RJL, 
-      JZMD, JZXG, ZDSZD, 
-      ZDSZN, ZDSZX, ZDSZB, 
-      ZDT, TFH, DJH, 
-      BZ, ZT, CQZT, 
-      GMJJHYFLDM, TDQSLYZMCL, ZH, 
-      ZM, CLJS, SHYJ, 
-      SHR, SHRQ, JZZDMJ, 
-      JZMJ, SYQLX, PZYT, 
-      PZMJ, JZXZXSM, DCJS, 
-      DCR, DCRQ, BLC, 
-      CLR, CLRQ, JZDWSM, 
-      YBZDDM, QXDM, DJQDM, 
-      DJZQDM, QXMC, DJQMC, 
-      DJZQMC, BLZT, DAQZH, 
-      DAND, DAGH, DAHH, 
-      DAAJH, DAAJBT, LRRY, 
-      LRRYID, LRSJ, ZHXGRY, 
-      ZHXGSJ, BT, CCZT, 
+    insert into SMATTR.ZDJBXX (BSM, OBJECTID, YSDM,
+      ZDDM, BDCDYH, ZDTZM,
+      ZL, ZDMJ, MJDW,
+      YT, DJ, JG, QLLX,
+      QLXZ, QLSDFS, RJL,
+      JZMD, JZXG, ZDSZD,
+      ZDSZN, ZDSZX, ZDSZB,
+      ZDT, TFH, DJH,
+      BZ, ZT, CQZT,
+      GMJJHYFLDM, TDQSLYZMCL, ZH,
+      ZM, CLJS, SHYJ,
+      /*SHR,*/ SHRQ, JZZDMJ,
+      JZMJ, SYQLX, PZYT,
+      PZMJ, JZXZXSM, DCJS,
+      DCR, DCRQ, BLC,
+      CLR, CLRQ, JZDWSM,
+      YBZDDM, QXDM, DJQDM,
+      DJZQDM, QXMC, DJQMC,
+      DJZQMC, BLZT, DAQZH,
+      DAND, DAGH, DAHH,
+      DAAJH, DAAJBT, LRRY,
+      LRRYID, LRSJ, ZHXGRY,
+      ZHXGSJ, BT, CCZT,
       DYZT, ZHXGRYID)
-    values (#{bsm,jdbcType=OTHER}, #{objectid,jdbcType=DECIMAL}, #{ysdm,jdbcType=OTHER}, 
-      #{zddm,jdbcType=OTHER}, #{bdcdyh,jdbcType=OTHER}, #{zdtzm,jdbcType=OTHER}, 
-      #{zl,jdbcType=OTHER}, #{zdmj,jdbcType=DECIMAL}, #{mjdw,jdbcType=OTHER}, 
-      #{yt,jdbcType=OTHER}, #{dj,jdbcType=OTHER}, #{jg,jdbcType=DECIMAL}, #{qllx,jdbcType=OTHER}, 
-      #{qlxz,jdbcType=OTHER}, #{qlsdfs,jdbcType=OTHER}, #{rjl,jdbcType=OTHER}, 
-      #{jzmd,jdbcType=OTHER}, #{jzxg,jdbcType=DECIMAL}, #{zdszd,jdbcType=OTHER}, 
-      #{zdszn,jdbcType=OTHER}, #{zdszx,jdbcType=OTHER}, #{zdszb,jdbcType=OTHER}, 
-      #{zdt,jdbcType=OTHER}, #{tfh,jdbcType=OTHER}, #{djh,jdbcType=OTHER}, 
-      #{bz,jdbcType=OTHER}, #{zt,jdbcType=OTHER}, #{cqzt,jdbcType=OTHER}, 
-      #{gmjjhyfldm,jdbcType=OTHER}, #{tdqslyzmcl,jdbcType=OTHER}, #{zh,jdbcType=OTHER}, 
-      #{zm,jdbcType=OTHER}, #{cljs,jdbcType=OTHER}, #{shyj,jdbcType=OTHER}, 
-      #{shr,jdbcType=OTHER}, #{shrq,jdbcType=TIMESTAMP}, #{jzzdmj,jdbcType=DECIMAL}, 
-      #{jzmj,jdbcType=DECIMAL}, #{syqlx,jdbcType=OTHER}, #{pzyt,jdbcType=OTHER}, 
-      #{pzmj,jdbcType=DECIMAL}, #{jzxzxsm,jdbcType=OTHER}, #{dcjs,jdbcType=OTHER}, 
-      #{dcr,jdbcType=OTHER}, #{dcrq,jdbcType=TIMESTAMP}, #{blc,jdbcType=OTHER}, 
-      #{clr,jdbcType=OTHER}, #{clrq,jdbcType=TIMESTAMP}, #{jzdwsm,jdbcType=OTHER}, 
-      #{ybzddm,jdbcType=OTHER}, #{qxdm,jdbcType=OTHER}, #{djqdm,jdbcType=OTHER}, 
-      #{djzqdm,jdbcType=OTHER}, #{qxmc,jdbcType=OTHER}, #{djqmc,jdbcType=OTHER}, 
-      #{djzqmc,jdbcType=OTHER}, #{blzt,jdbcType=OTHER}, #{daqzh,jdbcType=OTHER}, 
-      #{dand,jdbcType=OTHER}, #{dagh,jdbcType=OTHER}, #{dahh,jdbcType=OTHER}, 
-      #{daajh,jdbcType=OTHER}, #{daajbt,jdbcType=OTHER}, #{lrry,jdbcType=OTHER}, 
-      #{lrryid,jdbcType=OTHER}, #{lrsj,jdbcType=TIMESTAMP}, #{zhxgry,jdbcType=OTHER}, 
-      #{zhxgsj,jdbcType=TIMESTAMP}, #{bt,jdbcType=OTHER}, #{cczt,jdbcType=OTHER}, 
+    values (#{bsm,jdbcType=OTHER}, #{objectid,jdbcType=DECIMAL}, #{ysdm,jdbcType=OTHER},
+      #{zddm,jdbcType=OTHER}, #{bdcdyh,jdbcType=OTHER}, #{zdtzm,jdbcType=OTHER},
+      #{zl,jdbcType=OTHER}, #{zdmj,jdbcType=DECIMAL}, #{mjdw,jdbcType=OTHER},
+      #{yt,jdbcType=OTHER}, #{dj,jdbcType=OTHER}, #{jg,jdbcType=DECIMAL}, #{qllx,jdbcType=OTHER},
+      #{qlxz,jdbcType=OTHER}, #{qlsdfs,jdbcType=OTHER}, #{rjl,jdbcType=OTHER},
+      #{jzmd,jdbcType=OTHER}, #{jzxg,jdbcType=DECIMAL}, #{zdszd,jdbcType=OTHER},
+      #{zdszn,jdbcType=OTHER}, #{zdszx,jdbcType=OTHER}, #{zdszb,jdbcType=OTHER},
+      #{zdt,jdbcType=OTHER}, #{tfh,jdbcType=OTHER}, #{djh,jdbcType=OTHER},
+      #{bz,jdbcType=OTHER}, #{zt,jdbcType=OTHER}, #{cqzt,jdbcType=OTHER},
+      #{gmjjhyfldm,jdbcType=OTHER}, #{tdqslyzmcl,jdbcType=OTHER}, #{zh,jdbcType=OTHER},
+      #{zm,jdbcType=OTHER}, #{cljs,jdbcType=OTHER}, #{shyj,jdbcType=OTHER},
+      /*#{shr,jdbcType=OTHER},*/ #{shrq,jdbcType=TIMESTAMP}, #{jzzdmj,jdbcType=DECIMAL},
+      #{jzmj,jdbcType=DECIMAL}, #{syqlx,jdbcType=OTHER}, #{pzyt,jdbcType=OTHER},
+      #{pzmj,jdbcType=DECIMAL}, #{jzxzxsm,jdbcType=OTHER}, #{dcjs,jdbcType=OTHER},
+      #{dcr,jdbcType=OTHER}, #{dcrq,jdbcType=TIMESTAMP}, #{blc,jdbcType=OTHER},
+      #{clr,jdbcType=OTHER}, #{clrq,jdbcType=TIMESTAMP}, #{jzdwsm,jdbcType=OTHER},
+      #{ybzddm,jdbcType=OTHER}, #{qxdm,jdbcType=OTHER}, #{djqdm,jdbcType=OTHER},
+      #{djzqdm,jdbcType=OTHER}, #{qxmc,jdbcType=OTHER}, #{djqmc,jdbcType=OTHER},
+      #{djzqmc,jdbcType=OTHER}, #{blzt,jdbcType=OTHER}, #{daqzh,jdbcType=OTHER},
+      #{dand,jdbcType=OTHER}, #{dagh,jdbcType=OTHER}, #{dahh,jdbcType=OTHER},
+      #{daajh,jdbcType=OTHER}, #{daajbt,jdbcType=OTHER}, #{lrry,jdbcType=OTHER},
+      #{lrryid,jdbcType=OTHER}, #{lrsj,jdbcType=TIMESTAMP}, #{zhxgry,jdbcType=OTHER},
+      #{zhxgsj,jdbcType=TIMESTAMP}, #{bt,jdbcType=OTHER}, #{cczt,jdbcType=OTHER},
       #{dyzt,jdbcType=OTHER}, #{zhxgryid,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.Zdjbxx">
@@ -326,9 +326,9 @@
       <if test="shyj != null">
         SHYJ,
       </if>
-      <if test="shr != null">
-        SHR,
-      </if>
+      <!--<if test="shr != null">-->
+        <!--SHR,-->
+      <!--</if>-->
       <if test="shrq != null">
         SHRQ,
       </if>
@@ -544,9 +544,9 @@
       <if test="shyj != null">
         #{shyj,jdbcType=OTHER},
       </if>
-      <if test="shr != null">
-        #{shr,jdbcType=OTHER},
-      </if>
+      <!--<if test="shr != null">-->
+        <!--#{shr,jdbcType=OTHER},-->
+      <!--</if>-->
       <if test="shrq != null">
         #{shrq,jdbcType=TIMESTAMP},
       </if>
@@ -771,9 +771,9 @@
       <if test="record.shyj != null">
         SHYJ = #{record.shyj,jdbcType=OTHER},
       </if>
-      <if test="record.shr != null">
-        SHR = #{record.shr,jdbcType=OTHER},
-      </if>
+      <!--<if test="record.shr != null">-->
+        <!--SHR = #{record.shr,jdbcType=OTHER},-->
+      <!--</if>-->
       <if test="record.shrq != null">
         SHRQ = #{record.shrq,jdbcType=TIMESTAMP},
       </if>
@@ -926,7 +926,7 @@
       ZM = #{record.zm,jdbcType=OTHER},
       CLJS = #{record.cljs,jdbcType=OTHER},
       SHYJ = #{record.shyj,jdbcType=OTHER},
-      SHR = #{record.shr,jdbcType=OTHER},
+--       SHR = #{record.shr,jdbcType=OTHER},
       SHRQ = #{record.shrq,jdbcType=TIMESTAMP},
       JZZDMJ = #{record.jzzdmj,jdbcType=DECIMAL},
       JZMJ = #{record.jzmj,jdbcType=DECIMAL},
@@ -1070,9 +1070,9 @@
       <if test="shyj != null">
         SHYJ = #{shyj,jdbcType=OTHER},
       </if>
-      <if test="shr != null">
-        SHR = #{shr,jdbcType=OTHER},
-      </if>
+      <!--<if test="shr != null">-->
+        <!--SHR = #{shr,jdbcType=OTHER},-->
+      <!--</if>-->
       <if test="shrq != null">
         SHRQ = #{shrq,jdbcType=TIMESTAMP},
       </if>
@@ -1222,7 +1222,7 @@
       ZM = #{zm,jdbcType=OTHER},
       CLJS = #{cljs,jdbcType=OTHER},
       SHYJ = #{shyj,jdbcType=OTHER},
-      SHR = #{shr,jdbcType=OTHER},
+--       SHR = #{shr,jdbcType=OTHER},
       SHRQ = #{shrq,jdbcType=TIMESTAMP},
       JZZDMJ = #{jzzdmj,jdbcType=DECIMAL},
       JZMJ = #{jzmj,jdbcType=DECIMAL},

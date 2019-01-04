@@ -198,42 +198,59 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
 
     @Transactional
     @Override
-    public void submitData(Zdjbxx zdjbxx, Jsydsyq jsydsyq, TdpzytList tdpzytList, QlrList qlrList, Txm txm) {
-        //宗地基本信息
-        zdjbxx.setObjectid(zdjbxxMapper.findMaxId());
-        String zdjbxxBsm = UUID.randomUUID().toString();  //宗地基本信息标识码
-        zdjbxx.setBsm(zdjbxxBsm);
+    public void submitData(Zdjbxx zdjbxx, QlrAndSyqList qlrAndSyqList, TdpzytList tdpzytList, TxmList txmList) {
 
-        //使用权信息
-        String syqBsm = UUID.randomUUID().toString();    //使用权标识码
-        jsydsyq.setBsm(syqBsm);
-        jsydsyq.setBdcdybsm(zdjbxxBsm);
-        jsydsyq.setBdcdyh(zdjbxx.getBdcdyh());
-        jsydsyq.setObjectid(jsydsyqMapper.findMaxId());
+        Zdjbxx zdjbxxInDB = null;
+        if ((zdjbxxInDB=zdjbxxMapper.selectByZddm(zdjbxx.getZddm()))==null){
+            //宗地基本信息
+            zdjbxx.setObjectid(zdjbxxMapper.findMaxId());
+            String zdjbxxBsm = UUID.randomUUID().toString();  //宗地基本信息标识码
+            zdjbxx.setBsm(zdjbxxBsm);
+        }
+        else zdjbxx= zdjbxxInDB;
 
+        zdjbxxMapper.insertSelective(zdjbxx);
+        zdjbxxMapper.setShr(zdjbxx.getShr(),zdjbxx.getBsm());
+        int i = 0;
+        for (QlrAndSyq qas:qlrAndSyqList.getQlrAndSyqs()
+             ) {
+            //使用权信息
+            Jsydsyq jsydsyq = qas.getJsydsyq();
+            String syqBsm = UUID.randomUUID().toString();    //使用权标识码
+            jsydsyq.setBsm(syqBsm);
+            jsydsyq.setBdcdybsm(zdjbxx.getBsm());
+            jsydsyq.setBdcdyh(zdjbxx.getBdcdyh());
+            jsydsyq.setObjectid(jsydsyqMapper.findMaxId());
+
+            jsydsyqMapper.insertSelective(jsydsyq);
+            //权利人信息
+            Qlr qlr = qas.getQlr();
+            qlr.setBsm(UUID.randomUUID().toString());
+            qlr.setBsm(UUID.randomUUID().toString());
+            qlr.setQlbsm(syqBsm);
+            qlr.setObjectid(qlrMapper.findMaxId());
+            qlr.setSxh(new BigDecimal(++i));
+            qlr.setBdcdyh(zdjbxx.getBdcdyh());
+            qlrMapper.insertSelective(qlr);
+        }
 
         //土地用途信息
         List<Tdpzyt> tdyts = tdpzytList.getTdpzyts();   //土地用途列表
         for (Tdpzyt t : tdyts) {
             t.setObjectid(tdpzytMapper.findMaxId());
             t.setBsm(UUID.randomUUID().toString());
-            t.setZdbsm(zdjbxxBsm);
-        }
-
-        //权利人信息
-        BigDecimal sxh = new BigDecimal(0);
-        List<Qlr> qlrs = qlrList.getQlrs();       //权利人信息列表
-        for (Qlr q : qlrs) {
-            q.setBsm(UUID.randomUUID().toString());
-            q.setQlbsm(syqBsm);
-            q.setObjectid(qlrMapper.findMaxId());
-            q.setSxh(sxh.add(new BigDecimal(1)));
-            q.setBdcdyh(zdjbxx.getBdcdyh());
+            t.setZdbsm(zdjbxx.getBsm());
+            tdpzytMapper.insertSelective(t);
         }
 
         //档案信息
-        txm.setZddm(zdjbxx.getZddm());
-        txm.setTxmid(txmMapper.findMaxId());
+        for (TxmWithBLOBs t : txmList.getTxms()
+             ) {
+            t.setZddm(zdjbxx.getZddm());
+            t.setTxmid(txmMapper.findMaxId());
+            txmMapper.insertSelective(t);
+        }
+
 
     }
 
@@ -245,7 +262,6 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
 
     @Override
     public PublicExcelData getPublicExcelData(String excelPath, String AJH) throws Exception {
-        excelPath = "E:\\zigongDATA\\自贡数据\\打印台账汇总.xls";
         File excel = new File(excelPath);
         FileInputStream fileInputStream = new FileInputStream(excel);
         String postfix = excelPath.substring(excelPath.lastIndexOf("."));
@@ -267,15 +283,17 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
                     publicDataFromExcel = new PublicExcelData();
                     Row rowFromAJH = sheet.getRow(row);
                     publicDataFromExcel.setDABH(AJH);
-
                     publicDataFromExcel.setQLR(new ArrayList<>(Arrays.asList(rowFromAJH.getCell(1).toString().split("/"))));
                     publicDataFromExcel.setTDZH(new ArrayList<>(Arrays.asList(rowFromAJH.getCell(2).toString().split("/"))));
                     publicDataFromExcel.setFWZL(rowFromAJH.getCell(3).toString());
                     if (rowFromAJH.getCell(4)==null)
                     publicDataFromExcel.setZDDM("");
-                    else publicDataFromExcel.setZDDM(rowFromAJH.getCell(4).toString());
+                    else {
+                        String s1 = rowFromAJH.getCell(4).toString();
+                        publicDataFromExcel.setZDDM(s1.substring(0,s1.lastIndexOf(".")));
+                    }
                     String s = rowFromAJH.getCell(5).toString();
-                    publicDataFromExcel.setFPYS(s.substring(0,s.indexOf(".")));
+                    publicDataFromExcel.setFPYS(s.substring(0,s.lastIndexOf(".")));
                     publicDataFromExcel.setBGQX(rowFromAJH.getCell(6).toString());
                     publicDataFromExcel.setDALXBH(rowFromAJH.getCell(7).toString());
                     publicDataFromExcel.setDALX(rowFromAJH.getCell(7).toString().substring(0,1));

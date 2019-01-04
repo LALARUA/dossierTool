@@ -9,7 +9,7 @@ public class Txm {
 
     private String zdbsm;
 
-    private Short dabh;
+    private Integer dabh;
 
     private String dalxbh;
 
@@ -65,11 +65,11 @@ public class Txm {
         this.zdbsm = zdbsm == null ? null : zdbsm.trim();
     }
 
-    public Short getDabh() {
+    public Integer getDabh() {
         return dabh;
     }
 
-    public void setDabh(Short dabh) {
+    public void setDabh(Integer dabh) {
         this.dabh = dabh;
     }
 

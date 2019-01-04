@@ -1,11 +1,9 @@
 package com.supermap.dossiertool.controller;
 
-import com.supermap.dossiertool.bean.MyFile;
-import com.supermap.dossiertool.bean.PublicExcelData;
-import com.supermap.dossiertool.bean.QlrList;
-import com.supermap.dossiertool.bean.TdpzytList;
+import com.supermap.dossiertool.bean.*;
 import com.supermap.dossiertool.config.MyPropertiesConfig;
 import com.supermap.dossiertool.function.MyFunction;
+import com.supermap.dossiertool.service.ZGStockSystemService;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
 import com.supermap.dossiertool.smattrEntity.Jsydsyq;
 import com.supermap.dossiertool.smattrEntity.Txm;
@@ -97,8 +95,10 @@ public class ZGStockSystemController {
      */  
     @ResponseBody
     @PostMapping("/submitData")
-    public String submitData(Zdjbxx zdjbxx, Jsydsyq jsydsyq, TdpzytList tdpzytList, QlrList qlrList, Txm txm){
+    public String submitData(Zdjbxx zdjbxx, QlrAndSyqList qlrAndSyqList, TdpzytList tdpzytList, TxmList txmList){
 
+
+        zgStockSystemService.submitData(zdjbxx,qlrAndSyqList,tdpzytList,txmList);
         return "success";
     }
 

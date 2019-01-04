@@ -1,9 +1,6 @@
 package com.supermap.dossiertool.service;
 
-import com.supermap.dossiertool.bean.MyFile;
-import com.supermap.dossiertool.bean.PublicExcelData;
-import com.supermap.dossiertool.bean.QlrList;
-import com.supermap.dossiertool.bean.TdpzytList;
+import com.supermap.dossiertool.bean.*;
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.smattrEntity.Jsydsyq;
 import com.supermap.dossiertool.smattrEntity.Txm;
@@ -20,7 +17,7 @@ import java.util.Map;
 public interface ZGStockSystemService {
 //    void insertData(DasAjjbxx das_ajjbxx, DasBdc das_bdc, DasCq das_cq, String folderPath) throws Exception;
     Map<String,Map> getSelect(List<String> selectsFromConstNameList,List<String> selectsFromOtherNameList);
-    void submitData(Zdjbxx zdjbxx, Jsydsyq jsydsyq, TdpzytList tdpzytList, QlrList qlrList, Txm txm);
+    void submitData(Zdjbxx zdjbxx, QlrAndSyqList qlrAndSyqList, TdpzytList tdpzytList, TxmList txmList);
     List<MyFile> getJpgList(String path, String AJH);
     PublicExcelData getPublicExcelData(String excelPath, String AJH) throws Exception;
 }

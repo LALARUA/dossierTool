@@ -8,9 +8,10 @@ import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.ZGStockSystemService;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
-import com.supermap.dossiertool.smattrMapper.ConstMapper;
-import com.supermap.dossiertool.smattrMapper.JsydsyqMapper;
-import com.supermap.dossiertool.smattrMapper.OtherMapper;
+import com.supermap.dossiertool.smattrEntity.Qlr;
+import com.supermap.dossiertool.smattrEntity.Tdpzyt;
+import com.supermap.dossiertool.smattrEntity.Zdjbxx;
+import com.supermap.dossiertool.smattrMapper.*;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.junit.Test;
@@ -21,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.math.BigDecimal;
 import java.util.*;
 
 @RunWith(SpringRunner.class)
@@ -34,20 +36,31 @@ public class DossiertoolApplicationTests {
 
 	@Autowired
 	ZGStockSystemService zgStockSystemService;
+
+
+
+
 	@Autowired
 	JsydsyqMapper jsydsyqMapper;
+	@Autowired
+	QlrMapper qlrMapper;
+	@Autowired
+	TdpzytMapper tdpzytMapper;
+	@Autowired
+	TxmMapper txmMapper;
+	@Autowired
+	ZdjbxxMapper zdjbxxMapper;
 
 	@Autowired
 	ConstMapper constMapper;
-
 	@Autowired
 	OtherMapper otherMapper;
-
 	@Test
 	public void contextLoads() throws Exception {
-
-		List<Djqx> xzq = otherMapper.djqxs("xzq");
-		System.out.println();
+		Qlr qlr = new Qlr();
+		qlr.setBsm("Sfsd");
+		qlr.setObjectid(qlrMapper.findMaxId());
+		qlrMapper.insertSelective(qlr);
 
 
 //		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
@@ -75,6 +88,7 @@ public class DossiertoolApplicationTests {
 
 	@Test
 	public void insertData() throws Exception{
+
 
 	}
 

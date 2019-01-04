@@ -13,7 +13,7 @@ import java.util.List;
 
 @Mapper
 public interface TxmMapper {
-    @Select("SELECT S_TXM.NEXTVAL FROM DUAL")
+    @Select("SELECT TXM_SEQ.NEXTVAL FROM DUAL")
     short findMaxId();
     long countByExample(TxmExample example);
 

@@ -122,7 +122,7 @@
 
     <div style="float: left;height: 100%;width: 50%">
         <div id="form">
-            <div method="post"   id="allData">
+            <form method="post"   id="allData">
                 <!--<div class="control-group">-->
                     <!--<label class="control-label">Date Picking</label>-->
                     <!--<div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">-->
@@ -415,7 +415,7 @@
                     <div class="from-row tdytxx zdxx">
                         <div class="tdytxx form-group col-md-6">
                             <label for="tdytmc">土地用途名称</label>
-                            <select inputId="tdyt" getselect="tdyt" class="changeOtherInput form-control getSelectFromConst custom-select custom-select-lg mb-3 fromDatabase" name="tdytmc" id="tdytmc" >
+                            <select inputId="tdyt"  getselect="tdyt" class="changeOtherInput form-control getSelectFromConst custom-select custom-select-lg mb-3 fromDatabase" name="tdytmc" id="tdytmc" >
                             </select>
                         </div>
                         <div class="tdytxx form-group col-md-6">
@@ -515,10 +515,15 @@
                 <div id="showQlrxxAndSyqForm">
                 <div id="showQlrxxForm" class="qlrxxForm">
                     <div class="from-row qlrxx">
-                        <div class="zdxx form-group col-md-12">
+                        <div class="daxx form-group col-md-10">
                             <hr>
+                            <button index="" id="saveQlrAndSyqxxBtn" class="btn btn-success">保存此权利人和使用权信息</button>
+                            <!--<button id="deleteQlrAndSyqxxBtn" class="btn btn-danger">删除此档案信息</button>-->
+                        </div>
+                        <div class="zdxx form-group col-md-12">
                             <h3 style="float: left">权利人信息</h3>
                         </div>
+
                     </div>
                 <!--<div class="from-row qlrxx">-->
                     <!--<div class="qlrxx form-group col-md-6">-->
@@ -699,7 +704,7 @@
                 <div class="from-row qlrxx">
                     <div class="qlrxx form-group col-md-4">
                         <label for="fddbrzjhm">法定代表人证件号码</label>
-                        <input type="text" getselect="zjlx" class="form-control" name="fddbrzjhm" id="fddbrzjhm" >
+                        <input type="text"  class="form-control" name="fddbrzjhm" id="fddbrzjhm" >
                     </div>
                     <div class="qlrxx form-group col-md-4">
                         <label for="sqrid">申请人ID</label>
@@ -723,7 +728,7 @@
                     </div>
                     <div class="qlrxx form-group col-md-3">
                         <label for="ftxz">分摊小证</label>
-                        <input type="text" class="form-control" name="ftxz" id="ftxz" >
+                        <select getselect="sfzd" class="form-control getSelectFromConst custom-select custom-select-lg mb-3 fromDatabase" name="ftxz" id="ftxz" ></select>
                     </div>
                 </div>
                 <div class="from-row qlrxx">
@@ -781,7 +786,7 @@
                 <!--<input type="text" class="form-control" name="bdcdybsm" id="bdcdybsm" >-->
                 <!--</div>-->
                 <!--</div>-->
-                <div id="showSyqxxForm" class="from-row syqxx qlrxx">
+                <div id="showSyqxxForm" class="syqxxForm from-row syqxx qlrxx">
                     <div class="from-row syqxx qlrxx">
                         <div class="zdxx form-group col-md-12">
                             <hr>
@@ -865,7 +870,7 @@
 
                         <div class="xyqxx form-group col-md-2">
                             <label for="qszt">权属状态</label>
-                            <select getselect="qszt" id="qszt" name="qszt" class="form-control getSelectFromConst custom-select custom-select-lg mb-3 fromDatabase">
+                            <select getselect="bdcdyzt" id="qszt" name="qszt" class="form-control getSelectFromConst custom-select custom-select-lg mb-3 fromDatabase">
                             </select>
                         </div>
                     </div>
@@ -892,10 +897,10 @@
                 </div>
             </div>
                 <div class="from-row qlrxx syqxx">
-                    <div class="daxx form-group col-md-12">
-                        <button index="" id="saveQlrAndSyqxxBtn" class="btn btn-success">保存此权利人和使用权信息</button>
-                        <!--<button id="deleteQlrAndSyqxxBtn" class="btn btn-danger">删除此档案信息</button>-->
-                    </div>
+                    <!--<div class="daxx form-group col-md-12">-->
+                        <!--<button index="" id="saveQlrAndSyqxxBtn1" class="btn btn-success">保存此权利人和使用权信息</button>-->
+                        <!--&lt;!&ndash;<button id="deleteQlrAndSyqxxBtn" class="btn btn-danger">删除此档案信息</button>&ndash;&gt;-->
+                    <!--</div>-->
                 </div>
                 <!--档案信息-->
                 <div style="height: 200px" class="from-row daxx pre-scrollable">
@@ -945,8 +950,8 @@
                             <input readonly type="text" class="form-control" name="fpys" id="fpys" >
                         </div>
                         <div class="daxx form-group col-md-6">
-                            <label for="zxrq">注销日期</label>
-                            <input type="date" class="form-control" name="zxrq" id="zxrq" >
+                            <label for="zxsj">注销日期</label>
+                            <input type="date" class="form-control" name="zxsj" id="zxsj" >
                         </div>
                     </div>
                     <div class="from-row daxx">
@@ -960,7 +965,7 @@
 
                 <input type="hidden" name="path" id="path">
             </form>
-            </div>
+            </form>
         </div>
         <HR>
         <div style="height: 30%">
@@ -971,14 +976,16 @@
                 <!--<label show=".syqxx" id="showSYQXX" class="showForm btn btn-secondary">-->
                     <!--<input type="radio" name="options" id="option2" autocomplete="off"> 使用权信息-->
                 <!--</label>-->
-                <label show=".qlrxx" id="showQLRXX" class="showForm btn btn-secondary">
-                    <input type="radio" name="options" id="option4" autocomplete="off"> 权利人信息
-                </label>
                 <label show=".daxx" id="showDAXX" class="showForm btn btn-secondary">
                     <input type="radio" name="options" id="option5" autocomplete="off"> 档案信息
                 </label>
+                <label show=".qlrxx" id="showQLRXX" class="showForm btn btn-secondary">
+                    <input type="radio" name="options" id="option4" autocomplete="off"> 权利人信息
+                </label>
+
             </div>
             <button id="submitForm" style="margin-left: 100px" type="button" class="btn btn-primary">提交表单</button>
+            <button id="clearForm" style="margin-left: 100px" type="button" class="btn btn-danger">清空表单</button>
         </div>
     </div>
 
@@ -1043,6 +1050,12 @@ window.onload = function (ev) {
     $(".from-row").hide();
     $(".zdxx").show();
 
+    $(document).on('click', '#clearForm', function () {
+       var inputs = $(".form-control");
+       inputs.val("")
+       return false
+
+    })
     $(document).on('change', '.changeOtherInput', function () {
 
         var inputValue = $(this).find("option:selected").attr("inputValue")
@@ -1062,10 +1075,10 @@ window.onload = function (ev) {
             "                            <td name='fpys'></td>\n" +
             "                        </tr>")
 
-        $("#"+trId).click()
-        var formId = "daxxFormIndex"+daxxIndex
+        $("#"+trId).click();
+        var formId = "daxxFormIndex"+daxxIndex;
         var inputForm = $("#showDaxxForm").html();
-        $("#path").before("<div style='visibility: hidden' class='daxxForm' id="+formId+"> " +inputForm+
+        $("#path").before("<div style='display: none' class='daxxForm' id="+formId+"> " +inputForm+
 
             "</div>")
 
@@ -1073,6 +1086,7 @@ window.onload = function (ev) {
         return false
     })
     $(document).on('click', '.daxxTr', function () {
+
         $(".daxxTr").css("background-color","")
         $(this).css("background-color","#428bca")
         var daxxIndex = $(this).attr("index")
@@ -1081,12 +1095,26 @@ window.onload = function (ev) {
         for(var i=0;i<showDaxxFormInputs.length;i++){
            showDaxxFormInputs.eq(i).val(nowDaxxFormInputs.eq(i).val())
         }
-
         $("#saveDaxxBtn").attr("index",daxxIndex);
+        var thisDabh = $(this).find("td").eq(0).html()
+        var trs = $("#qlrxxAndSyqTable").find("tr");
+
+
+
+        for (var i=0;i<trs.length;i++){
+            if (trs.eq(i).find("td").eq(0).html()==thisDabh){
+                $(trs).eq(i).show()
+            }
+            else $(trs).eq(i).hide()
+        }
+
+
+
     })
 
     $(document).on('click', '#deleteDaxxBtn', function () {
         var index = $("#saveDaxxBtn").attr("index");
+
         if (index==""||$("#showDaxxForm #dabh")==""){
             alert("请选择一个档案")
             return false
@@ -1097,13 +1125,17 @@ window.onload = function (ev) {
 
         for (var i=0;i<trs.length;i++){
             if (trs.eq(i).find("td").eq(0).html()==$("#showDaxxForm #dabh").val()){
+
                 var index = trs.eq(i).attr("index")
+                if ($("#saveQlrAndSyqxxBtn").attr("index")==index)
+                    $("#showQlrxxAndSyqForm .form-control").val("")
                 var formId = "qlrxxAndSyqFormIndex"+index;
                 $("#"+formId).remove()
                 trs.eq(i).remove()
             }
 
         }
+
         $("#showDaxxForm input").val("")
         return false
 
@@ -1112,10 +1144,33 @@ window.onload = function (ev) {
     var qlrxxAndSyqIndex = 0;
     $(document).on('click', '#saveDaxxBtn', function () {
         var index = $(this).attr("index")
-        if (index==""||$("#showDaxxForm #dabh")==""){
+        if (index==""||$("#showDaxxForm #dabh").val()==""){
             alert("请选择一个档案")
             return false
         }
+
+        if ($("#zddm").val()!=zddm){
+            var isContinue = confirm("此档案信息的宗地代码与前面的宗地代码不一致，是否继续?");
+            if (isContinue==false)
+                return false
+        }
+        $("#zddm").val(zddm)
+
+        var dabh = $("#showDaxxForm #dabh").val();
+        var daTrs = $("#daxxTable tr");
+        for (var i=0;i<daTrs.length;i++){
+            if (daTrs.eq(i).attr("index")==index)
+                continue
+            if (daTrs.eq(i).find("td").eq(0).html()==dabh){
+                alert("重复的档案编号")
+                return false
+            }
+        }
+
+
+
+
+
            var trId = "daxxTrIndex"+index
           var tds = $("#"+trId).find("td");
          for (var i=0;i<tds.length;i++){
@@ -1129,7 +1184,7 @@ window.onload = function (ev) {
              inputs.eq(i).val($("#showDaxxForm #"+name).val())
 
          }
-         var dabh = $("#showDaxxForm #dabh").val();
+
          var trs = $("#qlrxxAndSyqTable tr")
         for (var i=0;i<trs.length;i++){
 
@@ -1138,7 +1193,7 @@ window.onload = function (ev) {
         }
         var  trId = "qlrxxAndSyqTrIndex"+(++qlrxxAndSyqIndex);
         var inputForm = $("#showQlrxxAndSyqForm").html();
-         for (var i=0;i<qlrs.length;i++){
+         for (var i=0;i<tdzh.length;i++){
              $("#qlrxxAndSyqTable").append("<tr class='qlrxxAndSyqTr' id="+trId+" index="+qlrxxAndSyqIndex+">\n" +
                  "                            <th scope=\"row\">#</th>\n" +
                  "                            <td name='dabh'>"+dabh+"</td>\n" +
@@ -1147,7 +1202,7 @@ window.onload = function (ev) {
                  "                        </tr>")
 
              var formId = "qlrxxAndSyqFormIndex"+qlrxxAndSyqIndex
-            $("#path").before("<div style='visibility: hidden' class='qlrxxAndSyqForm' id="+formId+"> " +inputForm+
+            $("#path").before("<div style='display: none' class='qlrxxAndSyqForm' id="+formId+"> " +inputForm+
                 "</div>")
              $("#"+formId+" #qlrmc").val(qlrs[i])
 
@@ -1156,6 +1211,7 @@ window.onload = function (ev) {
              $("#"+formId+" #xtdzzl").val(fwzl)
 
          }
+        $("#daxxTrIndex"+index).click();
 
          return false;
     })
@@ -1170,18 +1226,27 @@ window.onload = function (ev) {
         for (var i=0;i<showFormInputs.length;i++){
             showFormInputs.eq(i).val(nowFormInputs.eq(i).val())
         }
-
     })
 
     $(document).on('click', '#saveQlrAndSyqxxBtn', function () {
         var index = $(this).attr("index");
+        if(index==""||$("#showQlrxxAndSyqForm #qlrmc").val()==""){
+                alert("请选择一个权利人和使用权信息")
+                return false
+        }
+        var qlrxxAndSyqTr = $("#qlrxxAndSyqTrIndex"+index);
+        qlrxxAndSyqTr.find("td").eq(1).html($("#showQlrxxAndSyqForm #bdcqzh").val())
+        qlrxxAndSyqTr.find("td").eq(2).html($("#showQlrxxAndSyqForm #qlrmc").val())
        var inputs =  $("#qlrxxAndSyqFormIndex"+index+" .form-control");
        for (var i=0;i<inputs.length;i++){
            var name = inputs.eq(i).attr("name")
            inputs.eq(i).val($("#showQlrxxAndSyqForm #"+name).val())
        }
+       return false
     })
     $(document).on('click', '#submitForm', function () {
+        if (confirm("确认提交?")==false)
+            return false
         var tdxxForm = $(".tdxxForm")
         for (var i = 0;i<tdxxForm.length;i++){
             var inputs = tdxxForm.eq(i).find(".form-control");
@@ -1191,19 +1256,34 @@ window.onload = function (ev) {
             }
         }
 
-         var qlrxxForm = $(".qlrxxForm")
-        for (var i = 0;i<qlrxxForm.length;i++){
-            var inputs = qlrxxForm.eq(i).find(".form-control");
-            for (var  j = 0;j<inputs.length;j++){
-                var name = inputs.eq(j).attr("id");
-                inputs.eq(j).attr("name","qlrs["+i+"]."+name)
+        var daxxForm = $(".daxxForm")
+        for (var i=0;i<daxxForm.length;i++){
+            var inputs = daxxForm.eq(i).find(".form-control");
+            for (var j=0;j<inputs.length;j++){
+                var name = inputs.eq(j).attr("id")
+
+                inputs.eq(j).attr("name","txms["+i+"]."+name)
+
             }
         }
 
-        if ($("#path").val()==""){
-            alert("请选择档案号");
-            return false
+        var qlrxxAndSyqForm = $(".qlrxxAndSyqForm");
+        for (var i=0;i<qlrxxAndSyqForm.length;i++){
+           var qlrxxInputs = qlrxxAndSyqForm.eq(i).find(".qlrxxForm").eq(0).find(".form-control");
+           var syqxxInputs = qlrxxAndSyqForm.eq(i).find(".syqxxForm").eq(0).find(".form-control");
+           for (var j = 0;j<qlrxxInputs.length;j++){
+               var qlrxxName = qlrxxInputs.eq(j).attr("id");
+
+               qlrxxInputs.eq(j).attr("name","qlrAndSyqs["+i+"].qlr."+qlrxxName)
+
+           }
+           for (var o=0;o<syqxxInputs.length;o++){
+               var syqxxName = syqxxInputs.eq(o).attr("id");
+               syqxxInputs.eq(o).attr("name","qlrAndSyqs["+i+"].jsydsyq."+syqxxName)
+           }
         }
+
+
         var data = $("#allData").serialize();
         $.ajax({
             url: '/submitData',
@@ -1213,7 +1293,9 @@ window.onload = function (ev) {
             timeout: 5000,    //超时时间
             dataType: 'text',    //返回的数据格式：json/xml/html/script/jsonp/text
             success: function (data) {
+                $(".form-control").val("")
                 alert(data)
+
             },
             error: function (data) {
                 alert("操作失败")
@@ -1257,6 +1339,7 @@ window.onload = function (ev) {
             "                        <button deleteTdxxIndex='"+tdxxIndex+"'style=\"margin-left: 200px\"  class=\"deleteTdxxBtn btn btn-danger\">删除</button>\n" +
             "                    </div>\n" +
             "                </div> </div>")
+        $("#"+id+" #tdytmc").attr("inputId",id+" #tdyt")
         return false
 
     })
@@ -1276,6 +1359,7 @@ window.onload = function (ev) {
     var qlrs;
     var fwzl;
     var tdzh;
+    var zddm;
     var initFolder = function(data){
     return $("#folder").treeview({
 
@@ -1305,6 +1389,7 @@ window.onload = function (ev) {
                     qlrs=data['excelData'].qlr;
                     fwzl=data['excelData'].fwzl;
                     tdzh=data['excelData'].tdzh;
+                    zddm=data['excelData'].zddm;
                    var daxxForms = $("#showDaxxForm").find(".form-control")
                     daxxForms.val("");
                     for (var i=0;i<daxxForms.length;i++){
