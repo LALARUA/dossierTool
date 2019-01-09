@@ -15,11 +15,20 @@ public class PublicExcelData {
     private String FPYS;
     private String BGQX;
     private String ZDDM;
+    private String ZDTZM;
     private String DALXBH;
     private String DALX;
 
     public String getDABH() {
         return DABH;
+    }
+
+    public String getZDTZM() {
+        return ZDTZM;
+    }
+
+    public void setZDTZM(String ZDTZM) {
+        this.ZDTZM = ZDTZM;
     }
 
     public void setDABH(String DABH) {

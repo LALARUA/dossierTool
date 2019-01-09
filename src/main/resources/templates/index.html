@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>supermap</title>
     <link href="http://www.jq22.com/jquery/bootstrap-3.3.4.css" rel="stylesheet">
     <!--<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">-->
     <link href="css/bootstrap-treeview.css" rel="stylesheet">
@@ -1053,6 +1053,8 @@ window.onload = function (ev) {
     $(document).on('click', '#clearForm', function () {
        var inputs = $(".form-control");
        inputs.val("")
+        $(".daxxTr").remove()
+        $(".qlrxxAndSyqTr").remove();
        return false
 
     })
@@ -1149,13 +1151,6 @@ window.onload = function (ev) {
             return false
         }
 
-        if ($("#zddm").val()!=zddm){
-            var isContinue = confirm("此档案信息的宗地代码与前面的宗地代码不一致，是否继续?");
-            if (isContinue==false)
-                return false
-        }
-        $("#zddm").val(zddm)
-
         var dabh = $("#showDaxxForm #dabh").val();
         var daTrs = $("#daxxTable tr");
         for (var i=0;i<daTrs.length;i++){
@@ -1166,11 +1161,13 @@ window.onload = function (ev) {
                 return false
             }
         }
-
-
-
-
-
+        if ($("#zddm").val()!=zddm){
+            var isContinue = confirm("此档案信息的宗地代码与前面的宗地代码不一致，是否继续?");
+            if (isContinue==false)
+                return false
+        }
+        $("#zddm").val(zddm)
+        $("#zdtzm").val(zdtzm)
            var trId = "daxxTrIndex"+index
           var tds = $("#"+trId).find("td");
          for (var i=0;i<tds.length;i++){
@@ -1294,6 +1291,8 @@ window.onload = function (ev) {
             dataType: 'text',    //返回的数据格式：json/xml/html/script/jsonp/text
             success: function (data) {
                 $(".form-control").val("")
+                $(".daxxTr").remove()
+                $(".qlrxxAndSyqTr")
                 alert(data)
 
             },
@@ -1360,6 +1359,7 @@ window.onload = function (ev) {
     var fwzl;
     var tdzh;
     var zddm;
+    var zdtzm;
     var initFolder = function(data){
     return $("#folder").treeview({
 
@@ -1368,7 +1368,6 @@ window.onload = function (ev) {
     levels:1,
     showTags:true,
     onNodeSelected:function(event,node){
-
 
         if (node.nodes==null){
             $.ajax({
@@ -1390,6 +1389,7 @@ window.onload = function (ev) {
                     fwzl=data['excelData'].fwzl;
                     tdzh=data['excelData'].tdzh;
                     zddm=data['excelData'].zddm;
+                    zdtzm=data['excelData'].zdtzm;
                    var daxxForms = $("#showDaxxForm").find(".form-control")
                     daxxForms.val("");
                     for (var i=0;i<daxxForms.length;i++){

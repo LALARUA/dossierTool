@@ -229,7 +229,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
             qlr.setBsm(UUID.randomUUID().toString());
             qlr.setQlbsm(syqBsm);
             qlr.setObjectid(qlrMapper.findMaxId());
-            qlr.setSxh(new BigDecimal(++i));
+            qlr.setSxh(new BigDecimal(i++));
             qlr.setBdcdyh(zdjbxx.getBdcdyh());
             qlrMapper.insertSelective(qlr);
         }
@@ -283,17 +283,41 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
                     publicDataFromExcel = new PublicExcelData();
                     Row rowFromAJH = sheet.getRow(row);
                     publicDataFromExcel.setDABH(AJH);
-                    publicDataFromExcel.setQLR(new ArrayList<>(Arrays.asList(rowFromAJH.getCell(1).toString().split("/"))));
-                    publicDataFromExcel.setTDZH(new ArrayList<>(Arrays.asList(rowFromAJH.getCell(2).toString().split("/"))));
-                    publicDataFromExcel.setFWZL(rowFromAJH.getCell(3).toString());
+                    Cell qlrs = rowFromAJH.getCell(1);
+                    if (qlrs!=null)
+                    publicDataFromExcel.setQLR(new ArrayList<>(Arrays.asList(qlrs.toString().split("/"))));
+                    Cell tdzhs = rowFromAJH.getCell(2);
+                    if (tdzhs!=null)
+                    publicDataFromExcel.setTDZH(new ArrayList<>(Arrays.asList(tdzhs.toString().split("/"))));
+                    Cell fwzh = rowFromAJH.getCell(3);
+                    if (fwzh!=null)
+                    publicDataFromExcel.setFWZL(fwzh.toString());
                     if (rowFromAJH.getCell(4)==null)
                     publicDataFromExcel.setZDDM("");
                     else {
-                        String s1 = rowFromAJH.getCell(4).toString();
-                        publicDataFromExcel.setZDDM(s1.substring(0,s1.lastIndexOf(".")));
+                        String zddm = rowFromAJH.getCell(4).toString();
+                        int zddmIndex = zddm.lastIndexOf(".")==-1?zddm.length():zddm.lastIndexOf(".");
+                        publicDataFromExcel.setZDDM(zddm.substring(0,zddmIndex));
+                        int flag=0;
+                        for (int j = 0; j < zddm.length(); j++) {
+                            if ((zddm.charAt(j)>='a'&&zddm.charAt(j)<='z')||(zddm.charAt(j)>='A'&&zddm.charAt(j)<='Z'))
+                                flag++;
+                            if (flag==2) {
+                                publicDataFromExcel.setZDTZM(Character.toString(zddm.charAt(j)));
+                                break;
+                            }
+
+                        }
                     }
-                    String s = rowFromAJH.getCell(5).toString();
-                    publicDataFromExcel.setFPYS(s.substring(0,s.lastIndexOf(".")));
+
+
+
+                    if (rowFromAJH.getCell(5)!=null){
+                        String fpys = rowFromAJH.getCell(5).toString();
+                        int fpysIndex = fpys.lastIndexOf(".")==-1?fpys.length():fpys.lastIndexOf(".");
+                        publicDataFromExcel.setFPYS(fpys.substring(0,fpys.lastIndexOf(".")));
+                    }
+
                     publicDataFromExcel.setBGQX(rowFromAJH.getCell(6).toString());
                     publicDataFromExcel.setDALXBH(rowFromAJH.getCell(7).toString());
                     publicDataFromExcel.setDALX(rowFromAJH.getCell(7).toString().substring(0,1));
