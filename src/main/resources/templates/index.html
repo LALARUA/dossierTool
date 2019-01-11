@@ -956,7 +956,7 @@
                     </div>
                     <div class="from-row daxx">
                         <div class="daxx form-group col-md-12">
-                            <button  id="addDaxxBtn" class="btn btn-warning">新增档案信息</button>
+                            <!--<button  id="addDaxxBtn" class="btn btn-warning">新增档案信息</button>-->
                             <button index="" id="saveDaxxBtn" class="btn btn-success">保存此档案信息</button>
                             <button id="deleteDaxxBtn" class="btn btn-danger">删除此档案信息</button>
                         </div>
@@ -1065,18 +1065,21 @@ window.onload = function (ev) {
             showTags:true,
             onNodeSelected:function(event,node){
 
+                var flag = 0;
                 if (node.nodes==null){
                     var ajh = node.text;
                     var daTrs = $("#daxxTable tr");
                     daTrs.css("background-color","")
-
-
                     for (var i=0;i<daTrs.length;i++){
                         if (daTrs.eq(i).find("td").eq(0).html()==ajh){
                             daTrs.eq(i).click()
-                            return false
+
+                            flag=1;
+                            break;
                         }
                     }
+                    if (flag==0)
+                        $("#saveDaxxBtn").attr("index","")
 
 
                     $.ajax({
@@ -1090,10 +1093,15 @@ window.onload = function (ev) {
                         timeout: 5000,    //超时时间
                         dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text
                         success: function (data) {
+
+
                             if (data['error']!=null){
                                 alert(data['error'])
                                 return
                             }
+                            initJpgList(data['jpgs'])
+                            if (flag==1)
+                                return
                             qlrs=data['excelData'].qlr;
                             fwzl=data['excelData'].fwzl;
                             tdzh=data['excelData'].tdzh;
@@ -1110,7 +1118,7 @@ window.onload = function (ev) {
                             }
 
 
-                            initJpgList(data['jpgs'])
+
 
                             $("#path").val(node.path)
                         },
@@ -1249,12 +1257,15 @@ window.onload = function (ev) {
     })
 
     $(document).on('click', '#deleteDaxxBtn', function () {
+
         var index = $("#saveDaxxBtn").attr("index");
 
         if (index==""||$("#showDaxxForm #dabh")==""){
             alert("请选择一个档案")
             return false
         }
+        if (confirm("确定删除?")==false)
+            return false
         $("#daxxTrIndex"+index).remove();
         $("#daxxFormIndex"+index).remove();
         var trs = $("#qlrxxAndSyqTable tr")
@@ -1281,8 +1292,9 @@ window.onload = function (ev) {
 
     var qlrxxAndSyqIndex = 0;
     $(document).on('click', '#saveDaxxBtn', function () {
+
         var index = $(this).attr("index")
-        if (index==""||$("#showDaxxForm #dabh").val()==""){
+        if ($("#showDaxxForm #dabh").val()==""){
             alert("请选择一个档案")
             return false
         }
@@ -1303,13 +1315,41 @@ window.onload = function (ev) {
                 return false
         }
 
+
+        if (index==""){
+
+
+            var daxxTable = $("#daxxTable")
+            var trId = "daxxTrIndex"+(++daxxIndex);
+            daxxTable.append("<tr class='daxxTr' id="+trId+" index="+daxxIndex+">\n" +
+                "                            <th scope=\"row\">#</th>\n" +
+                "                            <td name='dabh'></td>\n" +
+                "                            <td name='dalxbh'></td>\n" +
+                "                            <td name='bgqx'></td>\n" +
+                "                            <td name='fpys'></td>\n" +
+                "                        </tr>")
+
+            // $("#"+trId).click();
+            var formId = "daxxFormIndex"+daxxIndex;
+            var inputForm = $("#showDaxxForm").html();
+            $("#path").before("<div style='display: none' class='daxxForm' id="+formId+"> " +inputForm+
+
+                "</div>")
+
+
+            index = daxxIndex
+
+        }
+
+
         $("#zddm").val(zddm)
         $("#zdtzm").val(zdtzm)
            var trId = "daxxTrIndex"+index
           var tds = $("#"+trId).find("td");
          for (var i=0;i<tds.length;i++){
              var name = tds.eq(i).attr("name");
-             tds.eq(i).html($("#showDaxxForm #"+name).val())
+             var showName = $("#showDaxxForm #"+name).val();
+             tds.eq(i).html(showName)
          }
          var formId = "daxxFormIndex"+index;
          var inputs = $("#"+formId+" .form-control");
@@ -1319,11 +1359,14 @@ window.onload = function (ev) {
 
          }
 
+
          var trs = $("#qlrxxAndSyqTable tr")
         for (var i=0;i<trs.length;i++){
+             if (trs.eq(i).find("td").eq(0).html()==dabh){
+                 alert("保存成功")
+                return false
+             }
 
-             if (trs.eq(i).find("td").eq(0).html()==dabh)
-                 return false
         }
 
         var  trId = "qlrxxAndSyqTrIndex"+(++qlrxxAndSyqIndex);
@@ -1346,8 +1389,6 @@ window.onload = function (ev) {
              $("#"+formId+" #xtdzzl").val(fwzl)
 
          }
-
-
         $("#daxxTrIndex"+index).click();
 
         alert("保存成功")
@@ -1485,6 +1526,8 @@ window.onload = function (ev) {
 
     })
     $(document).on('click', '.deleteTdxxBtn', function () {
+        if (confirm("确定删除?")==false)
+            return false
         var index = $(this).attr("deleteTdxxIndex")
         $("#tdytxx"+index).remove()
         return false
