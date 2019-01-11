@@ -1,6 +1,7 @@
 package com.supermap.dossiertool.service.serviceImpl;
 
 import com.supermap.dossiertool.bean.*;
+import com.supermap.dossiertool.controller.ZGStockSystemController;
 import com.supermap.dossiertool.function.MyFunction;
 import com.supermap.dossiertool.pojo.*;
 import com.supermap.dossiertool.service.ZGStockSystemService;
@@ -12,6 +13,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +45,8 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     ConstMapper constMapper;
     @Autowired
     OtherMapper otherMapper;
+
+    private static   org.slf4j.Logger logger = LoggerFactory.getLogger(ZGStockSystemServiceImpl.class);
     /**
      * @description
      * @author xiangXX
@@ -181,7 +185,9 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         HashSet<String> strings = new HashSet<>(selectsFromConstNameList);
         Map<String,List<Const>> selectsFromConstMap = new HashMap<>();
 
+
         for (String s : strings) {
+
             selectsFromConstMap.put(s,constMapper.getSelected(s.toUpperCase()));
         }
 
@@ -200,17 +206,19 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     @Override
     public void submitData(Zdjbxx zdjbxx, QlrAndSyqList qlrAndSyqList, TdpzytList tdpzytList, TxmList txmList) {
 
-        Zdjbxx zdjbxxInDB = null;
-        if ((zdjbxxInDB=zdjbxxMapper.selectByZddm(zdjbxx.getZddm()))==null){
+        Zdjbxx zdjbxxInDB = zdjbxxMapper.selectByZddm(zdjbxx.getZddm());
+        if (zdjbxxInDB==null){
             //宗地基本信息
             zdjbxx.setObjectid(zdjbxxMapper.findMaxId());
             String zdjbxxBsm = UUID.randomUUID().toString();  //宗地基本信息标识码
             zdjbxx.setBsm(zdjbxxBsm);
+            zdjbxxMapper.insertSelective(zdjbxx);
+            zdjbxxMapper.setShr(zdjbxx.getShr(),zdjbxx.getBsm());
+
         }
         else zdjbxx= zdjbxxInDB;
 
-        zdjbxxMapper.insertSelective(zdjbxx);
-        zdjbxxMapper.setShr(zdjbxx.getShr(),zdjbxx.getBsm());
+
         int i = 0;
         for (QlrAndSyq qas:qlrAndSyqList.getQlrAndSyqs()
              ) {

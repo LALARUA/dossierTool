@@ -9,6 +9,8 @@ import com.supermap.dossiertool.smattrEntity.Jsydsyq;
 import com.supermap.dossiertool.smattrEntity.Txm;
 import com.supermap.dossiertool.smattrEntity.Zdjbxx;
 import net.sf.json.JSONArray;
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.Cache;
@@ -38,6 +40,7 @@ public class ZGStockSystemController {
     MyPropertiesConfig myPropertiesConfig;
 
 
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(ZGStockSystemController.class);
     /**
      * @description 进入首页
      * @author xiangXX
@@ -47,6 +50,7 @@ public class ZGStockSystemController {
      */  
     @GetMapping("/index")
     public String submit(HttpServletRequest httpServletRequest/*@RequestParam(required = false,defaultValue = "E:\\zigongDATA\\自贡数据\\沿滩镇升坪街") String path*/){
+
         MyFile myFile = MyFunction.readAllFile(new File(myPropertiesConfig.getFolderPath()));
         httpServletRequest.setAttribute("data", JSONArray.fromObject(myFile).toString());
         return "index";
@@ -105,6 +109,7 @@ public class ZGStockSystemController {
     @ResponseBody
     @GetMapping("/getSelect")
     public  Map<String,Map> getSelect(@RequestParam("selectsFromConstNameList") List<String> selectsFromConstNameList,@RequestParam("selectsFromOtherNameList") List<String> selectsFromOtherNameList){
+
 
       return zgStockSystemService.getSelect(selectsFromConstNameList,selectsFromOtherNameList);
 

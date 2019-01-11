@@ -30,37 +30,12 @@ import java.util.*;
 public class DossiertoolApplicationTests {
 
 
-	@Autowired
-	ZGStockSystemServiceImpl handleData;
-
-
-	@Autowired
-	ZGStockSystemService zgStockSystemService;
 
 
 
-
-	@Autowired
-	JsydsyqMapper jsydsyqMapper;
-	@Autowired
-	QlrMapper qlrMapper;
-	@Autowired
-	TdpzytMapper tdpzytMapper;
-	@Autowired
-	TxmMapper txmMapper;
-	@Autowired
-	ZdjbxxMapper zdjbxxMapper;
-
-	@Autowired
-	ConstMapper constMapper;
-	@Autowired
-	OtherMapper otherMapper;
 	@Test
 	public void contextLoads() throws Exception {
-		Qlr qlr = new Qlr();
-		qlr.setBsm("Sfsd");
-		qlr.setObjectid(qlrMapper.findMaxId());
-		qlrMapper.insertSelective(qlr);
+
 
 
 //		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
@@ -94,32 +69,32 @@ public class DossiertoolApplicationTests {
 
 	@Test
 	public void getPublicExcelData() throws Exception{
-		String excelPath = "C:\\Users\\Administrator\\Desktop\\自贡需求12.19\\附件：自贡档案字段采集表12.19.xls";
-		File excel = new File(excelPath);
-		FileInputStream fileInputStream = new FileInputStream(excel);
-		Workbook wb = new HSSFWorkbook(fileInputStream);
-		Sheet sheet = wb.getSheetAt(1);
-		int lastRowNum = sheet.getLastRowNum();
-
-		StringBuilder s = new StringBuilder();
-		for (int row = 4;row <= lastRowNum; row++) {
-
-//			int end = positionContent.indexOf(".");
-//			positionContent = positionContent.substring(0,end);  //去除最后的 .0 字符串
-
-			if (row%2==0)
-				s.append("<div class=\"from-row zdxx\">\n");
-			String zs = sheet.getRow(row).getCell(1).toString();
-			String mc = sheet.getRow(row).getCell(2).toString();
-			s.append("<div class=\"zdxx form-group col-md-6\">\n");
-			s.append("<label for=\""+mc.toLowerCase()+"\">"+zs+"</label>\n");
-			s.append("<input type=\"text\" class=\"form-control\" name=\""+mc.toLowerCase()+"\" id=\""+mc.toLowerCase()+"\" placeholder=\""+zs+"\">\n </div>\n");
-			if (row%2!=0)
-				s.append(" </div>\n");
-		}
-
-
-		System.out.println(s);
+//		String excelPath = "C:\\Users\\Administrator\\Desktop\\自贡需求12.19\\附件：自贡档案字段采集表12.19.xls";
+//		File excel = new File(excelPath);
+//		FileInputStream fileInputStream = new FileInputStream(excel);
+//		Workbook wb = new HSSFWorkbook(fileInputStream);
+//		Sheet sheet = wb.getSheetAt(1);
+//		int lastRowNum = sheet.getLastRowNum();
+//
+//		StringBuilder s = new StringBuilder();
+//		for (int row = 4;row <= lastRowNum; row++) {
+//
+////			int end = positionContent.indexOf(".");
+////			positionContent = positionContent.substring(0,end);  //去除最后的 .0 字符串
+//
+//			if (row%2==0)
+//				s.append("<div class=\"from-row zdxx\">\n");
+//			String zs = sheet.getRow(row).getCell(1).toString();
+//			String mc = sheet.getRow(row).getCell(2).toString();
+//			s.append("<div class=\"zdxx form-group col-md-6\">\n");
+//			s.append("<label for=\""+mc.toLowerCase()+"\">"+zs+"</label>\n");
+//			s.append("<input type=\"text\" class=\"form-control\" name=\""+mc.toLowerCase()+"\" id=\""+mc.toLowerCase()+"\" placeholder=\""+zs+"\">\n </div>\n");
+//			if (row%2!=0)
+//				s.append(" </div>\n");
+//		}
+//
+//
+//		System.out.println(s);
 	}
 
 

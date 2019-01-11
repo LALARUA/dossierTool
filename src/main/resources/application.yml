@@ -1,26 +1,16 @@
 spring:
   datasource:
-      username: SMATTR
+#      username: smattryt                                    #数据库用户名
+#      password: salis                                       #数据库密码
+#      url: jdbc:oracle:thin:@192.168.0.224:1521:orcl            #数据库地址
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      username: smattr
       password: 123456
       url: jdbc:oracle:thin:@localhost:1521:orcl
-      driver-class-name: oracle.jdbc.driver.OracleDriver
-      initialSize: 5
-      minIdle: 5
-      maxActive: 20
-      maxWait: 60000
-      timeBetweenEvictionRunsMillis: 60000
-      minEvictionRunsMillis: 300000
-      validationQuery: SELECT 1 FROM DUAL
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      poolPreparedStatements: true
-      filters: stat,wall,log4j
-      maxPoolPreparedStatementPerConnectionSize: 20
-      useGlobalDataSourceStat: true
-      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMills=500
 mybatis:
     mapper-locations: classpath:/smattrMapping/*.xml
+server:
+  port: 8081
 
 ---
 #spring:

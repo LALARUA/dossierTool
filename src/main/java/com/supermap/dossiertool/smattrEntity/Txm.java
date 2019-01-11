@@ -3,7 +3,7 @@ package com.supermap.dossiertool.smattrEntity;
 import java.util.Date;
 
 public class Txm {
-    private Short txmid;
+    private Integer txmid;
 
     private String zddm;
 
@@ -41,11 +41,11 @@ public class Txm {
 
     private String dy;
 
-    public Short getTxmid() {
+    public Integer getTxmid() {
         return txmid;
     }
 
-    public void setTxmid(Short txmid) {
+    public void setTxmid(Integer txmid) {
         this.txmid = txmid;
     }
 

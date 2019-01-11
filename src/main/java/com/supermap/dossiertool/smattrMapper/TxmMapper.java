@@ -14,7 +14,7 @@ import java.util.List;
 @Mapper
 public interface TxmMapper {
     @Select("SELECT TXM_SEQ.NEXTVAL FROM DUAL")
-    short findMaxId();
+    Integer findMaxId();
     long countByExample(TxmExample example);
 
     int deleteByExample(TxmExample example);
