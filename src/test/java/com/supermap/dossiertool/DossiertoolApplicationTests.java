@@ -2,6 +2,7 @@ package com.supermap.dossiertool;
 
 import com.supermap.dossiertool.bean.Djqx;
 import com.supermap.dossiertool.bean.PublicExcelData;
+import com.supermap.dossiertool.bean.QlrAndSyq;
 import com.supermap.dossiertool.function.MyFunction;
 
 
@@ -35,11 +36,15 @@ public class DossiertoolApplicationTests {
 
 
 
+	@Autowired
+	QlrMapper qlrMapper;
 
 
 	@Test
 	public void contextLoads() throws Exception {
 
+		List<QlrAndSyq> qlrAndSyqs = qlrMapper.selectQlrAndSyqs(9979);
+		System.out.println(5);
 
 //		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");
 //		Date date = new Date();

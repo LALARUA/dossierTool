@@ -1,5 +1,6 @@
 package com.supermap.dossiertool.smattrMapper;
 
+import com.supermap.dossiertool.bean.QlrAndSyq;
 import com.supermap.dossiertool.smattrEntity.Qlr;
 import com.supermap.dossiertool.smattrEntity.QlrExample;
 import org.apache.ibatis.annotations.Mapper;
@@ -13,6 +14,11 @@ import java.util.List;
 public interface QlrMapper {
     @Select("SELECT S_QLR.NEXTVAL FROM DUAL")
     BigDecimal findMaxId();
+
+    @Select("SELECT * FROM QLR WHERE BSM IN (SELECT qlrbsm FROM TXMQLB WHERE TXMID = #{txmId})")
+    List<Qlr> selectByTxmId(Integer txmId);
+
+    List<QlrAndSyq> selectQlrAndSyqs(Integer txmId);
 
     long countByExample(QlrExample example);
 

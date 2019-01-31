@@ -7,6 +7,7 @@ import com.supermap.dossiertool.service.ZGStockSystemService;
 import com.supermap.dossiertool.service.serviceImpl.ZGStockSystemServiceImpl;
 import com.supermap.dossiertool.smattrEntity.Jsydsyq;
 import com.supermap.dossiertool.smattrEntity.Txm;
+import com.supermap.dossiertool.smattrEntity.TxmWithBLOBs;
 import com.supermap.dossiertool.smattrEntity.Zdjbxx;
 import net.sf.json.JSONArray;
 import org.apache.logging.log4j.Logger;
@@ -67,18 +68,29 @@ public class ZGStockSystemController {
     @GetMapping("/getJpgList")
     public Map getJpgList(String path,String AJH/*@RequestParam(required = false,defaultValue = "E:\\zigongDATA\\自贡数据\\打印台账汇总.xls") String excelPath*/){
         Map map = new HashMap<>();
-        try {
-            PublicExcelData publicExcelData = zgStockSystemService.getPublicExcelData(myPropertiesConfig.getExcelPath(), AJH);
-            if (publicExcelData==null){
-                map.put("error","未查找到该案卷号台账信息");
+
+        TxmWithBLOBs txmWithBLOBs = zgStockSystemService.selectTxm(AJH);
+        if (txmWithBLOBs !=null){
+            map.put("txm",txmWithBLOBs);
+            map.put("flag",1);
+        }
+        else {
+            try {
+                PublicExcelData publicExcelData = zgStockSystemService.getPublicExcelData(myPropertiesConfig.getExcelPath(), AJH);
+                if (publicExcelData == null) {
+                    map.put("error", "未查找到该案卷号台账信息");
+                    return map;
+                }
+                map.put("excelData", publicExcelData);
+                map.put("flag",0);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                map.put("error", "操作失败");
                 return map;
             }
-            map.put("excelData",publicExcelData);
-            map.put("jpgs",MyFunction.getJpgList(path));
-        } catch (Exception e) {
-            e.printStackTrace();
-                map.put("error","操作失败");
         }
+        map.put("jpgs", MyFunction.getJpgList(path));
         return map;
     }
 
@@ -99,10 +111,10 @@ public class ZGStockSystemController {
      */  
     @ResponseBody
     @PostMapping("/submitData")
-    public String submitData(Zdjbxx zdjbxx, QlrAndSyqList qlrAndSyqList, TdpzytList tdpzytList, TxmList txmList){
+    public String submitData(Zdjbxx zdjbxx/*, QlrAndSyqList qlrAndSyqList*/, TdpzytList tdpzytList, TxmList txmList){
 
 
-        zgStockSystemService.submitData(zdjbxx,qlrAndSyqList,tdpzytList,txmList);
+        zgStockSystemService.submitData(zdjbxx,tdpzytList,txmList);
         return "success";
     }
 

@@ -42,6 +42,9 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     ZdjbxxMapper zdjbxxMapper;
 
     @Autowired
+    TxmqlbMapper txmqlbMapper;
+
+    @Autowired
     ConstMapper constMapper;
     @Autowired
     OtherMapper otherMapper;
@@ -204,65 +207,119 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
 
     @Transactional
     @Override
-    public void submitData(Zdjbxx zdjbxx, QlrAndSyqList qlrAndSyqList, TdpzytList tdpzytList, TxmList txmList) {
+    public void submitData(Zdjbxx zdjbxx, TdpzytList tdpzytList, TxmList txmList) {
 
         Zdjbxx zdjbxxInDB = zdjbxxMapper.selectByZddm(zdjbxx.getZddm());
-        if (zdjbxxInDB==null){
+        if (zdjbxxInDB == null) {
             //宗地基本信息
-            zdjbxx.setObjectid(zdjbxxMapper.findMaxId());
             String zdjbxxBsm = UUID.randomUUID().toString();  //宗地基本信息标识码
             zdjbxx.setBsm(zdjbxxBsm);
             zdjbxxMapper.insertSelective(zdjbxx);
-            zdjbxxMapper.setShr(zdjbxx.getShr(),zdjbxx.getBsm());
+            zdjbxxMapper.setShr(zdjbxx.getShr(), zdjbxx.getBsm());
 
-        }
-        else zdjbxx= zdjbxxInDB;
-
-
-        int i = 0;
-        for (QlrAndSyq qas:qlrAndSyqList.getQlrAndSyqs()
-             ) {
-            //使用权信息
-            Jsydsyq jsydsyq = qas.getJsydsyq();
-            String syqBsm = UUID.randomUUID().toString();    //使用权标识码
-            jsydsyq.setBsm(syqBsm);
-            jsydsyq.setBdcdybsm(zdjbxx.getBsm());
-            jsydsyq.setBdcdyh(zdjbxx.getBdcdyh());
-            jsydsyq.setObjectid(jsydsyqMapper.findMaxId());
-
-            jsydsyqMapper.insertSelective(jsydsyq);
-            //权利人信息
-            Qlr qlr = qas.getQlr();
-            qlr.setBsm(UUID.randomUUID().toString());
-            qlr.setBsm(UUID.randomUUID().toString());
-            qlr.setQlbsm(syqBsm);
-            qlr.setObjectid(qlrMapper.findMaxId());
-            qlr.setSxh(new BigDecimal(i++));
-            qlr.setBdcdyh(zdjbxx.getBdcdyh());
-            qlrMapper.insertSelective(qlr);
-
-        }
+        } else zdjbxx = zdjbxxInDB;
 
         //土地用途信息
         List<Tdpzyt> tdyts = tdpzytList.getTdpzyts();   //土地用途列表
         for (Tdpzyt t : tdyts) {
-            t.setObjectid(tdpzytMapper.findMaxId());
+//            t.setObjectid(tdpzytMapper.findMaxId());
             t.setBsm(UUID.randomUUID().toString());
             t.setZdbsm(zdjbxx.getBsm());
             tdpzytMapper.insertSelective(t);
         }
 
         //档案信息
-        for (TxmWithBLOBs t : txmList.getTxms()
-             ) {
-            t.setZddm(zdjbxx.getZddm());
-            t.setTxmid(txmMapper.findMaxId());
-            t.setZdbsm(zdjbxx.getBsm());
-            txmMapper.insertSelective(t);
+        for (TxmWithBLOBs t : txmList.getTxms()) {
+            List<TxmWithBLOBs> txmsIndb = txmMapper.selectByDabh(t.getDabh().toString());
+            if (txmsIndb != null && txmsIndb.size() != 0) {
+                TxmWithBLOBs txmInDb = txmsIndb.get(0);
+                TxmExample txmExample = new TxmExample();
+                txmExample.createCriteria().andTxmidEqualTo(txmInDb.getTxmid());
+                txmMapper.updateByExampleSelective(t, txmExample);
+                List<QlrAndSyq> qlrAndSyqs = t.getQlrAndSyqs();
+                for (QlrAndSyq qas : qlrAndSyqs) {
+                    Qlr qlr = qas.getQlr();
+                    QlrExample qlrExample = new QlrExample();
+                    qlrExample.createCriteria().andBsmEqualTo(qlr.getBsm());
+                    qlrMapper.updateByExampleSelective(qlr, qlrExample);
+                    Jsydsyq jsydsyq = qas.getJsydsyq();
+                    JsydsyqExample jsydsyqExample = new JsydsyqExample();
+                    jsydsyqExample.createCriteria().andBsmEqualTo(jsydsyq.getBsm());
+                    jsydsyqMapper.updateByExampleSelective(jsydsyq, jsydsyqExample);
+                }
+
+
+            } else {
+                t.setZddm(zdjbxx.getZddm());
+                t.setZdbsm(zdjbxx.getBsm());
+                txmMapper.insertSelective(t);
+
+                //使用权和权利人信息
+                List<QlrAndSyq> qlrAndSyqs = t.getQlrAndSyqs();
+                int i = 0;
+                for (QlrAndSyq qas : qlrAndSyqs) {
+                    //使用权信息
+                    Jsydsyq jsydsyq = qas.getJsydsyq();
+                    String syqBsm = UUID.randomUUID().toString();    //使用权标识码
+                    jsydsyq.setBsm(syqBsm);
+                    jsydsyq.setBdcdybsm(zdjbxx.getBsm());
+                    jsydsyq.setBdcdyh(zdjbxx.getBdcdyh());
+//                    jsydsyq.setObjectid(jsydsyqMapper.findMaxId());
+                    jsydsyqMapper.insertSelective(jsydsyq);
+
+                    //权利人信息
+                    Qlr qlr = qas.getQlr();
+                    qlr.setBsm(UUID.randomUUID().toString());
+                    qlr.setQlbsm(syqBsm);
+//                    qlr.setObjectid(qlrMapper.findMaxId());
+                    qlr.setSxh(new BigDecimal(i++));
+                    qlr.setBdcdyh(zdjbxx.getBdcdyh());
+                    qlrMapper.insertSelective(qlr);
+
+                    //txmqlb信息
+                    Txmqlb txmqlb = new Txmqlb();
+//                    txmqlb.setId(txmqlbMapper.findMaxId());
+                    txmqlb.setBdcqzh(qlr.getBdcqzh());
+                    txmqlb.setQlrbsm(qlr.getBsm());
+                    txmqlb.setQlbsm(qlr.getQlbsm());
+                    txmqlb.setQlrmc(qlr.getQlrmc());
+                    txmqlb.setXtdzzl(qlr.getXtdzzl());
+                    txmqlb.setTxmId(t.getTxmid());
+                    txmqlbMapper.insert(txmqlb);
+                }
+
+            }
         }
-
-
     }
+//        int i = 0;
+//        for (QlrAndSyq qas:qlrAndSyqList.getQlrAndSyqs()
+//             ) {
+//            //使用权信息
+//            Jsydsyq jsydsyq = qas.getJsydsyq();
+//            String syqBsm = UUID.randomUUID().toString();    //使用权标识码
+//            jsydsyq.setBsm(syqBsm);
+//            jsydsyq.setBdcdybsm(zdjbxx.getBsm());
+//            jsydsyq.setBdcdyh(zdjbxx.getBdcdyh());
+//            jsydsyq.setObjectid(jsydsyqMapper.findMaxId());
+//
+//            jsydsyqMapper.insertSelective(jsydsyq);
+//            //权利人信息
+//            Qlr qlr = qas.getQlr();
+//            qlr.setBsm(UUID.randomUUID().toString());
+//            qlr.setBsm(UUID.randomUUID().toString());
+//            qlr.setQlbsm(syqBsm);
+//            qlr.setObjectid(qlrMapper.findMaxId());
+//            qlr.setSxh(new BigDecimal(i++));
+//            qlr.setBdcdyh(zdjbxx.getBdcdyh());
+//            qlrMapper.insertSelective(qlr);
+//
+//        }
+
+
+
+
+
+//    }
 
 
 //    @Cacheable(cacheNames = "handlingAJH",key = "#AJH")
@@ -337,6 +394,17 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         }
 
         return null;
+    }
+
+    @Override
+    public TxmWithBLOBs selectTxm(String dabh) {
+        List<TxmWithBLOBs> txmWithBLOBs = txmMapper.selectByDabh(dabh);
+        if (txmWithBLOBs==null||txmWithBLOBs.size()==0)
+            return null;
+        TxmWithBLOBs txmWithBLOBInDB = txmWithBLOBs.get(0);
+        List<QlrAndSyq> qlrAndSyqs = qlrMapper.selectQlrAndSyqs(txmWithBLOBInDB.getTxmid());
+        txmWithBLOBInDB.setQlrAndSyqs(qlrAndSyqs);
+        return txmWithBLOBInDB;
     }
 
 }

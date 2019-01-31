@@ -115,7 +115,7 @@ public class TxmExample {
             return (Criteria) this;
         }
 
-        public Criteria andTxmidEqualTo(Short value) {
+        public Criteria andTxmidEqualTo(Integer value) {
             addCriterion("TXMID =", value, "txmid");
             return (Criteria) this;
         }
@@ -295,7 +295,7 @@ public class TxmExample {
             return (Criteria) this;
         }
 
-        public Criteria andDabhEqualTo(Short value) {
+        public Criteria andDabhEqualTo(Integer value) {
             addCriterion("DABH =", value, "dabh");
             return (Criteria) this;
         }

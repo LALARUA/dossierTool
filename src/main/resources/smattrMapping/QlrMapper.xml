@@ -53,6 +53,96 @@
     <result column="XTDQLQSSJ" jdbcType="OTHER" property="xtdqlqssj" />
     <result column="XTDQLJSSJ" jdbcType="OTHER" property="xtdqljssj" />
   </resultMap>
+  <resultMap id="qlrAndSyqs" type="com.supermap.dossiertool.bean.QlrAndSyq">
+    <association property="qlr" javaType="com.supermap.dossiertool.smattrEntity.Qlr">
+      <id column="BSM" jdbcType="OTHER" property="bsm" />
+      <result column="OBJECTID" jdbcType="DECIMAL" property="objectid" />
+      <result column="YSDM" jdbcType="OTHER" property="ysdm" />
+      <result column="QLBSM" jdbcType="OTHER" property="qlbsm" />
+      <result column="BDCDYH" jdbcType="OTHER" property="bdcdyh" />
+      <result column="SXH" jdbcType="DECIMAL" property="sxh" />
+      <result column="QLRMC" jdbcType="OTHER" property="qlrmc" />
+      <result column="BDCQZH" jdbcType="OTHER" property="bdcqzh" />
+      <result column="QZYSXLH" jdbcType="OTHER" property="qzysxlh" />
+      <result column="SFCZR" jdbcType="OTHER" property="sfczr" />
+      <result column="ZJZL" jdbcType="OTHER" property="zjzl" />
+      <result column="ZJH" jdbcType="OTHER" property="zjh" />
+      <result column="FZJG" jdbcType="OTHER" property="fzjg" />
+      <result column="SSHY" jdbcType="OTHER" property="sshy" />
+      <result column="GJ" jdbcType="OTHER" property="gj" />
+      <result column="HJSZSS" jdbcType="OTHER" property="hjszss" />
+      <result column="XB" jdbcType="OTHER" property="xb" />
+      <result column="DH" jdbcType="OTHER" property="dh" />
+      <result column="DZ" jdbcType="OTHER" property="dz" />
+      <result column="YB" jdbcType="OTHER" property="yb" />
+      <result column="GZDW" jdbcType="OTHER" property="gzdw" />
+      <result column="DZYJ" jdbcType="OTHER" property="dzyj" />
+      <result column="QLRLX" jdbcType="OTHER" property="qlrlx" />
+      <result column="QLBL" jdbcType="OTHER" property="qlbl" />
+      <result column="GYFS" jdbcType="OTHER" property="gyfs" />
+      <result column="BZ" jdbcType="OTHER" property="bz" />
+      <result column="DLRXM" jdbcType="OTHER" property="dlrxm" />
+      <result column="DLRLXDH" jdbcType="OTHER" property="dlrlxdh" />
+      <result column="DLRZJHM" jdbcType="OTHER" property="dlrzjhm" />
+      <result column="DLRZJLX" jdbcType="OTHER" property="dlrzjlx" />
+      <result column="DLJGMC" jdbcType="OTHER" property="dljgmc" />
+      <result column="QLMJ" jdbcType="DECIMAL" property="qlmj" />
+      <result column="FDDBR" jdbcType="OTHER" property="fddbr" />
+      <result column="FDDBRDH" jdbcType="OTHER" property="fddbrdh" />
+      <result column="FDDBRZJHM" jdbcType="OTHER" property="fddbrzjhm" />
+      <result column="FDDBRZJLX" jdbcType="OTHER" property="fddbrzjlx" />
+      <result column="SQRID" jdbcType="OTHER" property="sqrid" />
+      <result column="FCZH" jdbcType="OTHER" property="fczh" />
+      <result column="BLZT" jdbcType="OTHER" property="blzt" />
+      <result column="YTDSYQR" jdbcType="OTHER" property="ytdsyqr" />
+      <result column="YBDCQZH" jdbcType="OTHER" property="ybdcqzh" />
+      <result column="FTXZ" jdbcType="OTHER" property="ftxz" />
+      <result column="FCZZL" jdbcType="OTHER" property="fczzl" />
+      <result column="XTDZZL" jdbcType="OTHER" property="xtdzzl" />
+      <result column="XTDCZFS" jdbcType="OTHER" property="xtdczfs" />
+      <result column="XTDQLXZ" jdbcType="OTHER" property="xtdqlxz" />
+      <result column="XTDTDYT" jdbcType="OTHER" property="xtdtdyt" />
+      <result column="XTDSYQX" jdbcType="OTHER" property="xtdsyqx" />
+      <result column="XTDQLQSSJ" jdbcType="OTHER" property="xtdqlqssj" />
+      <result column="XTDQLJSSJ" jdbcType="OTHER" property="xtdqljssj" />
+    </association>
+    <association property="jsydsyq" javaType="com.supermap.dossiertool.smattrEntity.Jsydsyq">
+      <id column="sqybsm" jdbcType="OTHER" property="bsm" />
+      <result column="syqobjectid" jdbcType="DECIMAL" property="objectid" />
+      <result column="syqysdm" jdbcType="OTHER" property="ysdm" />
+      <result column="ZDDM" jdbcType="OTHER" property="zddm" />
+      <result column="BDCDYBSM" jdbcType="OTHER" property="bdcdybsm" />
+      <result column="syqbdcdyh" jdbcType="OTHER" property="bdcdyh" />
+      <result column="YWH" jdbcType="OTHER" property="ywh" />
+      <result column="QLLX" jdbcType="OTHER" property="qllx" />
+      <result column="DJLX" jdbcType="OTHER" property="djlx" />
+      <result column="DJYY" jdbcType="OTHER" property="djyy" />
+      <result column="SYQMJ" jdbcType="DECIMAL" property="syqmj" />
+      <result column="SYQQSSJ" jdbcType="TIMESTAMP" property="syqqssj" />
+      <result column="SYQJSSJ" jdbcType="TIMESTAMP" property="syqjssj" />
+      <result column="QDJG" jdbcType="DECIMAL" property="qdjg" />
+      <result column="BDCQZH" jdbcType="OTHER" property="bdcqzh" />
+      <result column="QXDM" jdbcType="OTHER" property="qxdm" />
+      <result column="DJJG" jdbcType="OTHER" property="djjg" />
+      <result column="DBR" jdbcType="OTHER" property="dbr" />
+      <result column="DJSJ" jdbcType="TIMESTAMP" property="djsj" />
+      <result column="FJ" jdbcType="OTHER" property="fj" />
+      <result column="QSZT" jdbcType="OTHER" property="qszt" />
+      <result column="ZXYWH" jdbcType="OTHER" property="zxywh" />
+      <result column="ZXSJ" jdbcType="TIMESTAMP" property="zxsj" />
+      <result column="ZXYY" jdbcType="OTHER" property="zxyy" />
+      <result column="BLZT" jdbcType="OTHER" property="blzt" />
+      <result column="DAQZH" jdbcType="OTHER" property="daqzh" />
+      <result column="DAND" jdbcType="OTHER" property="dand" />
+      <result column="DAGH" jdbcType="OTHER" property="dagh" />
+      <result column="DAHH" jdbcType="OTHER" property="dahh" />
+      <result column="DAAJH" jdbcType="OTHER" property="daajh" />
+      <result column="DAAJBT" jdbcType="OTHER" property="daajbt" />
+    </association>
+  </resultMap>
+  <select id="selectQlrAndSyqs" parameterType="java.lang.Integer" resultMap="qlrAndSyqs">
+   SELECT QLR.*,JSYDSYQ.*,JSYDSYQ.BSM AS sqybsm,JSYDSYQ.OBJECTID AS syqobjectid,JSYDSYQ.bdcdyh AS syqbdcdyh,JSYDSYQ.YSDM AS syqysdm  FROM QLR,JSYDSYQ WHERE QLR.BSM IN (SELECT qlrbsm FROM TXMQLB WHERE TXMID = #{txmId}) AND QLR.QLBSM = JSYDSYQ.BSM
+  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

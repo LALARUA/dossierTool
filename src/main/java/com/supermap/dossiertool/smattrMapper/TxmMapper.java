@@ -15,6 +15,10 @@ import java.util.List;
 public interface TxmMapper {
     @Select("SELECT TXM_SEQ.NEXTVAL FROM DUAL")
     Integer findMaxId();
+
+    @Select("select * from txm where dabh = #{dabh}")
+    List<TxmWithBLOBs> selectByDabh(String dabh);
+
     long countByExample(TxmExample example);
 
     int deleteByExample(TxmExample example);

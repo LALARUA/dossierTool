@@ -514,6 +514,8 @@
                 </div>
                 <div id="showQlrxxAndSyqForm">
                 <div id="showQlrxxForm" class="qlrxxForm">
+
+                    <input type="hidden" class="bsm form-control" name="bsm" id="bsm" >
                     <div class="from-row qlrxx">
                         <div class="daxx form-group col-md-10">
                             <hr>
@@ -787,6 +789,7 @@
                 <!--</div>-->
                 <!--</div>-->
                 <div id="showSyqxxForm" class="syqxxForm from-row syqxx qlrxx">
+                    <input type="hidden" class="form-control" name="bsm" id="bsm" >
                     <div class="from-row syqxx qlrxx">
                         <div class="zdxx form-group col-md-12">
                             <hr>
@@ -1053,6 +1056,8 @@ window.onload = function (ev) {
     var tdzh;
     var zddm;
     var zdtzm;
+    var isFromDB;
+    var qlrAndSyqFromDB;
     var unclick = function(o){
         o.css("background-color","")
     }
@@ -1065,6 +1070,7 @@ window.onload = function (ev) {
             showTags:true,
             onNodeSelected:function(event,node){
 
+                isFromDB = 0;
                 var flag = 0;
                 if (node.nodes==null){
                     var ajh = node.text;
@@ -1093,8 +1099,7 @@ window.onload = function (ev) {
                         timeout: 5000,    //超时时间
                         dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text
                         success: function (data) {
-
-
+                            var daxxForms = $("#showDaxxForm").find(".form-control")
                             if (data['error']!=null){
                                 alert(data['error'])
                                 return
@@ -1102,24 +1107,30 @@ window.onload = function (ev) {
                             initJpgList(data['jpgs'])
                             if (flag==1)
                                 return
+                            if ((isFromDB=data['flag'])==1){
+                                for (var i=0;i<daxxForms.length;i++){
+                                    var n = daxxForms.eq(i).attr("id")
+                                    if (n!=null){
+                                        // alert(data['excelData'][n])
+                                        daxxForms.eq(i).val(data['txm'][n])
+                                    }
+                                }
+                                qlrAndSyqFromDB = data['txm']['qlrAndSyqs'];
+                                return
+                            }
                             qlrs=data['excelData'].qlr;
                             fwzl=data['excelData'].fwzl;
                             tdzh=data['excelData'].tdzh;
                             zddm=data['excelData'].zddm;
                             zdtzm=data['excelData'].zdtzm;
-                            var daxxForms = $("#showDaxxForm").find(".form-control")
                             daxxForms.val("");
-                            for (var i=0;i<daxxForms.length;i++){
-                                var n = daxxForms.eq(i).attr("id")
-                                if (n!=null){
-                                    // alert(data['excelData'][n])
-                                    daxxForms.eq(i).val(data['excelData'][n])
+                                for (var i=0;i<daxxForms.length;i++){
+                                    var n = daxxForms.eq(i).attr("id")
+                                    if (n!=null){
+                                        // alert(data['excelData'][n])
+                                        daxxForms.eq(i).val(data['excelData'][n])
+                                    }
                                 }
-                            }
-
-
-
-
                             $("#path").val(node.path)
                         },
                     })
@@ -1321,8 +1332,6 @@ window.onload = function (ev) {
 
 
         if (index==""){
-
-
             var daxxTable = $("#daxxTable")
             var trId = "daxxTrIndex"+(++daxxIndex);
             daxxTable.append("<tr class='daxxTr' id="+trId+" index="+daxxIndex+">\n" +
@@ -1339,10 +1348,7 @@ window.onload = function (ev) {
             $("#path").before("<div style='display: none' class='daxxForm' id="+formId+"> " +inputForm+
 
                 "</div>")
-
-
             index = daxxIndex
-
         }
 
 
@@ -1373,26 +1379,65 @@ window.onload = function (ev) {
 
         }
 
-        var  trId = "qlrxxAndSyqTrIndex"+(++qlrxxAndSyqIndex);
+
+
+
         var inputForm = $("#showQlrxxAndSyqForm").html();
-         for (var i=0;i<tdzh.length;i++){
-             $("#qlrxxAndSyqTable").append("<tr class='qlrxxAndSyqTr' id="+trId+" index="+qlrxxAndSyqIndex+">\n" +
-                 "                            <th scope=\"row\">#</th>\n" +
-                 "                            <td name='dabh'>"+dabh+"</td>\n" +
-                 "                            <td name='bdcqzh'>"+tdzh[i]+"</td>\n" +
-                 "                            <td name='qlr'>"+qlrs[i]+"</td>\n" +
-                 "                        </tr>")
 
-             var formId = "qlrxxAndSyqFormIndex"+qlrxxAndSyqIndex
-            $("#path").before("<div style='display: none' class='qlrxxAndSyqForm' id="+formId+"> " +inputForm+
-                "</div>")
-             $("#"+formId+" #qlrmc").val(qlrs[i])
+         if (isFromDB == 1){
+             for (var i = 0;i<qlrAndSyqFromDB.length;i++){
+                 var  trId = "qlrxxAndSyqTrIndex"+(++qlrxxAndSyqIndex);
+                 $("#qlrxxAndSyqTable").append("<tr class='qlrxxAndSyqTr' id="+trId+" index="+qlrxxAndSyqIndex+">\n" +
+                     "                            <th scope=\"row\">#</th>\n" +
+                     "                            <td name='dabh'>"+dabh+"</td>\n" +
+                     "                            <td name='bdcqzh'>"+qlrAndSyqFromDB[i].qlr.bdcqzh+"</td>\n" +
+                     "                            <td name='qlr'>"+qlrAndSyqFromDB[i].qlr.qlrmc+"</td>\n" +
+                     "                        </tr>")
+                 var formId = "qlrxxAndSyqFormIndex"+qlrxxAndSyqIndex
+                 $("#path").before("<div style='display: none' class='qlrxxAndSyqForm"+dabh+"' id="+formId+"> " +inputForm+
+                     "</div>")
 
-             $("#"+formId+" #bdcqzh").val(tdzh[i])
+                 var qlrInputs = $("#"+formId).find(".qlrxxForm .form-control")
+                 for (var j=0;j<qlrInputs.length;j++){
+                     var name = qlrInputs.eq(j).attr("id")
+                     var s = "qlrAndSyqFromDB["+i+"].qlr."+name;
+                     qlrInputs.eq(j).val(eval(s))
+                 }
+                 var syqInputs = $("#"+formId).find(".syqxxForm .form-control")
+                 for (var j=0;j<syqInputs.length;j++){
+                     var name = syqInputs.eq(j).attr("id")
+                     var s = "qlrAndSyqFromDB["+i+"].jsydsyq."+name;
+                     syqInputs.eq(j).val(eval(s))
+                 }
+             }
 
-             $("#"+formId+" #xtdzzl").val(fwzl)
+
 
          }
+
+         else {
+             for (var i=0;i<tdzh.length;i++){
+                 var  trId = "qlrxxAndSyqTrIndex"+(++qlrxxAndSyqIndex);
+                 $("#qlrxxAndSyqTable").append("<tr class='qlrxxAndSyqTr' id="+trId+" index="+qlrxxAndSyqIndex+">\n" +
+                     "                            <th scope=\"row\">#</th>\n" +
+                     "                            <td name='dabh'>"+dabh+"</td>\n" +
+                     "                            <td name='bdcqzh'>"+tdzh[i]+"</td>\n" +
+                     "                            <td name='qlr'>"+qlrs[i]+"</td>\n" +
+                     "                        </tr>")
+
+                 var formId = "qlrxxAndSyqFormIndex"+qlrxxAndSyqIndex
+                 $("#path").before("<div style='display: none' class='qlrxxAndSyqForm"+dabh+"' id="+formId+"> " +inputForm+
+                     "</div>")
+                 $("#"+formId+" #qlrmc").val(qlrs[i])
+
+                 $("#"+formId+" #bdcqzh").val(tdzh[i])
+
+                 $("#"+formId+" #xtdzzl").val(fwzl)
+
+             }
+         }
+
+
         $("#daxxTrIndex"+index).click();
 
         alert("保存成功")
@@ -1443,29 +1488,45 @@ window.onload = function (ev) {
         var daxxForm = $(".daxxForm")
         for (var i=0;i<daxxForm.length;i++){
             var inputs = daxxForm.eq(i).find(".form-control");
+            var thisdabh = inputs.eq(0).val();
             for (var j=0;j<inputs.length;j++){
                 var name = inputs.eq(j).attr("id")
-
                 inputs.eq(j).attr("name","txms["+i+"]."+name)
-
             }
+            var qlrxxAndSyqForm = $(".qlrxxAndSyqForm"+thisdabh);
+
+            for (var j=0;j<qlrxxAndSyqForm.length;j++){
+                var qlrxxInputs = qlrxxAndSyqForm.eq(j).find(".qlrxxForm").find(".form-control");
+                var syqxxInputs = qlrxxAndSyqForm.eq(j).find(".syqxxForm").find(".form-control");
+                for (var o=0;o<qlrxxInputs.length;o++){
+                    var qlrxxName = qlrxxInputs.eq(o).attr("id");
+                    qlrxxInputs.eq(o).attr("name","txms["+i+"].qlrAndSyqs["+j+"].qlr."+qlrxxName)
+                }
+                for (var o=0;o<syqxxInputs.length;o++){
+                    var syqxxName = syqxxInputs.eq(o).attr("id");
+                    syqxxInputs.eq(o).attr("name","txms["+i+"].qlrAndSyqs["+j+"].jsydsyq."+syqxxName)
+                }
+            }
+
+
         }
 
-        var qlrxxAndSyqForm = $(".qlrxxAndSyqForm");
-        for (var i=0;i<qlrxxAndSyqForm.length;i++){
-           var qlrxxInputs = qlrxxAndSyqForm.eq(i).find(".qlrxxForm").eq(0).find(".form-control");
-           var syqxxInputs = qlrxxAndSyqForm.eq(i).find(".syqxxForm").eq(0).find(".form-control");
-           for (var j = 0;j<qlrxxInputs.length;j++){
-               var qlrxxName = qlrxxInputs.eq(j).attr("id");
-
-               qlrxxInputs.eq(j).attr("name","qlrAndSyqs["+i+"].qlr."+qlrxxName)
-
-           }
-           for (var o=0;o<syqxxInputs.length;o++){
-               var syqxxName = syqxxInputs.eq(o).attr("id");
-               syqxxInputs.eq(o).attr("name","qlrAndSyqs["+i+"].jsydsyq."+syqxxName)
-           }
-        }
+        // return false;
+        // var qlrxxAndSyqForm = $(".qlrxxAndSyqForm");
+        // for (var i=0;i<qlrxxAndSyqForm.length;i++){
+        //    var qlrxxInputs = qlrxxAndSyqForm.eq(i).find(".qlrxxForm").eq(0).find(".form-control");
+        //    var syqxxInputs = qlrxxAndSyqForm.eq(i).find(".syqxxForm").eq(0).find(".form-control");
+        //    for (var j = 0;j<qlrxxInputs.length;j++){
+        //        var qlrxxName = qlrxxInputs.eq(j).attr("id");
+        //
+        //        qlrxxInputs.eq(j).attr("name","qlrAndSyqs["+i+"].qlr."+qlrxxName)
+        //
+        //    }
+        //    for (var o=0;o<syqxxInputs.length;o++){
+        //        var syqxxName = syqxxInputs.eq(o).attr("id");
+        //        syqxxInputs.eq(o).attr("name","qlrAndSyqs["+i+"].jsydsyq."+syqxxName)
+        //    }
+        // }
 
 
         var data = $("#allData").serialize();
@@ -1477,9 +1538,7 @@ window.onload = function (ev) {
             timeout: 5000,    //超时时间
             dataType: 'text',    //返回的数据格式：json/xml/html/script/jsonp/text
             success: function (data) {
-                $(".form-control").val("")
-                $(".daxxTr").remove()
-                $(".qlrxxAndSyqTr")
+                $("#clearForm").click()
                 alert(data)
 
             },
