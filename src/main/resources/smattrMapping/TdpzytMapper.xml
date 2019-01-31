@@ -122,7 +122,7 @@
       #{zdmj,jdbcType=DECIMAL}, #{qlxz,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.Tdpzyt">
-    insert into SMATTR.TDPZYT
+    insert into TDPZYT
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="bsm != null">
         BSM,

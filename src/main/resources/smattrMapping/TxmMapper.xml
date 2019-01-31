@@ -144,7 +144,7 @@
       #{dabhtxm,jdbcType=BLOB}, #{dalxbhtxm,jdbcType=BLOB})
   </insert>
   <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.TxmWithBLOBs">
-    insert into SMATTR.TXM
+    insert into TXM
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="txmid != null">
         TXMID,

@@ -240,6 +240,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
             qlr.setSxh(new BigDecimal(i++));
             qlr.setBdcdyh(zdjbxx.getBdcdyh());
             qlrMapper.insertSelective(qlr);
+
         }
 
         //土地用途信息
@@ -256,6 +257,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
              ) {
             t.setZddm(zdjbxx.getZddm());
             t.setTxmid(txmMapper.findMaxId());
+            t.setZdbsm(zdjbxx.getBsm());
             txmMapper.insertSelective(t);
         }
 

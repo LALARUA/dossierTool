@@ -152,7 +152,7 @@
       #{daajbt,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.Jsydsyq">
-    insert into SMATTR.JSYDSYQ
+    insert into JSYDSYQ
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="bsm != null">
         BSM,

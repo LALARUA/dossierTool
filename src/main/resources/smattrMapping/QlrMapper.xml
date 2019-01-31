@@ -185,7 +185,7 @@
       #{xtdqlqssj,jdbcType=OTHER}, #{xtdqljssj,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.Qlr">
-    insert into SMATTR.QLR
+    insert into QLR
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="bsm != null">
         BSM,

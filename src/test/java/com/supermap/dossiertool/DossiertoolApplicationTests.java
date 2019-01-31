@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.sql.DataSource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.math.BigDecimal;
@@ -29,13 +30,15 @@ import java.util.*;
 @SpringBootTest
 public class DossiertoolApplicationTests {
 
+	@Autowired
+	DataSource dataSource;
+
 
 
 
 
 	@Test
 	public void contextLoads() throws Exception {
-
 
 
 //		handleData.insertData("E:\\zigongDATA\\自贡数据\\沿滩镇升坪街\\0010\\5000051");

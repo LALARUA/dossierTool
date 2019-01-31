@@ -222,7 +222,7 @@
       #{dyzt,jdbcType=OTHER}, #{zhxgryid,jdbcType=OTHER})
   </insert>
   <insert id="insertSelective" parameterType="com.supermap.dossiertool.smattrEntity.Zdjbxx">
-    insert into SMATTR.ZDJBXX
+    insert into ZDJBXX
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="bsm != null">
         BSM,
