@@ -10,6 +10,7 @@ import com.supermap.dossiertool.smattrEntity.Txm;
 import com.supermap.dossiertool.smattrEntity.TxmWithBLOBs;
 import com.supermap.dossiertool.smattrEntity.Zdjbxx;
 import net.sf.json.JSONArray;
+import org.apache.ibatis.annotations.Select;
 import org.apache.logging.log4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,16 +115,25 @@ public class ZGStockSystemController {
     public String submitData(Zdjbxx zdjbxx/*, QlrAndSyqList qlrAndSyqList*/, TdpzytList tdpzytList, TxmList txmList){
 
 
-        zgStockSystemService.submitData(zdjbxx,tdpzytList,txmList);
-        return "success";
+        try {
+            zgStockSystemService.submitData(zdjbxx, tdpzytList, txmList);
+            return "success";
+        }catch (Exception e){
+            return "error";
+        }
+
     }
 
     @ResponseBody
     @GetMapping("/getSelect")
     public  Map<String,Map> getSelect(@RequestParam("selectsFromConstNameList") List<String> selectsFromConstNameList,@RequestParam("selectsFromOtherNameList") List<String> selectsFromOtherNameList){
-
-
       return zgStockSystemService.getSelect(selectsFromConstNameList,selectsFromOtherNameList);
+    }
 
+    @ResponseBody
+    @GetMapping("/selectZdxx")
+    public List<Zdjbxx> selectZdxxes(SelectZdxx selectZdxx){
+
+        return zgStockSystemService.selectZdxxs(selectZdxx);
     }
 }

@@ -9,10 +9,20 @@ public class TxmWithBLOBs extends Txm {
 
     private List<QlrAndSyq> qlrAndSyqs = new ArrayList<>();
 
+    private Zdjbxx zdjbxx;
+
 
     private byte[] dabhtxm;
 
     private byte[] dalxbhtxm;
+
+    public Zdjbxx getZdjbxx() {
+        return zdjbxx;
+    }
+
+    public void setZdjbxx(Zdjbxx zdjbxx) {
+        this.zdjbxx = zdjbxx;
+    }
 
     public List<QlrAndSyq> getQlrAndSyqs() {
         return qlrAndSyqs;

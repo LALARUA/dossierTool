@@ -133,6 +133,58 @@
                     <!--<input type="hidden" id="dtp_input2" value="" /><br/>-->
                 <!--</div>-->
 
+                <div>
+                <div style="height: 200px" class="from-row zdxx pre-scrollable">
+                    <table class="zdxx table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">宗地代码</th>
+                            <th scope="col">地籍号</th>
+                            <th scope="col">坐落</th>
+
+                            <!--<th scope="col">封皮页数</th>-->
+                        </tr>
+                        </thead>
+                        <tbody id="zdxxTable">
+
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="from-row zdxx" id="selectZdjbxxForm">
+                        <div class="zdxx form-group col-md-6">
+                            <label for="zddm">宗地代码</label>
+                            <input type="text" class="form-control"  id="zddmselect" >
+                        </div>
+                        <div class="zdxx form-group col-md-6">
+                            <label for="zddm">地籍号</label>
+                            <input type="text" class="form-control"  id="djhselect" >
+                        </div>
+                        <div class="zdxx form-group col-md-6">
+                            <label for="zddm">权利人</label>
+                            <input type="text" class="form-control"  id="qlrselect" >
+                        </div>
+                        <div class="zdxx form-group col-md-6">
+                            <label for="zddm">权证号</label>
+                            <input type="text" class="form-control"  id="qzhselect" >
+                        </div>
+                        <div class="zdxx form-group col-md-12">
+                            <label for="zddm">宗地坐落</label>
+                            <input type="text" class="form-control"  id="zdzlselect" >
+                        </div>
+                        <div class="zdxx form-group col-md-6">
+                            <button class="btn btn-success" id="selectzdxx">查询</button>
+                            <button class="btn btn-danger" id="clearzdxx">清空</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="from-row zdxx">
+                    <div class="zdxx form-group col-md-12">
+                        <hr>
+                        <h3 style="float: left">宗地基本信息</h3>
+                    </div>
+                </div>
                 <div class="from-row zdxx">
                     <div class="zdxx form-group col-md-6">
                         <label for="zddm">宗地代码</label>
@@ -1058,6 +1110,8 @@ window.onload = function (ev) {
     var zdtzm;
     var isFromDB;
     var qlrAndSyqFromDB;
+    var zdjbxxFromDB;
+    var zdjbxxSelect;
     var unclick = function(o){
         o.css("background-color","")
     }
@@ -1116,6 +1170,11 @@ window.onload = function (ev) {
                                     }
                                 }
                                 qlrAndSyqFromDB = data['txm']['qlrAndSyqs'];
+                                zdjbxxFromDB = data['txm']['zdjbxx'];
+                                if (zdjbxxFromDB!=null){
+                                    zdtzm = zdjbxxFromDB.zdtzm
+                                    zddm = zdjbxxFromDB.zddm;
+                                }
                                 return
                             }
                             qlrs=data['excelData'].qlr;
@@ -1171,6 +1230,56 @@ window.onload = function (ev) {
 
         rollImg(this)
     })
+    $(document).on('click', '#selectzdxx', function () {
+        var zddm = $("#zddmselect").val();
+        var djh = $("#djhselect").val();
+        var qlr = $("#qlrselect").val();
+        var qzh = $("#qzhselect").val();
+        var zdzl = $("#zdzlselect").val();
+        $(".zdxxtr").remove();
+        zdjbxxSelect=null;
+        $.ajax({
+            url: 'selectZdxx',
+            type: 'get', //
+            async: true,    //或false,是否异步
+            data:"zddm="+zddm+"&djh="+djh+"&qlr="+qlr+"&qzh="+qzh+"&zdzl="+zdzl,
+            timeout: 5000,    //超时时间
+            dataType: 'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+            success: function (data) {
+                zdjbxxSelect = data;
+                var zdjbxx = $("#zdxxTable")
+                for (var i = 0;i<data.length;i++){
+                    var trId = "zdxxTr"+i
+                    zdjbxx.append("<tr class='zdxxtr' id="+trId+" index="+i+">\n" +
+                        "                            <th scope=\"row\">#</th>\n" +
+                        "                            <td name='zddm'>"+data[i].zddm+"</td>\n" +
+                        "                            <td name='djh'>"+data[i].djh+"</td>\n" +
+                        "                            <td name='zl'>"+data[i].zl+"</td>\n" +
+                        "                        </tr>")
+                }
+
+
+            }
+        })
+        return false
+    })
+    $(document).on('click', '.zdxxtr', function () {
+        $(".zdxxtr").css("background-color","")
+        $(this).css("background-color","#428bca")
+        var index = $(this).attr("index")
+        var zdxxInputs = $(".zdxx .form-control");
+        var thisZdjbxx = zdjbxxSelect[index]
+        for (var z = 0;z<zdxxInputs.length;z++){
+            var name = zdxxInputs.eq(z).attr("id");
+            var s = "thisZdjbxx."+name;
+            zdxxInputs.eq(z).val(eval(s));
+        }
+    })
+    $(document).on('click', '#clearzdxx', function () {
+        $("#selectZdjbxxForm .from-row").val("")
+        $(".zdxxtr").remove();
+        zdjbxxSelect=null;
+    })
     $(document).on('mousewheel', '#divShowJpg', function () {
         return false
     })
@@ -1200,6 +1309,7 @@ window.onload = function (ev) {
     $(document).on('click', '#clearForm', function () {
        var inputs = $(".form-control");
        inputs.val("")
+        $(".zdxxtr").remove();
         $(".daxxTr").remove()
         $(".qlrxxAndSyqTr").remove();
        return false
@@ -1324,7 +1434,7 @@ window.onload = function (ev) {
                 return false
             }
         }
-        if ($("#zddm").val()!=zddm){
+        if (zddm!=""&&$("#zddm").val()!=zddm){
             var isContinue = confirm("此档案信息的宗地代码与前面的宗地代码不一致，是否继续?");
             if (isContinue==false)
                 return false
@@ -1352,10 +1462,13 @@ window.onload = function (ev) {
         }
 
 
+
         $("#zddm").val(zddm)
         $("#zdtzm").val(zdtzm)
-           var trId = "daxxTrIndex"+index
-          var tds = $("#"+trId).find("td");
+        $("#zl").val(fwzl)
+
+        var trId = "daxxTrIndex"+index
+        var tds = $("#"+trId).find("td");
          for (var i=0;i<tds.length;i++){
              var name = tds.eq(i).attr("name");
              var showName = $("#showDaxxForm #"+name).val();
@@ -1376,15 +1489,19 @@ window.onload = function (ev) {
                  alert("保存成功")
                 return false
              }
-
         }
-
-
-
-
         var inputForm = $("#showQlrxxAndSyqForm").html();
 
          if (isFromDB == 1){
+
+            var zdxxInputs = $(".zdxx .form-control");
+
+            for (var z = 0;z<zdxxInputs.length;z++){
+               var name = zdxxInputs.eq(z).attr("id");
+               var s = "zdjbxxFromDB."+name;
+               zdxxInputs.eq(z).val(eval(s));
+            }
+
              for (var i = 0;i<qlrAndSyqFromDB.length;i++){
                  var  trId = "qlrxxAndSyqTrIndex"+(++qlrxxAndSyqIndex);
                  $("#qlrxxAndSyqTable").append("<tr class='qlrxxAndSyqTr' id="+trId+" index="+qlrxxAndSyqIndex+">\n" +

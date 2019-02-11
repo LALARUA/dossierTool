@@ -22,4 +22,5 @@ public interface ZGStockSystemService {
     List<MyFile> getJpgList(String path, String AJH);
     PublicExcelData getPublicExcelData(String excelPath, String AJH) throws Exception;
     TxmWithBLOBs selectTxm(String dabh);
+    List<Zdjbxx> selectZdxxs(SelectZdxx selectZdxx);
 }

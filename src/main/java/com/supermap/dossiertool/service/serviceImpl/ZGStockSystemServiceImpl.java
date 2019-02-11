@@ -15,6 +15,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +50,8 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     ConstMapper constMapper;
     @Autowired
     OtherMapper otherMapper;
+    @Autowired
+    CacheManager cacheManager;
 
     private static   org.slf4j.Logger logger = LoggerFactory.getLogger(ZGStockSystemServiceImpl.class);
     /**
@@ -209,7 +213,9 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     @Override
     public void submitData(Zdjbxx zdjbxx, TdpzytList tdpzytList, TxmList txmList) {
 
-        Zdjbxx zdjbxxInDB = zdjbxxMapper.selectByZddm(zdjbxx.getZddm());
+        Zdjbxx zdjbxxInDB = null;
+        if (!(zdjbxx.getZddm()==null||zdjbxx.getZddm().isEmpty()))
+            zdjbxxInDB = zdjbxxMapper.selectByZddm(zdjbxx.getZddm());
         if (zdjbxxInDB == null) {
             //宗地基本信息
             String zdjbxxBsm = UUID.randomUUID().toString();  //宗地基本信息标识码
@@ -246,6 +252,15 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
                     JsydsyqExample jsydsyqExample = new JsydsyqExample();
                     jsydsyqExample.createCriteria().andBsmEqualTo(jsydsyq.getBsm());
                     jsydsyqMapper.updateByExampleSelective(jsydsyq, jsydsyqExample);
+
+                    Txmqlb txmqlb = new Txmqlb();
+                    txmqlb.setQlbsm(jsydsyq.getBsm());
+                    txmqlb.setQlrmc(qlr.getQlrmc());
+                    txmqlb.setQlrbsm(qlr.getBsm());
+                    txmqlb.setXtdzzl(qlr.getXtdzzl());
+                    txmqlb.setBdcqzh(qlr.getBdcqzh());
+                    txmqlbMapper.update(txmqlb);
+
                 }
 
 
@@ -291,35 +306,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
             }
         }
     }
-//        int i = 0;
-//        for (QlrAndSyq qas:qlrAndSyqList.getQlrAndSyqs()
-//             ) {
-//            //使用权信息
-//            Jsydsyq jsydsyq = qas.getJsydsyq();
-//            String syqBsm = UUID.randomUUID().toString();    //使用权标识码
-//            jsydsyq.setBsm(syqBsm);
-//            jsydsyq.setBdcdybsm(zdjbxx.getBsm());
-//            jsydsyq.setBdcdyh(zdjbxx.getBdcdyh());
-//            jsydsyq.setObjectid(jsydsyqMapper.findMaxId());
-//
-//            jsydsyqMapper.insertSelective(jsydsyq);
-//            //权利人信息
-//            Qlr qlr = qas.getQlr();
-//            qlr.setBsm(UUID.randomUUID().toString());
-//            qlr.setBsm(UUID.randomUUID().toString());
-//            qlr.setQlbsm(syqBsm);
-//            qlr.setObjectid(qlrMapper.findMaxId());
-//            qlr.setSxh(new BigDecimal(i++));
-//            qlr.setBdcdyh(zdjbxx.getBdcdyh());
-//            qlrMapper.insertSelective(qlr);
-//
-//        }
 
-
-
-
-
-//    }
 
 
 //    @Cacheable(cacheNames = "handlingAJH",key = "#AJH")
@@ -397,6 +384,7 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
     }
 
     @Override
+
     public TxmWithBLOBs selectTxm(String dabh) {
         List<TxmWithBLOBs> txmWithBLOBs = txmMapper.selectByDabh(dabh);
         if (txmWithBLOBs==null||txmWithBLOBs.size()==0)
@@ -404,7 +392,34 @@ public class ZGStockSystemServiceImpl implements ZGStockSystemService{
         TxmWithBLOBs txmWithBLOBInDB = txmWithBLOBs.get(0);
         List<QlrAndSyq> qlrAndSyqs = qlrMapper.selectQlrAndSyqs(txmWithBLOBInDB.getTxmid());
         txmWithBLOBInDB.setQlrAndSyqs(qlrAndSyqs);
+
+        txmWithBLOBInDB.setZdjbxx( getZdjbxxByBsm(txmWithBLOBInDB.getZdbsm()));
         return txmWithBLOBInDB;
+    }
+
+    @Override
+    public List<Zdjbxx> selectZdxxs(SelectZdxx selectZdxx) {
+        if (selectZdxx.getDjh().isEmpty())
+            selectZdxx.setDjh(null);
+        if (selectZdxx.getQlr().isEmpty())
+            selectZdxx.setQlr(null);
+        else selectZdxx.setQlr("%"+selectZdxx.getQlr()+"%");
+        if (selectZdxx.getQzh().isEmpty())
+            selectZdxx.setQzh(null);
+        if (selectZdxx.getZdzl().isEmpty())
+            selectZdxx.setZdzl(null);
+        else selectZdxx.setZdzl("%"+selectZdxx.getZdzl()+"%");
+        if (selectZdxx.getZddm().isEmpty())
+            selectZdxx.setZddm(null);
+       return zdjbxxMapper.selectZdxx(selectZdxx);
+    }
+
+    @Cacheable(value = "zdjbxxs",key = "#{bsm}")
+    public Zdjbxx getZdjbxxByBsm(String bsm){
+        ZdjbxxExample zdjbxxExample = new ZdjbxxExample();
+        zdjbxxExample.createCriteria().andBsmEqualTo(bsm);
+        List<Zdjbxx> zdjbxxes = zdjbxxMapper.selectByExample(zdjbxxExample);
+        return zdjbxxes==null ? null : zdjbxxes.get(0);
     }
 
 }

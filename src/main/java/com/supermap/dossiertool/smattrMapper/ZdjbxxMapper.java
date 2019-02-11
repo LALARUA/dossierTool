@@ -1,5 +1,6 @@
 package com.supermap.dossiertool.smattrMapper;
 
+import com.supermap.dossiertool.bean.SelectZdxx;
 import com.supermap.dossiertool.smattrEntity.Zdjbxx;
 import com.supermap.dossiertool.smattrEntity.ZdjbxxExample;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,10 +18,17 @@ public interface ZdjbxxMapper {
     BigDecimal findMaxId();
 
     @Update("update zdjbxx set shr = #{shr} where bsm = #{bsm}")
-    public void setShr(@Param("shr") String shr,@Param("bsm") String bsm);
+    void setShr(@Param("shr") String shr,@Param("bsm") String bsm);
 
     @Select("select * from zdjbxx where zddm=#{zddm}")
-    public Zdjbxx selectByZddm(String zddm);
+    Zdjbxx selectByZddm(String zddm);
+
+//    @Select("SELECT * FROM ZDJBXX WHERE ZDDM IN (SELECT ZDDM FROM JSYDSYQ WHERE BSM IN (SELECT QLBSM FROM QLR WHERE QLRMC = #{qlr}))\n" +
+//            "UNION SELECT * FROM ZDJBXX WHERE ZDDM = #{zddm}" +
+//            "UNION SELECT * FROM ZDJBXX WHERE DJH = #{djh}" +
+//            "UNION SELECT * FROM ZDJBXX WHERE ZL LIKE #{zdzl}")
+    List<Zdjbxx> selectZdxx(SelectZdxx selectZdxx);
+
     long countByExample(ZdjbxxExample example);
 
     int deleteByExample(ZdjbxxExample example);

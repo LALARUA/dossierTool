@@ -155,6 +155,33 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectZdxx" parameterType="com.supermap.dossiertool.bean.SelectZdxx" resultMap="BaseResultMap">
+    <if test="qlr != null">
+      SELECT * FROM ZDJBXX WHERE ZDDM IN (SELECT ZDDM FROM JSYDSYQ WHERE BSM IN (SELECT QLBSM FROM QLR WHERE QLRMC = null))
+    </if>
+
+    <if test="qlr != null and zddm != null">
+      UNION
+    </if>
+    <if test="zddm != null">
+      SELECT * FROM ZDJBXX WHERE ZDDM = #{zddm}
+    </if>
+
+    <if test="(qlr !=null or zddm != null) and djh !=null">
+      UNION
+    </if>
+
+    <if test="djh != null">
+     SELECT * FROM ZDJBXX WHERE DJH = #{djh}
+    </if>
+    <if test="(qlr != null or zddm != null or djh !=null) and zdzl != null">
+      UNION
+    </if>
+    <if test="zdzl != null">
+      SELECT * FROM ZDJBXX WHERE ZL LIKE #{zdzl}
+    </if>
+
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
